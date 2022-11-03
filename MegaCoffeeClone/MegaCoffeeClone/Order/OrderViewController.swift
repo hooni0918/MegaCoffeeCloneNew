@@ -52,7 +52,7 @@ class OrderViewController: UIViewController {
         orderHeaderView.backgroundColor = .brown
         orderHeaderView.frame.size.height = 60
         
-        let nibName = UINib(nibName: "StoreInfoTableViewCell", bundle: nil)
+        let nibName = UINib(nibName: "OrderStoreInfoTableViewCell", bundle: nil)
         orderTableView.register(nibName, forCellReuseIdentifier: "storeCell")
 
     }
