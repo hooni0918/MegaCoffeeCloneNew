@@ -7,25 +7,28 @@
 
 import UIKit
 
-class DetailReadViewController: UIViewController {
+class MoreDetailReadViewController: UIViewController {
 
-    // MARK: 변수 선언
+    
+    // MARK: [변수 선언]
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
 
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MoreTableViewCell.identifier)
 
         return tableView
     }()
-
     
     
-    // MARK: Override
+    
+    
+    
+    
+    
+    // MARK: [Override]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .systemBackground
         
         layout()
     }
@@ -37,20 +40,34 @@ class DetailReadViewController: UIViewController {
         self.tableView.reloadData()
     }
     
+    
+    
+    
+    
+    
+    
+    
 
     
-// MARK: ==== Class End ====
+// MARK: [Class End]
     
 }
 
-// MARK: ==== Class End ====
+// MARK: [Class End]
 
 
 
 
 
-// MARK: extension TableView - DataSource
-extension DetailReadViewController: UITableViewDataSource {
+
+
+
+
+
+
+
+// MARK: [TableView - DataSource]
+extension MoreDetailReadViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
@@ -60,7 +77,7 @@ extension DetailReadViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier) else { return UITableViewCell(style: .default, reuseIdentifier: TableViewCell.identifier)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier) else { return UITableViewCell(style: .default, reuseIdentifier: MoreTableViewCell.identifier)
             }
             return cell
         }()
@@ -70,15 +87,15 @@ extension DetailReadViewController: UITableViewDataSource {
         
         switch self.navigationItem.title {
         case "서비스 이용약관":
-            cell.textLabel?.text = TermsOfServiceModel.menu1
+            cell.textLabel?.text = MoreTermsOfServiceModel.menu1
         case "메가선불카드 이용약관":
-            cell.textLabel?.text = TermsOfServiceModel.menu2
+            cell.textLabel?.text = MoreTermsOfServiceModel.menu2
         case "개인정보 처리방침":
-            cell.textLabel?.text = TermsOfServiceModel.menu3
+            cell.textLabel?.text = MoreTermsOfServiceModel.menu3
         case "마케팅 활용 동의":
-            cell.textLabel?.text = TermsOfServiceModel.menu4
+            cell.textLabel?.text = MoreTermsOfServiceModel.menu4
         case "위치 기반 서비스 이용 동의":
-            cell.textLabel?.text = TermsOfServiceModel.menu5
+            cell.textLabel?.text = MoreTermsOfServiceModel.menu5
         default:
             print("DetailReadViewController - didSelectRowAt")
         }
@@ -90,10 +107,16 @@ extension DetailReadViewController: UITableViewDataSource {
 
 
 
-// MARK: Layout
-extension DetailReadViewController {
+
+
+
+
+// MARK: [Layout]
+extension MoreDetailReadViewController {
     
     private func layout() {
+        self.view.backgroundColor = .systemBackground
+        
         naviCustom()
         layoutTableView()
     }
@@ -106,12 +129,14 @@ extension DetailReadViewController {
     
     
     // none
+    /*
     private func naviCustom1() {
         let leftImage = UIImage(systemName: "xmark")
         
         self.navigationController?.navigationBar.backIndicatorImage = leftImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = leftImage
     }
+     */
     
     
     // TableView

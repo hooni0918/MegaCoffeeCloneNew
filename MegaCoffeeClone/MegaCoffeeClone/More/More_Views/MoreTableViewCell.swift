@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class MoreTableViewCell: UITableViewCell {
     static var identifier: String { return String(describing: self) }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
