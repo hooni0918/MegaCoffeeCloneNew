@@ -17,7 +17,7 @@ class SearchStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nibName = UINib(nibName: "StoreInfoTableViewCell", bundle: nil)
+        let nibName = UINib(nibName: "OrderStoreInfoTableViewCell", bundle: nil)
         storeListTableView.register(nibName, forCellReuseIdentifier: "storeCell")
         storeListTableView.keyboardDismissMode = .onDrag
 
