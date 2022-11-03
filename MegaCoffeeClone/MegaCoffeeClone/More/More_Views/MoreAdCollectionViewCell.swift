@@ -7,9 +7,10 @@
 
 import UIKit
 
-class AdCollectionViewCell: UICollectionViewCell {
+class MoreAdCollectionViewCell: UICollectionViewCell {
     static var identifier: String { return String(describing: self) }
     
+    // MARK: [변수 선언]
     lazy var imageView: UIImageView = {
         let img = UIImageView()
         
@@ -19,7 +20,9 @@ class AdCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    // MARK: -- init
+    
+    
+    // MARK: [init]
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layoutImageView()
@@ -32,6 +35,7 @@ class AdCollectionViewCell: UICollectionViewCell {
 
     
     
+    // MARK: [Layout]
     private func layoutImageView() {
         self.addSubview(imageView)
         
@@ -52,4 +56,10 @@ class AdCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
+    
+// MARK: [Cell End]
+    
 }
+
+// MARK: [Cell End]
