@@ -1,16 +1,2 @@
 # MegaCoffeeClone
-
-
-ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ
-asdfasdf
-
-
-
-
-
-asdfadsfasdfasdf
-xcvzxcvzxcvzxvczxcv
-
-kim
-kim
-
+20221103 Test
