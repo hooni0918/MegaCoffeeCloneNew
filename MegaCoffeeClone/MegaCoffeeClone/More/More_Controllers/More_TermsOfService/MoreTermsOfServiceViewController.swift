@@ -7,29 +7,27 @@
 
 import UIKit
 
-class TermsOfServiceViewController: UIViewController {
-    let vc = DetailReadViewController()
-    var menu = TermsOfServiceModel.menu
+class MoreTermsOfServiceViewController: UIViewController {
+    let vc = MoreDetailReadViewController()
+    var menu = MoreTermsOfServiceModel.menu
     
     
-    // MARK: 변수 선언
+    // MARK: [변수 선언]
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MoreTableViewCell.identifier)
         
         return tableView
     }()
     
     
     
-    // MARK: Override
+    // MARK: [Override]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .systemBackground
        
         layout()
     }
@@ -37,11 +35,15 @@ class TermsOfServiceViewController: UIViewController {
     
 
   
-// MARK: ==== Class End ====
+    
+    
+    
+    
+// MARK: [Class End]
     
 }
 
-// MARK: ==== Class End ====
+// MARK: [Class End]
 
 
 
@@ -50,21 +52,21 @@ class TermsOfServiceViewController: UIViewController {
 
 
 
-// MARK: extension TableView - DataSource
-extension TermsOfServiceViewController: UITableViewDataSource {
+// MARK: [TableView - DataSource]
+extension MoreTermsOfServiceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menu.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier) else { return UITableViewCell(style: .default, reuseIdentifier: TableViewCell.identifier)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier) else { return UITableViewCell(style: .default, reuseIdentifier: MoreTableViewCell.identifier)
             }
             return cell
         }()
         
         cell.selectionStyle = .none
-        cell.textLabel?.text = TermsOfServiceModel.menu[indexPath.row]
+        cell.textLabel?.text = MoreTermsOfServiceModel.menu[indexPath.row]
         cell.tintColor = UIColor.black
         cell.accessoryType = .disclosureIndicator
         
@@ -73,8 +75,8 @@ extension TermsOfServiceViewController: UITableViewDataSource {
     }
 }
 
-// MARK: extension TableView - Delegate
-extension TermsOfServiceViewController: UITableViewDelegate {
+// MARK: [TableView - Delegate]
+extension MoreTermsOfServiceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -89,7 +91,7 @@ extension TermsOfServiceViewController: UITableViewDelegate {
         
         
 
-        switch TermsOfServiceModel.menu[indexPath.row] {
+        switch MoreTermsOfServiceModel.menu[indexPath.row] {
         case "서비스 이용약관":
             vc.navigationItem.title = "서비스 이용약관"
 
@@ -128,13 +130,20 @@ extension TermsOfServiceViewController: UITableViewDelegate {
 
 
 
-// MARK: Layout
-extension TermsOfServiceViewController {
+
+
+
+// MARK: [Layout]
+extension MoreTermsOfServiceViewController {
     
     private func layout() {
+        self.view.backgroundColor = .systemBackground
+        
         naviCustom()
         layoutTableView()
     }
+    
+    
     
     // NaviCustom
     private func naviCustom() {

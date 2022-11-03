@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class MoreViewController: UIViewController {
-    // MARK: -- 변수 선언
     
-    //
+    
+    // MARK: [변수 선언] [0] : Frame
     private lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
         
@@ -21,12 +21,14 @@ class MoreViewController: UIViewController {
         
         return scrollView
     }()
-    
-    //
+
     private lazy var contentView = UIView()
-    private lazy var titleView = UIView()
     
-    //
+    
+    
+    // MARK: [변수 선언] [1] : Account & Service Button View
+    private lazy var titleView = UIView()
+  
     private lazy var accountSettingButton: UIButton = {
         let left = UIButton(type: .system)
         
@@ -35,11 +37,11 @@ class MoreViewController: UIViewController {
         left.setTitle("계정설정", for: .normal)
         left.translatesAutoresizingMaskIntoConstraints = false
         
-        //left.addTarget(self, action: #selector(----), for: .touchUpInside)
+        left.addTarget(self, action: #selector(moveToAccountSettingVC(sender:)), for: .touchUpInside)
         return left
     }()
     
-    //
+
     private lazy var centerLabel: UILabel = {
        let center = UILabel()
         
@@ -51,8 +53,8 @@ class MoreViewController: UIViewController {
         return center
     }()
     
-    //
-    private lazy var helpButton: UIButton = {
+
+    private lazy var ServiceCenterButton: UIButton = {
         let right = UIButton(type: .system)
         
         right.configuration?.buttonSize = .mini
@@ -60,12 +62,12 @@ class MoreViewController: UIViewController {
         right.setTitle("고객센터", for: .normal)
         right.translatesAutoresizingMaskIntoConstraints = false
         
-        // right.addTarget(self, action: #selector(printLog), for: .touchUpInside)
+        right.addTarget(self, action: #selector(moveToServieCenterVC(sender:)), for: .touchUpInside)
         return right
     }()
     
-    //
-    private lazy var stackView: UIStackView = {
+
+    private lazy var topStackView: UIStackView = {
         let stackView = UIStackView()
         
         stackView.distribution = .equalSpacing
@@ -73,15 +75,16 @@ class MoreViewController: UIViewController {
         
         stackView.addArrangedSubview(accountSettingButton)
         stackView.addArrangedSubview(centerLabel)
-        stackView.addArrangedSubview(helpButton)
+        stackView.addArrangedSubview(ServiceCenterButton)
         
         return stackView
     }()
     
-    //
+    
+    
+    // MARK: [변수 선언] [2]: NickName View
     private lazy var titleSubView = UIView()
     
-    //
     private lazy var nicknameLabel: UILabel = {
        let label = UILabel()
         
@@ -92,14 +95,16 @@ class MoreViewController: UIViewController {
         return label
     }()
     
-    //
+
+    
+    // MARK: [변수 선언] [3]: Ad View
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(AdCollectionViewCell.self, forCellWithReuseIdentifier: AdCollectionViewCell.identifier)
+        collectionView.register(MoreAdCollectionViewCell.self, forCellWithReuseIdentifier: MoreAdCollectionViewCell.identifier)
         
         collectionView.isPagingEnabled = true
         (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize = .zero
@@ -114,7 +119,7 @@ class MoreViewController: UIViewController {
         return collectionView
     }()
     
-    //
+
     private lazy var pageControl: UIPageControl = {
         let page = UIPageControl()
 
@@ -128,18 +133,69 @@ class MoreViewController: UIViewController {
         return page
     }()
     
-    //
+    private lazy var adStackView: UIStackView = {
+       let stackView = UIStackView()
+        
+        stackView.addArrangedSubview(markStartIndexLabel)
+        stackView.addArrangedSubview(markCenterLabel)
+        stackView.addArrangedSubview(markTotalIndexLabel)
+        
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 1
+        stackView.backgroundColor = .black
+        stackView.alpha = 0.7
+        stackView.layer.cornerRadius = 7
+        
+        return stackView
+    }()
+    
+    
+    
+    private lazy var markStartIndexLabel: UILabel = {
+        let label = UILabel()
+
+        let a = String(currentCellIndex + 1)
+        label.text = "  " + a
+        label.textColor = .white
+        
+        return label
+    }()
+    
+    private lazy var markCenterLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "/"
+        label.textColor = .white
+        
+        return label
+    }()
+    
+    
+    
+    private lazy var markTotalIndexLabel: UILabel = {
+        let label = UILabel()
+        
+        // 현재 게시된 이미지의 총숫자
+        label.text = String(imgArray.count - 2) + "  "
+        label.textColor = .white
+        
+        return label
+    }()
+    
+
     private lazy var imgArray: [String] = ["img3", "img1", "img2", "img3", "img1"]
     var timer: Timer?
     var currentCellIndex = 0
     
-    //
+    
+    
+    // MARK: [변수 선언] [4]: List View
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MoreTableViewCell.identifier)
         
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
@@ -148,25 +204,21 @@ class MoreViewController: UIViewController {
         return tableView
     }()
     
-    var dummy = Model.dummyList
+    var dummy = MoreMainModel.moreSectionHeader
     
-    //
-    private func layoutTableView() {
-        self.contentView.addSubview(self.tableView)
+    
+    
+    
+    
+    
+    
+    
 
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
-        ])
-        
-    }
+   
     
     
     
-    // MARK: -- Override View
+    // MARK: [Override]
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -180,8 +232,7 @@ class MoreViewController: UIViewController {
 
         layout()
         
-        // Test Layout 추후 수정예정.
-        testLayout()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -193,88 +244,16 @@ class MoreViewController: UIViewController {
     
     
     
-    // MARK: -- 수정예정
-    @objc func printLog(_sender: UIButton) {
-        
-    }
     
     
     
-    
-    
-    
-    // MARK: Count function Test ...
-    
-    private lazy var testStackView: UIStackView = {
-       let t = UIStackView()
-        t.distribution = .equalSpacing
-        t.spacing = 1
-        t.addArrangedSubview(testStartIndexLabel)
-        t.addArrangedSubview(testCenterLabel)
-        t.addArrangedSubview(testTotalIndexLabel)
-        return t
-        
-    }()
-    
-    
-    
-    private lazy var testStartIndexLabel: UILabel = {
-        let t = UILabel()
 
-        let a = String(currentCellIndex + 1)
-        t.text = "  " + a
-        t.textColor = .white
-        
-        return t
-        
-    }()
-    
-    private lazy var testCenterLabel: UILabel = {
-        let t = UILabel()
-        t.text = "/"
-        t.textColor = .white
-        return t
-    }()
-    
-    
-    
-    private lazy var testTotalIndexLabel: UILabel = {
-        let t = UILabel()
-        // 현재 게시된 이미지의 총숫자
-        t.text = String(imgArray.count - 2) + "  "
-        t.textColor = .white
-        return t
-    }()
-    
-  
-    private func testLayout() {
-
-        self.contentView.addSubview(self.testStackView)
-        
-        self.testStackView.backgroundColor = .black
-        self.testStackView.alpha = 0.7
-        self.testStackView.layer.cornerRadius = 7
-        
-        self.testStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.testStackView.trailingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            self.testStackView.bottomAnchor.constraint(equalTo: self.collectionView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            self.testStackView.heightAnchor.constraint(equalToConstant: 25),
-            self.testStackView.widthAnchor.constraint(equalToConstant: 50)
-        ])
-
-    }
-
-    
-    
-    // MARK: -- SetUp Function
-    
-    // AdCollectionView - Timer
+    // MARK: [Action - ADTimer]
     private func configureTimer() {
         timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(moveNextIndex), userInfo: nil, repeats: true)
     }
     
-    // AdCollectionView - Timer
+
     @objc private func moveNextIndex() {
         (currentCellIndex < imgArray.count - 1) ? (currentCellIndex += 1) : (currentCellIndex = 0)
 
@@ -282,8 +261,25 @@ class MoreViewController: UIViewController {
         
         // ==============Test===============
         let a = String(currentCellIndex)
-        testStartIndexLabel.text = "  " + a
+        markStartIndexLabel.text = "  " + a
         
+    }
+    
+    
+    
+    
+    
+    // MARK: [1]: Account & Service Button
+    @objc func moveToAccountSettingVC(sender: UIButton) {
+        let accountVC = MoreAccountSettingViewController()
+        accountVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(accountVC, animated: false)
+    }
+    
+    @objc func moveToServieCenterVC(sender: UIButton) {
+        let serviceVC = MoreServiceCenterViewController()
+        serviceVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(serviceVC, animated: false)
     }
     
     
@@ -292,11 +288,19 @@ class MoreViewController: UIViewController {
     
     
     
-// MARK: ====Class End==========
+    
+    
+    
+    
+    
+    
+    
+    
+// MARK: [Class End]
     
 }
 
-// MARK: ====Class End==========
+// MARK: [Class End]
 
 
 
@@ -307,7 +311,9 @@ class MoreViewController: UIViewController {
 
 
 
-// MARK: -- extension: ScrollView
+
+
+// MARK: [ScrollView - Delegate]
 extension MoreViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -335,7 +341,7 @@ extension MoreViewController: UIScrollViewDelegate {
 
 
 
-// MARK: -- extension: CollectonView
+// MARK: [CollectonView]
 extension MoreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -344,7 +350,7 @@ extension MoreViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdCollectionViewCell.identifier, for: indexPath) as! AdCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoreAdCollectionViewCell.identifier, for: indexPath) as! MoreAdCollectionViewCell
 
         cell.configure(image: imgArray[indexPath.item])
         
@@ -360,7 +366,7 @@ extension MoreViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
-// MARK: -- extension: TableView DataSource
+// MARK: [TableView - DataSource]
 extension MoreViewController: UITableViewDataSource {
     // numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -384,13 +390,13 @@ extension MoreViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            return Model.dummyData1.count
+            return MoreMainModel.sectionList1.count
         } else if section == 1 {
-            return Model.dummyData2.count
+            return MoreMainModel.sectionList2.count
         } else if section == 2 {
-            return Model.dummyData3.count
+            return MoreMainModel.sectionList3.count
         } else if section == 3 {
-            return Model.dummyData4.count
+            return MoreMainModel.sectionList4.count
         } else {
             return 0
         }
@@ -400,19 +406,19 @@ extension MoreViewController: UITableViewDataSource {
     // cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier) else { return UITableViewCell(style: .default, reuseIdentifier: TableViewCell.identifier)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MoreTableViewCell.identifier) else { return UITableViewCell(style: .default, reuseIdentifier: MoreTableViewCell.identifier)
             }
             return cell
         }()
         
         if indexPath.section == 0 {
-            cell.textLabel?.text = "\(Model.dummyData1[indexPath.row])"
+            cell.textLabel?.text = "\(MoreMainModel.sectionList1[indexPath.row])"
         } else if indexPath.section == 1 {
-            cell.textLabel?.text = "\(Model.dummyData2[indexPath.row])"
+            cell.textLabel?.text = "\(MoreMainModel.sectionList2[indexPath.row])"
         } else if indexPath.section == 2 {
-            cell.textLabel?.text = "\(Model.dummyData3[indexPath.row])"
+            cell.textLabel?.text = "\(MoreMainModel.sectionList3[indexPath.row])"
         } else if indexPath.section == 3 {
-            cell.textLabel?.text = "\(Model.dummyData4[indexPath.row])"
+            cell.textLabel?.text = "\(MoreMainModel.sectionList4[indexPath.row])"
         } else {
             return UITableViewCell()
         }
@@ -424,7 +430,7 @@ extension MoreViewController: UITableViewDataSource {
 
 
 
-// MARK: -- TableView Delegate
+// MARK: [TableView - Delegate]
 extension MoreViewController: UITableViewDelegate {
     
     // didSelectRowAt
@@ -435,38 +441,34 @@ extension MoreViewController: UITableViewDelegate {
         
         switch indexPath.section {
             
-        // 멤버쉽
+        // 멤버쉽 [v]
         case 0:
-            if Model.dummyData1[indexPath.row] == "스탬프" {
-                print("스탬프")
+            if MoreMainModel.sectionList1[indexPath.row] == "스탬프" {
+                let stampVC = MoreStampViewController()
+                
+                stampVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(stampVC, animated: true)
+                
             } else {
-                print("쿠폰")
+                let couponVC = MoreCouponViewController()
+                
+                couponVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(couponVC, animated: true)
             }
             
             
         // 주문
         case 1:
-            if Model.dummyData2[indexPath.row] == "메가 오더" {
-                print("메가 오더")
-                
-                // 이동
-                /*
-                 let storyboardName = UIStoryboard(name: "Order", bundle: nil)
-                 let vc = storyboardName.instantiateViewController(withIdentifier: "OrderViewController") as! OrderViewController
-                 
-                 self.navigationController?.pushViewController(vc, animated: true)
-                 // or
-                 self.present(vc, animated: true)
-                 */
+            if MoreMainModel.sectionList2[indexPath.row] == "메가 오더" {
                 self.tabBarController?.selectedIndex = 1
             }
             
             
-            else if Model.dummyData2[indexPath.row] == "주문 내역" {
+            else if MoreMainModel.sectionList2[indexPath.row] == "주문 내역" {
                 print("주문 내역")
             }
             
-            else if Model.dummyData2[indexPath.row] == "선물하기" {
+            else if MoreMainModel.sectionList2[indexPath.row] == "선물하기" {
                 print("선물하기")
                 
                 // 팝업창 구현 후 선물하기 탭으로 이동
@@ -474,7 +476,7 @@ extension MoreViewController: UITableViewDelegate {
                 self.tabBarController?.selectedIndex = 2
             }
             
-            else if Model.dummyData2[indexPath.row] == "메가선불카드" {
+            else if MoreMainModel.sectionList2[indexPath.row] == "메가선불카드" {
                 print("메가선불카드")
                 
                 // 팝업창 구현 후 선물하기 탭으로 이동
@@ -482,32 +484,30 @@ extension MoreViewController: UITableViewDelegate {
                 self.tabBarController?.selectedIndex = 2
             }
             
-            else if Model.dummyData2[indexPath.row] == "간편카드 관리" {
+            else if MoreMainModel.sectionList2[indexPath.row] == "간편카드 관리" {
                 print("간편카드 관리")
             }
             
-            else if Model.dummyData2[indexPath.row] == "상품권 대량 구매 신청" {
+            else if MoreMainModel.sectionList2[indexPath.row] == "상품권 대량 구매 신청" {
                 if let url = URL(string: "https://event.multicon.co.kr/survey/megacoffee_b2b?pid=7Y6nRsuYxwbrGE%2BK13zbGQ%3D%3D&curr_time=1666352003&uid=7822996253187061") { UIApplication.shared.open(url, options: [:]) }
             }
             
             // 새소식
         case 2:
-            if Model.dummyData3[indexPath.row] == "이벤트" {
+            if MoreMainModel.sectionList3[indexPath.row] == "이벤트" {
                 print("이벤트")
             } else {
                 print("공지사항")
             }
             
             
-            // 약관 및 정책
+            // 약관 및 정책 [v]
         case 3:
-            
-            print("이용약관")
-            let vc = TermsOfServiceViewController()
+            let vc = MoreTermsOfServiceViewController()
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             
-            
+    
         default: print("MoreViewController - didSelectRowAt")
         }
         
@@ -518,28 +518,60 @@ extension MoreViewController: UITableViewDelegate {
 
 
 
-// MARK: -- Layout
+
+
+
+
+
+// MARK: [Layout]
 extension MoreViewController {
     
     private func layout() {
-        self.view.backgroundColor = .systemBackground
         
+        number0LayoutFrame()
+        number1Layout1AccountAndServiceButton()
+        number2LayoutNickName()
+        number3LayoutAD()
+        number4LayoutListView()
+       
+    }
+    
+    
+    
+    
+    
+    private func number0LayoutFrame() {
+        
+        self.view.backgroundColor = .systemBackground
         layoutScrollView()
         layoutContentView()
-        //
+    }
+    
+    private func number1Layout1AccountAndServiceButton() {
         layoutTitleView()
         layoutStackView()
-        //
+    }
+    
+    private func number2LayoutNickName() {
         layoutTitleSubView()
         layoutNicknameLabel()
-        //
+    }
+    
+    private func number3LayoutAD() {
         layoutCollectionView()
         layoutPageControl()
         configureTimer()
-        //
-        layoutTableView()
- 
+        layoutADStackView()
     }
+    
+    private func number4LayoutListView() {
+        layoutTableView()
+    }
+    
+    
+    
+    
+    
     
     // ScrollView
     private func layoutScrollView() {
@@ -565,7 +597,7 @@ extension MoreViewController {
             self.contentView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
             self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
-            // MARK: -- ⭐️⭐️ Dynamic Height ⭐️⭐️
+            // MARK: ⭐️Dynamic Height⭐️
             self.contentView.heightAnchor.constraint(equalToConstant: 1100)
             //self.contentView.heightAnchor.constraint(equalTo: self.view.heightAnchor)
         ])
@@ -587,12 +619,12 @@ extension MoreViewController {
 
     // StackView
     private func layoutStackView() {
-        self.titleView.addSubview(self.stackView)
+        self.titleView.addSubview(self.topStackView)
         
-        self.stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.topStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.stackView.leadingAnchor.constraint(equalTo: self.titleView.leadingAnchor),
-            self.stackView.bottomAnchor.constraint(equalTo: self.titleView.bottomAnchor, constant: 5)
+            self.topStackView.leadingAnchor.constraint(equalTo: self.titleView.leadingAnchor),
+            self.topStackView.bottomAnchor.constraint(equalTo: self.titleView.bottomAnchor, constant: 5)
         ])
     }
     
@@ -644,6 +676,36 @@ extension MoreViewController {
             self.pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.pageControl.bottomAnchor.constraint(equalTo: self.collectionView.bottomAnchor)
         ])
+    }
+    
+    // Ad CollectionView - ADStackView
+    private func layoutADStackView() {
+        self.contentView.addSubview(self.adStackView)
+        
+        
+        self.adStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.adStackView.trailingAnchor.constraint(equalTo: self.contentView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            self.adStackView.bottomAnchor.constraint(equalTo: self.collectionView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            self.adStackView.heightAnchor.constraint(equalToConstant: 25),
+            self.adStackView.widthAnchor.constraint(equalToConstant: 50)
+        ])
+
+    }
+    
+    
+    // TableView
+    private func layoutTableView() {
+        self.contentView.addSubview(self.tableView)
+
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+        ])
+        
     }
     
 

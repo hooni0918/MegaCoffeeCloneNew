@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct TermsOfServiceModel {
+struct MoreTermsOfServiceModel {
     
     static var menu: [String] =
     ["서비스 이용약관","메가선불카드 이용약관","개인정보 처리방침","마케팅 활용 동의","위치 기반 서비스 이용 동의"]
@@ -122,5 +122,5 @@ struct TermsOfServiceModel {
 
     """
     
-// MARK: ==== Class End ====
+
 }
