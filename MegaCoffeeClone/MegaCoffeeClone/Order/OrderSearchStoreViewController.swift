@@ -12,6 +12,7 @@ class SearchStoreViewController: UIViewController {
     @IBOutlet var storeListTableView: UITableView!
     
     var filteredStore = [StoreModel]()
+    
     var isFiltering = false
 
     override func viewDidLoad() {

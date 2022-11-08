@@ -42,7 +42,18 @@ enum ProductType: Int {
 struct ProductsModel {
     let type: ProductType
     let products: [ProductModel]
-    
+
+    struct ProductModel {
+        let name: String
+        let price: Int
+        let soldOut: Bool
+    }
+}
+
+struct SearchProductModel {
+    let type: String
+    let products: ProductModel
+
     struct ProductModel {
         let name: String
         let price: Int
