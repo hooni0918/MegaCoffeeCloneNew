@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol OrderMoreButtonTableViewCellDelegate {
+protocol OrderMoreProductsButtonTableViewCellDelegate {
     func fetchPagingProducts()
 }
 
-class OrderMoreButtonTableViewCell: UITableViewCell {
+class OrderMoreProductsButtonTableViewCell: UITableViewCell {
 
     @IBOutlet var moreButton: UIButton!
     
-    var delegate: OrderMoreButtonTableViewCellDelegate?
+    var delegate: OrderMoreProductsButtonTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

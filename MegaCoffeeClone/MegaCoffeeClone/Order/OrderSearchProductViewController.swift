@@ -150,11 +150,10 @@ extension OrderSearchProductViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as? OrderSearchProductTableViewCell else { return UITableViewCell() }
             cell.delegate = self
             return cell
-        } else if indexPath.section == 1{
+        } else if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "product1ColumnCell", for: indexPath) as? OrderProductTableViewCell else { return UITableViewCell() }
             
             if isFiltering {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "product1ColumnCell", for: indexPath) as? OrderProductTableViewCell else { return UITableViewCell() }
-                
                 if filteredPagingProducts[indexPath.row].products.soldOut {
                     cell.soldOutView.isHidden = false
                     cell.soldOutLabel.isHidden = false
@@ -168,8 +167,6 @@ extension OrderSearchProductViewController: UITableViewDataSource {
 
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "product1ColumnCell", for: indexPath) as? OrderProductTableViewCell else { return UITableViewCell() }
-                
                 if searchPagingProducts[indexPath.row].products.soldOut {
                     cell.soldOutView.isHidden = false
                     cell.soldOutLabel.isHidden = false
@@ -186,7 +183,7 @@ extension OrderSearchProductViewController: UITableViewDataSource {
             
             
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "moreCell", for: indexPath) as? OrderMoreButtonTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "moreCell", for: indexPath) as? OrderMoreProductsButtonTableViewCell else { return UITableViewCell() }
             cell.delegate = self
             return cell
         }
@@ -198,7 +195,7 @@ extension OrderSearchProductViewController: UITableViewDelegate {
 
 }
 
-extension OrderSearchProductViewController: OrderMoreButtonTableViewCellDelegate {
+extension OrderSearchProductViewController: OrderMoreProductsButtonTableViewCellDelegate {
     func fetchPagingProducts() {
         fetchPaging()
     }

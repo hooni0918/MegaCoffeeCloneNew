@@ -693,7 +693,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YcO-Lq-FsC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </searchBar>
                                             </subviews>
@@ -716,7 +716,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreCell" id="xp5-ik-O1B" customClass="OrderMoreButtonTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreCell" id="xp5-ik-O1B" customClass="OrderMoreProductsButtonTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="139.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xp5-ik-O1B" id="arT-B6-fzg">
@@ -782,7 +782,7 @@
         <!--매장 검색-->
         <scene sceneID="xy7-7j-QRU">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="V0K-D6-VdO" customClass="SearchStoreViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="V0K-D6-VdO" customClass="OrderSearchStoreViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lAL-c0-yhw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -791,7 +791,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="2id-d9-Zmf" customClass="SearchStoreTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="2id-d9-Zmf" customClass="OrderSearchStoreTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2id-d9-Zmf" id="rlB-No-kf5">
@@ -821,6 +821,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreCell" id="tJv-Gz-XhH" customClass="OrderMoreStoresButtonTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="139.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tJv-Gz-XhH" id="h61-4T-ydQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTS-Pz-21P">
+                                                    <rect key="frame" x="10" y="6.5" width="394" height="31"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="더보기"/>
+                                                    <connections>
+                                                        <action selector="tapMoreButton:" destination="tJv-Gz-XhH" eventType="touchUpInside" id="bCU-ri-c5q"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eTS-Pz-21P" firstAttribute="centerY" secondItem="h61-4T-ydQ" secondAttribute="centerY" id="CKz-W2-Zae"/>
+                                                <constraint firstItem="eTS-Pz-21P" firstAttribute="leading" secondItem="h61-4T-ydQ" secondAttribute="leading" constant="10" id="WRi-e6-PxK"/>
+                                                <constraint firstItem="eTS-Pz-21P" firstAttribute="centerX" secondItem="h61-4T-ydQ" secondAttribute="centerX" id="hhr-qb-DpO"/>
+                                                <constraint firstAttribute="trailing" secondItem="eTS-Pz-21P" secondAttribute="trailing" constant="10" id="wmZ-ed-gch"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="moreButton" destination="eTS-Pz-21P" id="Shf-DS-58C"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
