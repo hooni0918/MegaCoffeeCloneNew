@@ -24,15 +24,22 @@ class OrderListViewController: UIViewController {
         configNavigationBarReightButton()
         productListCollectionView.collectionViewLayout = getLayout()
         
-        let nibName = UINib(nibName: "OrderProductCollectionViewCell", bundle: nil)
-        let nibName2 = UINib(nibName: "OrderProduct1ColumnCollectionViewCell", bundle: nil)
-        productListCollectionView.register(nibName, forCellWithReuseIdentifier: "productCell")
-        productListCollectionView.register(nibName2, forCellWithReuseIdentifier: "product1ColumnCell")
+        let Colume3 = UINib(nibName: "OrderProductCollectionViewCell", bundle: nil)
+        let Colume1 = UINib(nibName: "OrderProduct1ColumnCollectionViewCell", bundle: nil)
+        productListCollectionView.register(Colume3, forCellWithReuseIdentifier: "product3ColumnCell")
+        productListCollectionView.register(Colume1, forCellWithReuseIdentifier: "product1ColumnCell")
         
         categorys[0].isSelected = true
         filteredProducts = products.filter({$0.type.rawValue == categoryIndex})
         
         changeStoreButton.setTitle(storeData?.name, for: .normal)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        for (index,_) in categorys.enumerated() {
+            categorys[index].isSelected = false
+        }
     }
 
     @IBAction func tapBackButton(_ sender: Any) {
@@ -65,7 +72,8 @@ class OrderListViewController: UIViewController {
     }
     
     @objc func tapMagnifyingglassButton() {
-        print("1")
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "searchMenuVC") as? OrderSearchProductViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     @objc func tapExclamationmarkButton() {
@@ -216,7 +224,7 @@ extension OrderListViewController: UICollectionViewDataSource {
                 return cell
                 
             } else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as? OrderProductCollectionViewCell else { return UICollectionViewCell() }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "product3ColumnCell", for: indexPath) as? OrderProductCollectionViewCell else { return UICollectionViewCell() }
                 
                 cell.productNameLabel.text = filteredProducts[0].products[indexPath.row].name
                 cell.priceLabel.text = "\(filteredProducts[0].products[indexPath.row].price)원"
