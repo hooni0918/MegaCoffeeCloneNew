@@ -1,42 +1,44 @@
 //
-//  SearchStoreTableViewCell.swift
+//  OrderSearchProductTableViewCell.swift
 //  MegaCoffeeClone
 //
-//  Created by PKW on 2022/10/17.
+//  Created by PKW on 2022/11/08.
 //
 
 import UIKit
 
-protocol OrderSearchStoreTableViewCellDelegate {
+protocol OrderSearchProductTableViewCellDelegate {
     func searchButtonClicked(text: String, state: Bool)
 }
 
-class OrderSearchStoreTableViewCell: UITableViewCell {
+class OrderSearchProductTableViewCell: UITableViewCell {
 
     @IBOutlet var searchBar: UISearchBar!
-    var delegate: OrderSearchStoreTableViewCellDelegate?
-    
+    var delegate: OrderSearchProductTableViewCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
-       
-       configSearchBar()
+
+        configSearchBar()
     }
     
     func configSearchBar() {
         searchBar.delegate = self
         
-        searchBar.placeholder = "지점명으로 검색"
+        searchBar.placeholder = "상품명으로 검색"
         searchBar.searchTextField.backgroundColor = .white
         searchBar.searchTextField.font = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
 }
 
-extension OrderSearchStoreTableViewCell: UISearchBarDelegate {
-    
+extension OrderSearchProductTableViewCell: UISearchBarDelegate {
+   
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
             if text == "" {

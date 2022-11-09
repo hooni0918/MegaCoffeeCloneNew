@@ -42,7 +42,18 @@ enum ProductType: Int {
 struct ProductsModel {
     let type: ProductType
     let products: [ProductModel]
-    
+
+    struct ProductModel {
+        let name: String
+        let price: Int
+        let soldOut: Bool
+    }
+}
+
+struct SearchProductModel {
+    let type: String
+    let products: ProductModel
+
     struct ProductModel {
         let name: String
         let price: Int
@@ -62,10 +73,36 @@ let storeDatas = [
     StoreModel(name: "평택장당점8", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
     StoreModel(name: "평택장당점9", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
     StoreModel(name: "평택장당점10", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
-    StoreModel(name: "평택장당점11", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
-    StoreModel(name: "평택장당점12", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
-    StoreModel(name: "평택장당점13", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
-    StoreModel(name: "평택장당점14", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage())
+    StoreModel(name: "평택이충점1", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점2", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점3", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점4", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점5", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점6", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점7", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점8", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점9", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택이충점10", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점1", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점2", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점3", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점4", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점5", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점6", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점7", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점8", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점9", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택송탄점10", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점1", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점2", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점3", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점4", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점5", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점6", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점7", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점8", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점9", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage()),
+    StoreModel(name: "평택고덕점10", address: "경기도 평택시 송탄로40번길 79-21", distance: 345, bookMark: false, isOn: false, storeImage: UIImage(named: "MegaCoffeeStore") ?? UIImage())
 ]
 
 let likeStoreDatas = [
