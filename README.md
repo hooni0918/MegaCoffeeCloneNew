@@ -21,7 +21,7 @@
 | 박기우 | https://github.com/KiWooPark | 메가오더 |
 | 원준연 | 입력해주세요. | 입력해주세요. |
 | 이지훈 | 입력해주세요. | 메인페이지 |
-| 김성호 | https://github.com/KemiKIM | 더보기 구현 |
+| 김성호 | https://github.com/KemiKIM | 더보기 |
 
 
 
@@ -48,7 +48,7 @@
 
 | 라이브러리        | Version | Tool |
 | ----------------- | :-----: | ----- |
-| nil       | `0.0.1` | `CocoaPod` |
+| nil       | `0.0.0` | `CocoaPod` |
 | nil       | `0.0.0` | `CocoaPod` |
 | nil       | `0.0.0` | `CocoaPod` |
 

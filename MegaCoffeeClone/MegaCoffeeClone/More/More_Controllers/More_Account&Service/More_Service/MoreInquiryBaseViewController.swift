@@ -158,18 +158,9 @@ extension MoreInquiryBaseViewController {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.title = "앱 관련 문의"
         
-        
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(back))
-        
+        self.navigationItem.largeTitleDisplayMode = .never
     }
-    // ======== 해결불가 부분. =====
-    
-    @objc private func back() {
-        
-        let vc = MoreServiceCenterViewController()
-        self.navigationController?.popToViewController(vc, animated: false)
-        print("1")
-    }
+
    
     
     
