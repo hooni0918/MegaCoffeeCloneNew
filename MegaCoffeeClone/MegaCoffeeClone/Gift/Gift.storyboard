@@ -239,25 +239,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-qf-wPg">
-                                <rect key="frame" x="0.0" y="463" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="463" width="190" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="Jxa-K9-cxU">
-                                        <rect key="frame" x="15" y="40" width="384" height="18"/>
+                                        <rect key="frame" x="15" y="40" width="304.5" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="상품금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1M-7T-Sqi">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="yoP-pr-VLr"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="48.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,400원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZo-H8-CWJ">
-                                                <rect key="frame" x="264" y="0.0" width="120" height="18"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="HaR-OK-GFd"/>
-                                                </constraints>
+                                                <rect key="frame" x="248.5" y="0.0" width="56" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
@@ -273,10 +267,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a5G-8x-STN">
-                                        <rect key="frame" x="15" y="83" width="384" height="47"/>
+                                        <rect key="frame" x="15" y="83" width="160" height="47"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kb1-5M-5ze">
-                                                <rect key="frame" x="0.0" y="0.0" width="188" height="47"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="47"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="담기">
                                                     <backgroundConfiguration key="background" cornerRadius="8">
@@ -287,7 +281,7 @@
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-lR-bmf">
-                                                <rect key="frame" x="196" y="0.0" width="188" height="47"/>
+                                                <rect key="frame" x="84" y="0.0" width="76" height="47"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="선물하기">
                                                     <backgroundConfiguration key="background" cornerRadius="8">
@@ -302,9 +296,8 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Jxa-K9-cxU" firstAttribute="leading" secondItem="wp6-qf-wPg" secondAttribute="leading" constant="15" id="5GJ-RN-pg8"/>
                                     <constraint firstItem="a5G-8x-STN" firstAttribute="leading" secondItem="wp6-qf-wPg" secondAttribute="leading" constant="15" id="IxF-ff-vdm"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jxa-K9-cxU" secondAttribute="trailing" constant="15" id="MX6-zN-FFS"/>
+                                    <constraint firstItem="Jxa-K9-cxU" firstAttribute="leading" secondItem="a5G-8x-STN" secondAttribute="leading" id="Qmh-Bd-0Cj"/>
                                     <constraint firstAttribute="bottom" secondItem="a5G-8x-STN" secondAttribute="bottom" constant="220" id="T26-Ua-4xK"/>
                                     <constraint firstItem="a5G-8x-STN" firstAttribute="top" secondItem="Jxa-K9-cxU" secondAttribute="bottom" constant="25" id="VDA-wj-vrx"/>
                                     <constraint firstItem="Jxa-K9-cxU" firstAttribute="top" secondItem="wp6-qf-wPg" secondAttribute="top" constant="40" id="YDy-EI-4aR"/>
@@ -317,13 +310,12 @@
                         <constraints>
                             <constraint firstItem="x5e-Ca-7Wu" firstAttribute="bottom" secondItem="wcH-08-8y7" secondAttribute="bottom" constant="360" id="7yc-Ew-fBK"/>
                             <constraint firstItem="wcH-08-8y7" firstAttribute="top" secondItem="x5e-Ca-7Wu" secondAttribute="top" id="Rtg-o3-rdX"/>
-                            <constraint firstItem="x5e-Ca-7Wu" firstAttribute="trailing" secondItem="wp6-qf-wPg" secondAttribute="trailing" id="Skl-8l-PD4"/>
                             <constraint firstItem="wcH-08-8y7" firstAttribute="trailing" secondItem="x5e-Ca-7Wu" secondAttribute="trailing" id="V1O-rG-uWU"/>
                             <constraint firstItem="wp6-qf-wPg" firstAttribute="top" secondItem="wcH-08-8y7" secondAttribute="bottom" constant="10" id="ZcW-Ka-3p4"/>
                             <constraint firstItem="wp6-qf-wPg" firstAttribute="top" secondItem="wcH-08-8y7" secondAttribute="bottom" constant="10" id="boj-kT-Ty0"/>
                             <constraint firstItem="wcH-08-8y7" firstAttribute="leading" secondItem="x5e-Ca-7Wu" secondAttribute="leading" id="eDD-rj-Ae4"/>
+                            <constraint firstItem="wp6-qf-wPg" firstAttribute="leading" secondItem="wcH-08-8y7" secondAttribute="leading" id="jXX-7A-G7V"/>
                             <constraint firstItem="x5e-Ca-7Wu" firstAttribute="bottom" secondItem="wp6-qf-wPg" secondAttribute="bottom" id="qaE-Dd-hxy"/>
-                            <constraint firstItem="wp6-qf-wPg" firstAttribute="leading" secondItem="x5e-Ca-7Wu" secondAttribute="leading" id="zgZ-fI-Qs9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="메뉴 상세" id="FAB-VF-uxQ">
