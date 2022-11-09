@@ -14,10 +14,17 @@ class HomeCouponTableViewCell: UITableViewCell {
     @IBOutlet weak var HomeCouponMenu: UILabel!
     @IBOutlet weak var HomeCouponPeriod: UILabel!
     
-    
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+ 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

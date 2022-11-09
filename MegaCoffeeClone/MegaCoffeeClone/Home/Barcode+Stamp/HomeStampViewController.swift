@@ -16,4 +16,6 @@ class HomeStampViewController: UIViewController {
         HomeStamp.layer.cornerRadius = 20
     }
     
+    
+    
 }
