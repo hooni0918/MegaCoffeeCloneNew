@@ -69,7 +69,7 @@ class OrderPopupViewController: UIViewController {
                         }
                     }
                 } else if topVC == VcType.search {
-                    if let pvc = nvc.topViewController as? SearchStoreViewController {
+                    if let pvc = nvc.topViewController as? OrderSearchStoreViewController {
                         self.dismiss(animated: false) {
                             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "orderListVC") as? OrderListViewController else { return }
                             vc.storeData = self.storeData
