@@ -11,14 +11,18 @@ class HomeBarcodeViewController: UIViewController {
 
     @IBOutlet weak var HomeBarcodeView: UIView!
     
+    @IBOutlet weak var HomeBarcodeClose: UIButton!
+   // @IBOutlet weak var HomeCloseBarcodeBackgroundView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        HomeBarcodeClose.layer.cornerRadius = 200
     }
     
 
     @IBAction func HomeBarcodeClose(_ sender: UIButton) {
-        self.view.removeFromSuperview()
+        navigationController?.popViewController(animated: true); dismiss(animated: true, completion: nil)
     }
 }
