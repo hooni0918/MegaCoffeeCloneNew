@@ -1,5 +1,5 @@
 //
-//  AccountSettingBaseViewController.swift
+//  MemberInformationManagementViewController.swift
 //  MegaTest
 //
 //  Created by 김성호 on 2022/11/04.
@@ -7,8 +7,9 @@
 
 import UIKit
 
-class MoreAccountSettingViewController: UIViewController {
-    var accountModel = ["회원정보 관리","권한설정", "로그아웃"]
+class MoreMemberInfoManagementViewController: UIViewController {
+    var titleList = ["닉네임","생년월일\n\n휴대전화번호","회원탈퇴"]
+    
     
     // MARK: [변수 선언]
     lazy var tableView: UITableView = {
@@ -17,23 +18,20 @@ class MoreAccountSettingViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(MoreMemberInfoManagementTableViewCell.self, forCellReuseIdentifier: MoreMemberInfoManagementTableViewCell.identifier)
     
+       
         tableView.separatorStyle = .none
 
-        tableView.rowHeight = 60
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableView.automaticDimension
         
-        //tableView.sectionHeaderTopPadding = 0
-        //tableView.sectionHeaderHeight = 1
         tableView.sectionFooterHeight = 0
         
         return tableView
     }()
     
-    
-    
-    
-    
+
     // MARK: [Override]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +39,11 @@ class MoreAccountSettingViewController: UIViewController {
         layout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.reloadData()
+    }
     
 
     
@@ -51,24 +54,18 @@ class MoreAccountSettingViewController: UIViewController {
 // MARK: [Class End]
 
 
-
-
-
-
-
 // MARK: [TableView - DataSource]
-extension MoreAccountSettingViewController: UITableViewDataSource {
-    
+extension MoreMemberInfoManagementViewController: UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return accountModel.count
+        return titleList.count
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
   
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
@@ -78,65 +75,95 @@ extension MoreAccountSettingViewController: UITableViewDataSource {
         return 10.0
     }
     
- 
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemGray6
     }
-     
-     
+    
+    
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell(style: .default, reuseIdentifier: "cell")
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MoreMemberInfoManagementTableViewCell.identifier) else { return UITableViewCell(style: .value1, reuseIdentifier: MoreMemberInfoManagementTableViewCell.identifier)
             }
             return cell
         }()
         
-        cell.selectionStyle = .none
-        cell.textLabel?.text = accountModel[indexPath.section]
-        cell.accessoryType = .disclosureIndicator
-
-        let img = UIImageView(image: UIImage(systemName: "chevron.right"))
-        img.tintColor = .black
-        cell.accessoryView = img
         
+        cell.textLabel?.text = titleList[indexPath.section]
+        cell.textLabel?.numberOfLines = 0
+        cell.detailTextLabel?.tintColor = .black
+        cell.selectionStyle = .none
+        
+        
+        // 닉네임
+        if indexPath.section == 0 {
+            // 변경이미지 요청.
+            let img = UIImageView(image: UIImage(systemName: "arrow.up.right.and.arrow.down.left.rectangle.fill"))
+            img.tintColor = .black
+            cell.accessoryView = img
+            cell.detailTextLabel?.text = "Mega"
+            
+            
+            // 생년월일, 휴대전화번호
+        } else if indexPath.section == 1 {
+            cell.detailTextLabel?.text = "0000년 00월 00일\n\n010-1234-5678"
+            cell.detailTextLabel?.numberOfLines = 0
+            cell.isUserInteractionEnabled = false
+            
+            
+            
+            // 회원탈퇴
+        } else if indexPath.section == 2 {
+            let img = UIImageView(image: UIImage(systemName: "chevron.right"))
+            img.tintColor = .black
+            cell.accessoryView = img
+            
+        }
+
         return cell
     }
     
-    
 }
+
 
 
 
 
 // MARK: [TableView - Delegate]
-extension MoreAccountSettingViewController: UITableViewDelegate {
+extension MoreMemberInfoManagementViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         switch indexPath.section {
-            // 회원정보 관리
+            // 닉네임
         case 0 :
-            let vc = MoreMemberInfoManagementViewController()
-            self.navigationController?.pushViewController(vc, animated: false)
-            
-            
-            // 권한설정
-        case 1:
-            let vc = MorePermissionSettingViewController()
-            self.navigationController?.pushViewController(vc, animated: false)
-            
-            
-            // 로그아웃
-        case 2:
-            let vc = MoreLogoutViewController()
+            print("닉네임")
+           let vc = MoreNickNameChangeViewController()
             vc.modalPresentationStyle = .overFullScreen
-            present(vc, animated: false)
+            self.present(vc, animated: false)
+            
+            
+            // 생년월일, 휴대전화번호
+        case 1:
+            print("생년월일 변경 불가")
+            
+            
+            
+            // 회원탈퇴
+        case 2:
+            let vc = MoreGoodByeViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            
             
         default:
             fatalError()
         }
+        
         
     }
     
@@ -144,12 +171,8 @@ extension MoreAccountSettingViewController: UITableViewDelegate {
 
 
 
-
-
-
-
 // MARK: [Layout]
-extension MoreAccountSettingViewController {
+extension MoreMemberInfoManagementViewController {
     func layout() {
         self.view.backgroundColor = .systemBackground
         
@@ -163,11 +186,8 @@ extension MoreAccountSettingViewController {
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .black
        
-        
-        self.navigationItem.title = "계정 설정"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.sizeToFit()
-        
+        self.navigationItem.title = "회원정보 관리"
+        self.navigationItem.largeTitleDisplayMode = .never
     }
 
     
@@ -177,6 +197,7 @@ extension MoreAccountSettingViewController {
         self.view.addSubview(self.tableView)
         
         tableView.backgroundColor = .systemBackground
+        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
