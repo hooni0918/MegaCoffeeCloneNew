@@ -41,17 +41,30 @@ class MoreMemberInfoManagementViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.tableView.reloadData()
+        self.navigationItem.title = "회원정보 관리"
     }
     
 
+    
+    
+    
+    
+    
     
 // MARK: [Class End]
         
 }
 
 // MARK: [Class End]
+
+
+
+
+
+
+
+
+
 
 
 // MARK: [TableView - DataSource]
@@ -142,9 +155,12 @@ extension MoreMemberInfoManagementViewController: UITableViewDelegate {
             // 닉네임
         case 0 :
             print("닉네임")
-           let vc = MoreNickNameChangeViewController()
+           let vc = MoreNickNameChangeAndLogoutVC()
             vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: false)
+            
+            self.present(vc, animated: false) {
+                vc.nickName()
+            }
             
             
             // 생년월일, 휴대전화번호
@@ -183,10 +199,9 @@ extension MoreMemberInfoManagementViewController {
     func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.backItem?.backButtonTitle = ""
         self.navigationController?.navigationBar.tintColor = .black
-       
-        self.navigationItem.title = "회원정보 관리"
+
         self.navigationItem.largeTitleDisplayMode = .never
     }
 

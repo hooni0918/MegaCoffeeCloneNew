@@ -136,7 +136,7 @@ class MoreServiceCenterViewController: UIViewController {
     
     
     @objc private func callingButtonTapped() {
-        alert()
+        alertCall()
     }
     
     @objc private func serviceCenterLinkButtonTapped() {

@@ -23,8 +23,6 @@ class MoreAccountSettingViewController: UIViewController {
 
         tableView.rowHeight = 60
         
-        //tableView.sectionHeaderTopPadding = 0
-        //tableView.sectionHeaderHeight = 1
         tableView.sectionFooterHeight = 0
         
         return tableView
@@ -130,9 +128,12 @@ extension MoreAccountSettingViewController: UITableViewDelegate {
             
             // 로그아웃
         case 2:
-            let vc = MoreLogoutViewController()
+            let vc = MoreNickNameChangeAndLogoutVC()
             vc.modalPresentationStyle = .overFullScreen
-            present(vc, animated: false)
+            
+            self.present(vc, animated: false) {
+                vc.logout()
+            }
             
         default:
             fatalError()

@@ -9,10 +9,54 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    // MARK: [.alert]
     
     
     
-    func alert() {
+    
+    func alertOK(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
+    
+    
+    
+    
+    // 등록하시겠습니까? 취소, 확인 (알람)
+    func alertRegistration() {
+        let alert = UIAlertController(title: "", message: "등록하시겠습니까?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        { [ weak self ] (action) in
+            
+            self?.dismiss(animated: true)
+            print("등록 완료")
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    // MARK: [.actionSheet]
+    
+    
+    func alertCall() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let callImage = UIImage(systemName: "phone.fill")
@@ -31,4 +75,5 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    
 }
