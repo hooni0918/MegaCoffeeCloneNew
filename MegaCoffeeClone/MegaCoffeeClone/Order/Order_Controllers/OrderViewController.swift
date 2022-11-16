@@ -35,11 +35,15 @@ class OrderViewController: UIViewController {
     
     var selectedCategory = SelectedCategory.list
     
-    var didLayout = false
-
+    // 프레젠트 스타일 체크 변수(기본값: 푸시)
+    var vcPresentationStyle = ViewPresentationStyle.push
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // present된 VC가 이 VC위에 띄워지도록 
+        definesPresentationContext = true
         
         orderTableView.bounces = false
         setupOrderHeaderView()
@@ -48,6 +52,7 @@ class OrderViewController: UIViewController {
         
         listButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
     }
+       
     
     func setupOrderHeaderView() {
         orderHeaderView.backgroundColor = .brown
@@ -179,7 +184,7 @@ extension OrderViewController: UITableViewDataSource {
 extension OrderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if selectedCategory != .map {
-            loadPopupView(storeData: storeDatas[indexPath.row])
+            loadPopupView(storeData: storeDatas[indexPath.row], presentationStyle: vcPresentationStyle)
         }
     }
     
@@ -206,11 +211,24 @@ extension OrderViewController: StoreMapTableViewCellDelegate {
 
 
 extension UIViewController {
-    func loadPopupView(storeData: StoreModel? = nil, topVC: VcType = .select) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "popOrderVC") as? OrderPopupViewController else { return }
-        vc.modalPresentationStyle = .overFullScreen
-        vc.storeData = storeData
-        vc.topVC = topVC
-        self.present(vc, animated: false)
+    func loadPopupView(storeData: StoreModel? = nil, topVC: VcType = .select, presentationStyle: ViewPresentationStyle = .push) {
+        
+        if presentationStyle == .present {
+
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "popOrderVC") as? OrderStorePopupViewController else { return }
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.storeData = storeData
+            vc.topVC = .change
+            self.present(vc, animated: false)
+            
+        } else {
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "popOrderVC") as? OrderStorePopupViewController else { return }
+            vc.modalPresentationStyle = .overFullScreen
+            vc.storeData = storeData
+            vc.topVC = topVC
+
+            self.present(vc, animated: false)
+        }
     }
 }
+

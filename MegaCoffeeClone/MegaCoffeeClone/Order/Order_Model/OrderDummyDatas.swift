@@ -328,3 +328,6 @@ ProductsModel(type: .md, products: [ProductsModel.ProductModel(name: "스테비�
                                     ProductsModel.ProductModel(name: "텀블러(브론즈)", price: 15000, soldOut: false),
                                     ProductsModel.ProductModel(name: "텀블러(화이트)", price: 15000, soldOut: false)])
 ]
+
+
+var shoppingList = [ProductsModel.ProductModel]()

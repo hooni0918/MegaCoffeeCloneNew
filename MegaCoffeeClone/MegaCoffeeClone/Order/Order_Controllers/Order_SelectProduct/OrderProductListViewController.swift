@@ -7,10 +7,12 @@
 
 import UIKit
 
-class OrderListViewController: UIViewController {
+class OrderProductListViewController: UIViewController {
 
     @IBOutlet var productListCollectionView: UICollectionView!
     @IBOutlet var changeStoreButton: UIButton!
+    @IBOutlet var shoppingBasketCountLabel: UILabel!
+    
     
     var is1Column = false
     var categoryIndex = 0
@@ -24,7 +26,7 @@ class OrderListViewController: UIViewController {
         configNavigationBarReightButton()
         productListCollectionView.collectionViewLayout = getLayout()
         
-        let Colume3 = UINib(nibName: "OrderProductCollectionViewCell", bundle: nil)
+        let Colume3 = UINib(nibName: "OrderProduct3ColumnCollectionViewCell", bundle: nil)
         let Colume1 = UINib(nibName: "OrderProduct1ColumnCollectionViewCell", bundle: nil)
         productListCollectionView.register(Colume3, forCellWithReuseIdentifier: "product3ColumnCell")
         productListCollectionView.register(Colume1, forCellWithReuseIdentifier: "product1ColumnCell")
@@ -33,6 +35,13 @@ class OrderListViewController: UIViewController {
         filteredProducts = products.filter({$0.type.rawValue == categoryIndex})
         
         changeStoreButton.setTitle(storeData?.name, for: .normal)
+       
+        
+        // 매장이름변경버튼 노티피케이션
+        NotificationCenter.default.addObserver(forName: .changeStoreButtonTitle, object: nil, queue: .main) { _ in
+            
+            self.changeStoreButton.setTitle(self.storeData?.name, for: .normal)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,6 +54,13 @@ class OrderListViewController: UIViewController {
     @IBAction func tapBackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func tapShoppingBasketButton(_ sender: Any) {
+    
+    
+    }
+    
+    
     
     func makeNavigationBarRightButton(imageName: String, action: Selector) -> UIBarButtonItem {
         let button = UIButton(type: .system)
@@ -79,6 +95,16 @@ class OrderListViewController: UIViewController {
     @objc func tapExclamationmarkButton() {
         print("2")
     }
+    
+    
+    @IBAction func tapChangeStoreButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "OrderProductList", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ChangeStorePopupVC") as? OrderChangeStorePopupViewController else { return }
+        
+        self.present(vc, animated: false)
+    }
+    
+    
     
     func getLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection in
@@ -173,7 +199,7 @@ class OrderListViewController: UIViewController {
 }
 
  
-extension OrderListViewController: UICollectionViewDataSource {
+extension OrderProductListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
@@ -261,7 +287,7 @@ extension OrderListViewController: UICollectionViewDataSource {
     }
 }
 
-extension OrderListViewController: UICollectionViewDelegate {
+extension OrderProductListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if let cell = collectionView.cellForItem(at: indexPath) {
@@ -284,7 +310,7 @@ extension OrderListViewController: UICollectionViewDelegate {
     }
 }
 
-extension OrderListViewController: OrderListHeaderCollectionReusableViewDelegate {
+extension OrderProductListViewController: OrderListHeaderCollectionReusableViewDelegate {
     func changeColumn() {
         is1Column.toggle()
         productListCollectionView.reloadSections(IndexSet(integer: 1))

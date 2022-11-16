@@ -13,8 +13,6 @@ enum HomeCouponSelectedCategory {
     case history
 }
 
-var didLayout = false
-
 class HomeCouponViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var HomeCouponImage: Array<String> = ["HomeCoupon1","HomeCoupon2"]
