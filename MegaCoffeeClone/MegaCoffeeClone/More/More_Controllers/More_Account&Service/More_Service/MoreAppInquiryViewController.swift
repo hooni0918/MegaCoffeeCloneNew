@@ -13,13 +13,21 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     let vc = UIImagePickerController()
     
     // MARK: [변수 선언] [1] Choice Button
-    private lazy var choiceInquiryTypeButton: UIButton = {
+    lazy var choiceInquiryTypeButton: UIButton = {
         let choiceButton = UIButton(type: .system)
         
         
         choiceButton.setTitle("문의 유형을 선택해주세요", for: .normal)
         choiceButton.setTitleColor(.black, for: .normal)
         
+        
+        
+        
+        
+        choiceButton.contentHorizontalAlignment = .left
+        choiceButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        
+        /*
         let chevronImage = UIImage(systemName: "chevron.down")?.withTintColor(.black, renderingMode: .alwaysOriginal)
         //
         
@@ -30,10 +38,25 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
         choiceButton.semanticContentAttribute = .forceRightToLeft
 
         
+        
+        // 이 삽질에 대한 ,블로그.....
+        // 작성하기!
+        
         choiceButton.contentHorizontalAlignment = .left
         choiceButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         choiceButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 160, bottom: 0, right: 0)
         //choiceButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
+        */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // === 살릴 부분.
         
         
         choiceButton.layer.cornerRadius = 7
@@ -50,6 +73,27 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     }()
     
     
+    
+    private lazy var choiceInquiryTypeButtonLabel: UILabel = {
+        let label = UILabel()
+        let attachment = NSTextAttachment()
+        
+        attachment.image = UIImage(systemName: "chevron.down")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let attachmentString = NSAttributedString(attachment: attachment)
+        let contentString = NSMutableAttributedString(string: "")
+        contentString.append(attachmentString)
+        
+        label.attributedText = contentString
+        
+        return label
+    }()
+    
+    
+    
+    
+    
+    
+    
     // MARK: [변수 선언] [2] Write View
     private lazy var writeContentBackView: UIView = {
         let writeView = UIView(frame: .zero)
@@ -61,9 +105,9 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
         return writeView
     }()
     
-    private lazy var titleTextField = UITextField()
+    lazy var titleTextField = UITextField()
     private lazy var titleTextFieldBottomLineView = UIView()
-    private lazy var textView: UITextView = {
+    lazy var textView: UITextView = {
         let textView = UITextView()
         
         textView.font = .systemFont(ofSize: 17)
@@ -74,7 +118,7 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     
     
     
-    //
+    // MARK: 이미지 경로 이미지 경로 이미지 경로
     private lazy var imageLabelView = UIView()
     private lazy var imageLabel: UILabel = {
         let imageLabel = UILabel()
@@ -82,6 +126,12 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
         imageLabel.layer.cornerRadius = 7
         imageLabel.layer.borderWidth = 1
         imageLabel.layer.borderColor = UIColor.gray.cgColor
+        
+        
+        // 이미지 경로가 여긴데.
+       
+    
+        
         
         return imageLabel
     }()
@@ -120,54 +170,52 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     
     
     // MARK: [변수 선언] [4] Bottom
-    private lazy var inquiryRegistrationButton: UIButton = {
+    
+    lazy var inquiryRegistrationButton: UIButton = {
         let inquiry = UIButton(type: .system)
         
         inquiry.setTitle("문의 등록", for: .normal)
         inquiry.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        
-        
         inquiry.setTitleColor(UIColor.white, for: .normal)
         
         
+        inquiry.layer.cornerRadius = 7
+        
         inquiry.backgroundColor = .systemGray4
         
-        // inquiry.backgroundColor = customBrownColor
+        inquiry.addTarget(self, action: #selector(inquiryRegistrationButtonTapped(sender:)), for: .touchUpInside)
         
-        inquiry.isEnabled = false
-        
-        
-        
-        
-        
-        inquiry.layer.cornerRadius = 7
         
         return inquiry
     }()
     
     
     
-    private lazy var contentInitializationButton: UIButton = {
+    
+    
+    lazy var contentInitializationButton: UIButton = {
         let content = UIButton()
         
         content.setTitle("내용 초기화", for: .normal)
         content.setTitleColor(customBrownColor, for: .normal)
     
         content.backgroundColor = UIColor(r: 241, g: 224, b: 172)
-        
         content.titleLabel?.font = .boldSystemFont(ofSize: 18)
         
         content.layer.cornerRadius = 7
+        
+        
+        content.addTarget(self, action: #selector(contentInitializationButtonTapped(sender:)), for: .touchUpInside)
+        
+        
+        
+        
+        //content.isEnabled = false
 
-        
-        content.addTarget(self, action: #selector(contentInitializationButtonTapped), for: .touchUpInside)
-        
-        
         
         
         return content
     }()
-
     
     
     
@@ -179,11 +227,15 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     // MARK: [Override]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        self.titleTextField.delegate = self
+        self.textView.delegate = self
+        
         layout()
     }
     
-    
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -216,81 +268,45 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     
     
     // MARK: [Action]
-    // histroy
+
+    
+    // MARK: [Top]
+    
+    // to History
     @objc override func historyInquiriesButtonTapped(sender: UIButton) {
         let vc = MoreHistoryInquiriyViewController()
         self.navigationController?.pushViewController(vc, animated: false)
 
     }
     
-    // inquiry button
+    // Choice Inquiry Type Button
     @objc private func choiceInquiryTypeButtonTapped(sender: UIButton) {
-        
-        
-        // app -> choice로 가는 곳
+
+        // App -> Choice
         let vc = MoreChoiceInquiryTypeViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: false)
     }
+
     
     
-    // init button
-    @objc private func contentInitializationButtonTapped(sender: UIButton) {
-        
-        // 먹지 않아....
-        if let memo = self.textView.text, memo.count < 0, let memo1 = self.titleTextField.text, memo1.count < 0 {
-            
-            print("1")
-            
-        } else {
-            
-            alertRemoveAll()
-        }
-         
-        
-        
-        alertRemoveAll()
-        
-        func alertRemoveAll() {
-            let alert = UIAlertController(title: "", message: "작성 내용을 초기화 하시겠습니까?", preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: "확인", style: .default)
-            { [ weak self ] (action) in
-                
-                // 문의 유형 : choiceInquiryTypeButton 초기화
-                // 이미지 레이블 초기화
-                self?.choiceInquiryTypeButton.setTitle("문의 유형을 선택해주세요", for: .normal)
-                self?.titleTextField.text = ""
-                self!.textView.text = ""
-               
-            }
-            
-            
-            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-            
-            
-            
-            alert.addAction(okAction)
-            alert.addAction(cancelAction)
-            present(alert, animated: true, completion: nil)
-        }
-       
-        
-    }
     
-    // MARK: Photo Tapped
+    
+    // MARK: [Center]
+    
     @objc func photoTapped(sender: UIButton) {
-        let gallery = UIAction(title: "사진 보관함", image: UIImage(systemName: "heart")) { _ in
+        let gallery = UIAction(title: "사진 보관함", image: UIImage(systemName: "photo.on.rectangle")) { _ in
             print("사진 보관함 실행")
             self.openGallary()
         }
-        let camera = UIAction(title: "사진 찍기", image: UIImage(systemName: "heart")) { _ in
+        let camera = UIAction(title: "사진 찍기", image: UIImage(systemName: "camera")) { _ in
             print("사진 찍기 실행")
             self.openCamera()
         }
-        let choiceFile = UIAction(title: "파일 선택", image: UIImage(systemName: "heart")) { _ in
+        let choiceFile = UIAction(title: "파일 선택", image: UIImage(systemName: "folder")) { _ in
             print("파일 선택 실행")
+            self.openFolder()
         }
         
         photoRegistrationButton.menu = UIMenu(title: "",
@@ -298,6 +314,62 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
                              identifier: nil,
                              options: .displayInline,
                              children: [choiceFile, camera, gallery])
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    // MARK: [Bottom]
+    
+    // Inquiry Registration Button
+    @objc private func inquiryRegistrationButtonTapped(sender: UIButton) {
+        let buttonCondition = choiceInquiryTypeButton.titleLabel?.text
+        
+        // 문의유형, 제목 중 하나라도 존재하지 않는다면
+       if (buttonCondition == "문의 유형을 선택해주세요") && titleTextField.text == "" {
+            
+            alertOK(message: "문의유형을 선택해주세요.")
+            
+           // 문의유형이 선택되어 있지 않고, 제목이 작성되어있다면
+        } else if (buttonCondition == "문의 유형을 선택해주세요") && titleTextField.text != "" {
+            
+            alertOK(message: "문의유형을 선택해주세요.")
+            
+            // 문의유형은 선택되어 있으나, 제목은 작성하지 않았다면
+        } else if (buttonCondition != "문의 유형을 선택해주세요") && titleTextField.text == "" {
+            
+            alertOK(message: "제목을 입력해주세요.")
+            
+        } else {
+            
+            alertRegistration()
+            
+        }
+        
+       
+    }
+    
+    
+    
+    
+    
+    // Init Button
+    @objc private func contentInitializationButtonTapped(sender: UIButton) {
+        
+        // 모두 비어있으면,
+        if self.titleTextField.text == "" && self.textView.text == "" {
+            
+            return
+            
+        } else {
+            
+            alertRemoveAll()
+        
+        }
         
     }
     
@@ -307,7 +379,11 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     
     
     
-    // MARK: [func]
+    
+    
+    
+    // MARK: [Func] - Choice Photo
+    
     private func openCamera() {
         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             
@@ -317,12 +393,7 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
             
             
         } else {
-            
-            let alert = UIAlertController(title: "W", message: "You", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "ok", style: .default))
-            self.present(alert, animated: true)
-            
+            alertOK(message: "실행 완료")
         }
     }
     
@@ -333,9 +404,46 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
         self.present(vc, animated: true)
     }
     
+ 
     
+    
+    private func openFolder() {
+        let documentPicker =
+        UIDocumentPickerViewController(documentTypes: [String(kUnknownType)], in: .import)
+        documentPicker.delegate = self
 
+        // Present the document picker.
+        present(documentPicker, animated: true, completion: nil)
+    }
     
+    
+    
+    
+    
+    // MARK: [Func] - Init Button
+    private func alertRemoveAll() {
+        let alert = UIAlertController(title: "", message: "작성 내용을 초기화 하시겠습니까?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        { [ weak self ] (action) in
+            
+            self?.choiceInquiryTypeButton.setTitle("문의 유형을 선택해주세요", for: .normal)
+            self?.titleTextField.text = ""
+            self?.textView.text = ""
+           
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+  
+   
     
     
     
@@ -415,6 +523,77 @@ extension MoreAppInquiryViewController: choiceInquiryTypeData {
 
 
 
+
+// MARK: [TextField - Delegate]
+extension MoreAppInquiryViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        //
+        if range.location == 0 && range.length != 0 {
+            
+            
+            self.inquiryRegistrationButton.backgroundColor = .systemGray4
+            
+        } else {
+    
+            self.inquiryRegistrationButton.backgroundColor = customBrownColor
+        }
+        
+        
+        
+        return true
+    }
+    
+    
+}
+
+
+extension MoreAppInquiryViewController: UITextViewDelegate {
+    
+}
+
+
+
+
+
+
+// MARK: [UIDocumentPickerDelegate]
+extension MoreAppInquiryViewController: UIDocumentPickerDelegate {
+    
+    private func documentPicker(_ controller: UIViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else { return }
+        guard url.startAccessingSecurityScopedResource() else {
+            print("unable to access security scoped resource: \(url.absoluteString)")
+            return
+        }
+        defer { url.stopAccessingSecurityScopedResource() }
+
+        let fileCoord = NSFileCoordinator.init()
+        fileCoord.coordinate(readingItemAt: url, options: .immediatelyAvailableMetadataOnly, error: nil) { (url) in
+            if let res = try? url.resourceValues(forKeys: [.ubiquitousItemContainerDisplayNameKey]),
+               let name = res.ubiquitousItemContainerDisplayName {
+                
+                imageLabel.text = name
+                
+                   print("\(name)")
+               } else {
+                   print("no name found")
+               }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
 // MARK: [Layout]
 extension MoreAppInquiryViewController {
     
@@ -432,6 +611,7 @@ extension MoreAppInquiryViewController {
     // [3]
     private func layoutChoiceInquiryType() {
         layoutChoiceInquiryTypeButton()
+        layoutChoiceInquiryTypeButtonLabel()
     }
     
     
@@ -472,7 +652,6 @@ extension MoreAppInquiryViewController {
     private func layoutChoiceInquiryTypeButton() {
         self.contentView.addSubview(self.choiceInquiryTypeButton)
         
-        
         self.choiceInquiryTypeButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.choiceInquiryTypeButton.topAnchor.constraint(equalTo: self.bottomLineView.bottomAnchor, constant: 20),
@@ -481,7 +660,21 @@ extension MoreAppInquiryViewController {
             self.choiceInquiryTypeButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
+    }
+    
+    
+    // ChoiceInquiryTypeButton Right Label
+    private func layoutChoiceInquiryTypeButtonLabel() {
+        self.choiceInquiryTypeButton.addSubview(self.choiceInquiryTypeButtonLabel)
         
+        self.choiceInquiryTypeButtonLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            self.choiceInquiryTypeButtonLabel.topAnchor.constraint(equalTo: self.choiceInquiryTypeButton.topAnchor),
+            self.choiceInquiryTypeButtonLabel.trailingAnchor.constraint(equalTo: self.choiceInquiryTypeButton.trailingAnchor, constant: -15),
+            self.choiceInquiryTypeButtonLabel.bottomAnchor.constraint(equalTo: self.choiceInquiryTypeButton.bottomAnchor)
+            
+            ])
     }
     
     
@@ -573,8 +766,6 @@ extension MoreAppInquiryViewController {
     private func layoutPhotoRegistrationButton() {
         self.contentView.addSubview(self.photoRegistrationButton)
         
-        self.photoRegistrationButton.backgroundColor = .systemGray3
-        
         self.photoRegistrationButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.photoRegistrationButton.topAnchor.constraint(equalTo: self.writeContentBackView.bottomAnchor, constant: 20),
@@ -608,8 +799,6 @@ extension MoreAppInquiryViewController {
     private func layoutInquiryRegistrationButton() {
         self.contentView.addSubview(self.inquiryRegistrationButton)
         
-        self.inquiryRegistrationButton.backgroundColor = .systemGray4
-        
         self.inquiryRegistrationButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.inquiryRegistrationButton.topAnchor.constraint(equalTo: self.fileInforLabel.bottomAnchor, constant: 15),
@@ -623,8 +812,6 @@ extension MoreAppInquiryViewController {
     // ContentInitializationButtonButton
     private func layoutContentInitializationButtonButton() {
         self.contentView.addSubview(self.contentInitializationButton)
-        
-        self.contentInitializationButton.backgroundColor = .systemGray5
         
         self.contentInitializationButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

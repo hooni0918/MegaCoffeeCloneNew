@@ -1,5 +1,5 @@
 //
-//  StampViewController.swift
+//  MoreEventViewController.swift
 //  MegaCoffeeClone
 //
 //  Created by 김성호 on 2022/11/01.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MoreStampViewController: UIViewController {
+class MoreEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class MoreStampViewController: UIViewController {
 
 // MARK: [Layout]
 
-extension MoreStampViewController {
+extension MoreEventViewController {
     
     private func layout() {
         self.view.backgroundColor = .systemBackground

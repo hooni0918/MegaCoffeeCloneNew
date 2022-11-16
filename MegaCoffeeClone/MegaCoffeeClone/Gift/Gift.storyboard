@@ -245,7 +245,7 @@
                                         <rect key="frame" x="15" y="40" width="384" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="상품금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1M-7T-Sqi">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="18"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="yoP-pr-VLr"/>
                                                 </constraints>
@@ -254,7 +254,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,400원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZo-H8-CWJ">
-                                                <rect key="frame" x="264" y="0.0" width="120" height="18"/>
+                                                <rect key="frame" x="300" y="0.0" width="84" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="HaR-OK-GFd"/>
                                                 </constraints>
