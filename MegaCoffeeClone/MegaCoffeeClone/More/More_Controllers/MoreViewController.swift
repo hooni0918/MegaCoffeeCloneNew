@@ -444,16 +444,10 @@ extension MoreViewController: UITableViewDelegate {
         // 멤버쉽 [v]
         case 0:
             if MoreMainModel.sectionList1[indexPath.row] == "스탬프" {
-                let stampVC = MoreStampViewController()
-                
-                stampVC.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(stampVC, animated: true)
+                print("스탬프")
                 
             } else {
-                let couponVC = MoreCouponViewController()
-                
-                couponVC.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(couponVC, animated: true)
+                print("쿠폰")
             }
             
             
@@ -597,7 +591,7 @@ extension MoreViewController {
             self.contentView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
             self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
-            // MARK: ⭐️Dynamic Height⭐️
+            // MARK: -- Dynamic Height
             self.contentView.heightAnchor.constraint(equalToConstant: 1100)
             //self.contentView.heightAnchor.constraint(equalTo: self.view.heightAnchor)
         ])
