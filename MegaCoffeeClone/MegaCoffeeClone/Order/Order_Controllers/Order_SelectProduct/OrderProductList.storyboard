@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Order Change Store Popup View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ChangeStorePopupVC" modalPresentationStyle="overFullScreen" id="Y6W-OH-hqX" customClass="OrderChangeStorePopupViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1k-OO-v26">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcT-6g-vRZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tapCancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qIk-et-uP4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="dcT-6g-vRZ" secondAttribute="trailing" id="0F8-NR-nnw"/>
+                                    <constraint firstItem="dcT-6g-vRZ" firstAttribute="leading" secondItem="J1k-OO-v26" secondAttribute="leading" id="9Nl-WX-hg7"/>
+                                    <constraint firstItem="dcT-6g-vRZ" firstAttribute="top" secondItem="J1k-OO-v26" secondAttribute="top" id="nHl-Si-IP1"/>
+                                    <constraint firstAttribute="bottom" secondItem="dcT-6g-vRZ" secondAttribute="bottom" id="o1C-da-Qfh"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umE-X3-ONh">
+                                <rect key="frame" x="50" y="356" width="314" height="184"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NzR-pH-wtS">
+                                        <rect key="frame" x="0.0" y="140" width="314" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzP-db-YIu">
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="44"/>
+                                                <color key="backgroundColor" name="close"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="L8y-li-PIC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" name="done"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapCancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4gz-c0-ygU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO4-CP-OM8">
+                                                <rect key="frame" x="157" y="0.0" width="157" height="44"/>
+                                                <color key="backgroundColor" name="done"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="매장변경">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapDoneButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fLp-GK-APS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fFD-nQ-4hd">
+                                        <rect key="frame" x="30" y="30" width="254" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매장을 변경하시겠습니까?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPY-BW-LG8">
+                                                <rect key="frame" x="0.0" y="0.0" width="254" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매장을 변경하실 경우 이전에 담은 메뉴가 삭제 됩니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5C-u0-e78">
+                                                <rect key="frame" x="0.0" y="44" width="254" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="NzR-pH-wtS" firstAttribute="leading" secondItem="umE-X3-ONh" secondAttribute="leading" id="3MH-2W-Yzk"/>
+                                    <constraint firstAttribute="bottom" secondItem="NzR-pH-wtS" secondAttribute="bottom" id="4J9-Qb-g8s"/>
+                                    <constraint firstAttribute="trailing" secondItem="NzR-pH-wtS" secondAttribute="trailing" id="GzW-Cw-VTx"/>
+                                    <constraint firstItem="NzR-pH-wtS" firstAttribute="top" secondItem="fFD-nQ-4hd" secondAttribute="bottom" constant="30" id="JBH-Sw-7dP"/>
+                                    <constraint firstAttribute="trailing" secondItem="fFD-nQ-4hd" secondAttribute="trailing" constant="30" id="iW7-em-rWz"/>
+                                    <constraint firstItem="fFD-nQ-4hd" firstAttribute="leading" secondItem="umE-X3-ONh" secondAttribute="leading" constant="30" id="kkh-r7-Gs5"/>
+                                    <constraint firstItem="fFD-nQ-4hd" firstAttribute="top" secondItem="umE-X3-ONh" secondAttribute="top" constant="30" id="pgH-Ul-8OY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <constraints>
+                            <constraint firstItem="umE-X3-ONh" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="0FD-Qx-BUp"/>
+                            <constraint firstItem="J1k-OO-v26" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9Cb-Hx-OCN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="umE-X3-ONh" secondAttribute="trailing" constant="50" id="DKh-Sb-QSc"/>
+                            <constraint firstItem="J1k-OO-v26" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Dyz-U8-CWD"/>
+                            <constraint firstItem="J1k-OO-v26" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QJe-uF-Acf"/>
+                            <constraint firstItem="umE-X3-ONh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="ScW-xu-drk"/>
+                            <constraint firstAttribute="bottom" secondItem="J1k-OO-v26" secondAttribute="bottom" id="oDp-2B-GVg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="popupView" destination="umE-X3-ONh" id="4ok-ov-OIi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17.39130434782609" y="107.8125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="close">
+            <color red="0.90588235294117647" green="0.89803921568627454" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="done">
+            <color red="0.25882352941176473" green="0.14117647058823529" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

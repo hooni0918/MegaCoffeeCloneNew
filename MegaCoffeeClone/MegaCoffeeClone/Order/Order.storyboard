@@ -13,7 +13,7 @@
         <!--매장 선택-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="OrderViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="orderVC" id="Y6W-OH-hqX" customClass="OrderViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,15 +323,15 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="83.705357142857139"/>
         </scene>
-        <!--Order Popup View Controller-->
+        <!--Order Store Popup View Controller-->
         <scene sceneID="t7g-6t-PoE">
             <objects>
-                <viewController storyboardIdentifier="popOrderVC" id="Slk-3E-dEb" customClass="OrderPopupViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popOrderVC" id="Slk-3E-dEb" customClass="OrderStorePopupViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kIs-Us-ucn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbk-SL-lOy">
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbk-SL-lOy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zao-ZN-wnH">
@@ -408,6 +408,9 @@
                                                 <rect key="frame" x="126.5" y="449" width="100.5" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="메뉴 보러가기"/>
+                                                <connections>
+                                                    <action selector="tapGoingToMenuButton:" destination="Slk-3E-dEb" eventType="touchUpInside" id="JCu-fJ-dK4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -467,7 +470,7 @@
         <!--주문하기-->
         <scene sceneID="aL7-79-lS4">
             <objects>
-                <viewController storyboardIdentifier="orderListVC" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="kVL-Kh-piy" customClass="OrderListViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="orderListVC" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="kVL-Kh-piy" customClass="OrderProductListViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyo-x7-VCQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -626,20 +629,59 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTT-tN-UzK">
                                 <rect key="frame" x="0.0" y="792" width="414" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keA-uB-z5W">
-                                        <rect key="frame" x="20" y="17" width="97" height="36"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="$매장이름&amp;">
+                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keA-uB-z5W">
+                                        <rect key="frame" x="20" y="24" width="106.5" height="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="$매장이름&amp;" image="chevron.down" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tapChangeStoreButton:" destination="kVL-Kh-piy" eventType="touchUpInside" id="CSm-aR-LJg"/>
+                                        </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MU-Tc-sPV">
+                                        <rect key="frame" x="360" y="21.5" width="34" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="cart" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapShoppingBasketButton:" destination="kVL-Kh-piy" eventType="touchUpInside" id="2bA-ja-6oo"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brS-Br-2t6">
+                                        <rect key="frame" x="377.5" y="17.5" width="23" height="15"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8W-ZN-brS">
+                                                <rect key="frame" x="4" y="-2" width="15" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="r8W-ZN-brS" secondAttribute="trailing" constant="4" id="Knm-Cq-hVW"/>
+                                            <constraint firstItem="r8W-ZN-brS" firstAttribute="top" secondItem="brS-Br-2t6" secondAttribute="top" constant="-2" id="QLs-q7-cix"/>
+                                            <constraint firstItem="r8W-ZN-brS" firstAttribute="leading" secondItem="brS-Br-2t6" secondAttribute="leading" constant="4" id="aX8-8L-ep2"/>
+                                            <constraint firstAttribute="bottom" secondItem="r8W-ZN-brS" secondAttribute="bottom" constant="-1" id="iT9-AT-HCM"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="keA-uB-z5W" firstAttribute="centerY" secondItem="JTT-tN-UzK" secondAttribute="centerY" id="Hew-XC-QVT"/>
+                                    <constraint firstItem="9MU-Tc-sPV" firstAttribute="centerY" secondItem="JTT-tN-UzK" secondAttribute="centerY" id="KpM-b7-G7l"/>
+                                    <constraint firstItem="brS-Br-2t6" firstAttribute="centerY" secondItem="9MU-Tc-sPV" secondAttribute="centerY" constant="-10" id="RBZ-m5-8dc"/>
+                                    <constraint firstAttribute="trailing" secondItem="9MU-Tc-sPV" secondAttribute="trailing" constant="20" id="RRv-UX-3P3"/>
                                     <constraint firstItem="keA-uB-z5W" firstAttribute="leading" secondItem="JTT-tN-UzK" secondAttribute="leading" constant="20" id="hXJ-KI-XdQ"/>
                                     <constraint firstAttribute="height" constant="70" id="nWa-zb-EyU"/>
+                                    <constraint firstItem="brS-Br-2t6" firstAttribute="centerX" secondItem="9MU-Tc-sPV" secondAttribute="centerX" constant="12" id="ob0-RC-KnU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -667,6 +709,7 @@
                     <connections>
                         <outlet property="changeStoreButton" destination="keA-uB-z5W" id="bfx-MH-AfA"/>
                         <outlet property="productListCollectionView" destination="s8h-Th-ere" id="3Rz-ag-SGh"/>
+                        <outlet property="shoppingBasketCountLabel" destination="r8W-ZN-brS" id="jx3-a2-jYR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngF-Bk-S1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -693,7 +736,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YcO-Lq-FsC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </searchBar>
                                             </subviews>
@@ -867,6 +910,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="매장 검색" id="A0O-0t-uSo">
                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="BkO-ac-gty">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tapCloseButton:" destination="V0K-D6-VdO" id="c2g-GT-rUl"/>
                             </connections>
@@ -901,7 +945,9 @@
     </scenes>
     <resources>
         <image name="2.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="close">
