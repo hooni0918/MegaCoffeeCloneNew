@@ -1,5 +1,5 @@
 //
-//  CouponViewController.swift
+//  MoreNoticeViewController.swift
 //  MegaCoffeeClone
 //
 //  Created by 김성호 on 2022/11/01.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MoreCouponViewController: UIViewController {
+class MoreNoticeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class MoreCouponViewController: UIViewController {
 
 // MARK: [Layout]
 
-extension MoreCouponViewController {
+extension MoreNoticeViewController {
     
     private func layout() {
         self.view.backgroundColor = .systemBackground
