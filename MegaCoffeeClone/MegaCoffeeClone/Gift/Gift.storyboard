@@ -36,26 +36,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LfQ-Qh-n6S">
-                                <rect key="frame" x="0.0" y="158" width="414" height="655"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfQ-Qh-n6S">
+                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" id="3cN-yj-i55">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="655"/>
+                                        <rect key="frame" x="0.0" y="10" width="414" height="655"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
                                             <segue destination="LAS-Mh-Zv1" kind="embed" id="5c3-Z3-txA"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbf-Fs-yds">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="655"/>
+                                        <rect key="frame" x="0.0" y="10" width="414" height="655"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
                                             <segue destination="v3z-lw-Cuy" kind="embed" id="qqm-6l-ZoW"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-xU-exh">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="655"/>
+                                        <rect key="frame" x="0.0" y="10" width="414" height="655"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
                                             <segue destination="nXz-hL-ZIz" kind="embed" id="gMu-Lp-zCX"/>
@@ -64,10 +63,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-oN-1i4" customClass="UnderlineSegmentedControl" customModule="MegaCoffeeClone" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="128" width="414" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-oN-1i4" customClass="UnderlineSegmentedControl" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="108" width="414" height="41"/>
                                 <rect key="contentStretch" x="1" y="1" width="0.5" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="l85-tU-VWO"/>
+                                </constraints>
                                 <segments>
                                     <segment title="메인"/>
                                     <segment title="카테고리"/>
@@ -80,6 +81,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vqV-oN-1i4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0FH-wo-Rca"/>
+                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6H2-K8-6GP"/>
+                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="CWM-Cf-OyS"/>
+                            <constraint firstItem="vqV-oN-1i4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="DYO-x2-WP8"/>
+                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="top" secondItem="vqV-oN-1i4" secondAttribute="bottom" id="xd0-5I-0ip"/>
+                            <constraint firstItem="vqV-oN-1i4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="yhx-Jp-BYx"/>
+                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="yn1-CM-GwU"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="선물하기" image="3.circle.fill" catalog="system" id="E9B-I5-YOi"/>
                     <toolbarItems/>
@@ -106,6 +116,9 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="containerView1" destination="3cN-yj-i55" id="8Eb-qc-rWm"/>
+                        <outlet property="containerView2" destination="rbf-Fs-yds" id="7nT-lR-lr9"/>
+                        <outlet property="containerView3" destination="Lac-xU-exh" id="HQ4-bS-wiG"/>
                         <outlet property="contentsView" destination="LfQ-Qh-n6S" id="ced-53-V4P"/>
                         <outlet property="findButton" destination="f3U-U0-3bl" id="Omw-gt-bX5"/>
                         <outlet property="segmentedControl" destination="vqV-oN-1i4" id="fR8-C9-5XI"/>
@@ -800,12 +813,12 @@
                         <viewLayoutGuide key="safeArea" id="g0b-lf-wfm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="46N-W7-ldY" secondAttribute="trailing" id="KwH-I5-g1K"/>
-                            <constraint firstItem="46N-W7-ldY" firstAttribute="top" secondItem="ZZX-3c-4Kc" secondAttribute="top" id="OZi-Wm-DxD"/>
                             <constraint firstAttribute="bottom" secondItem="KBR-kf-MTw" secondAttribute="bottom" id="XDg-Vm-qO2"/>
                             <constraint firstAttribute="trailing" secondItem="KBR-kf-MTw" secondAttribute="trailing" id="cht-Qm-oSt"/>
                             <constraint firstItem="KBR-kf-MTw" firstAttribute="top" secondItem="46N-W7-ldY" secondAttribute="bottom" id="dlA-mc-4Tb"/>
-                            <constraint firstItem="46N-W7-ldY" firstAttribute="leading" secondItem="ZZX-3c-4Kc" secondAttribute="leading" id="vxK-9W-CAq"/>
+                            <constraint firstItem="46N-W7-ldY" firstAttribute="leading" secondItem="g0b-lf-wfm" secondAttribute="leading" id="fVV-5F-YTe"/>
+                            <constraint firstItem="46N-W7-ldY" firstAttribute="trailing" secondItem="g0b-lf-wfm" secondAttribute="trailing" id="r1o-or-mYJ"/>
+                            <constraint firstItem="46N-W7-ldY" firstAttribute="top" secondItem="ZZX-3c-4Kc" secondAttribute="top" id="sZ6-Td-W8Z"/>
                             <constraint firstItem="KBR-kf-MTw" firstAttribute="leading" secondItem="ZZX-3c-4Kc" secondAttribute="leading" id="y6a-Sl-N68"/>
                         </constraints>
                     </view>

@@ -27,9 +27,14 @@ class GiftViewController: ViewController {
     
     
     
+    @IBOutlet weak var containerView1: UIView!
+    @IBOutlet weak var containerView2: UIView!
+    @IBOutlet weak var containerView3: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //layout()
         
         self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
         self.segmentedControl.setTitleTextAttributes(
@@ -46,6 +51,35 @@ class GiftViewController: ViewController {
         
         
     }
+    
+    
+    private func layout() {
+        containerView1.translatesAutoresizingMaskIntoConstraints = false
+        containerView2.translatesAutoresizingMaskIntoConstraints = false
+        containerView3.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        
+            containerView1.topAnchor.constraint(equalTo: self.segmentedControl.bottomAnchor),
+            containerView1.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            containerView1.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            containerView1.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            
+            containerView2.topAnchor.constraint(equalTo: self.segmentedControl.bottomAnchor),
+            containerView2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            containerView2.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            containerView2.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            
+            
+            containerView3.topAnchor.constraint(equalTo: self.segmentedControl.bottomAnchor),
+            containerView3.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            containerView3.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            containerView3.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            
+        
+        ])
+    }
+    
     
     func changeViewControllers() {
         guard  let mainVC =  self.storyboard?.instantiateViewController(identifier: "mainVC"),
