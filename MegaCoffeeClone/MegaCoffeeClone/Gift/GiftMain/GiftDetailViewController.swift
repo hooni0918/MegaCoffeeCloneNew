@@ -4,52 +4,71 @@
 //
 //  Created by 준연 on 2022/10/27.
 //
+//https://nemecek.be/blog/17/how-to-add-badge-to-uibarbuttonitem (barButtonItem에 뱃지 추가하는방법)
 
 import UIKit
 
 class GiftDetailViewController: ViewController {
     
-
-    var location: IndexPath?
-    
     @IBOutlet weak var DetailMenuImageView: UIImageView!
-    
     @IBOutlet weak var DetailMenuNameLabel: UILabel!
-    
     @IBOutlet weak var DetailMenuExplanationLabel: UILabel!
-    
     @IBOutlet weak var priceLabel: UILabel!
-    
     @IBOutlet weak var totalPrice: UILabel!
-    
     @IBOutlet weak var plusView: UIView!
-    
     @IBOutlet weak var minusView: UIView!
-    
     @IBOutlet weak var numberOf: UILabel!
+    @IBOutlet weak var shoppingBasket: UIButton!
+    
+    public var location: IndexPath?
+    
+    var productInfo: MenuModel?
+    
+    var badgeNumber = 0
+    
+    var isgoShopping = false
+    
+    
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         plusView.layer.cornerRadius = plusView.frame.width / 2
         minusView.layer.cornerRadius = minusView.frame.width / 2
         numberOf.sizeToFit()
         
-       
-        
-        updateUI()
+        updateUIFromMain()
+        updateUIFromCategory()
+        if isgoShopping == true {
+            goToShopping()
+        }
         
         let concernPlusGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedPlus(_:)))
         plusView.addGestureRecognizer(concernPlusGesture)
+        
         let concernMinusGesture: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedMinus(_:)))
         minusView.addGestureRecognizer(concernMinusGesture)
         
         let concernDetailGesture: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedImage(_:)))
         DetailMenuImageView.isUserInteractionEnabled = true
         DetailMenuImageView.addGestureRecognizer(concernDetailGesture)
+        
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.topItem?.title = ""
         
+        NSLayoutConstraint.activate([
+            shoppingBasket.widthAnchor.constraint(equalToConstant: 34),
+            shoppingBasket.heightAnchor.constraint(equalToConstant: 44),
+        ])
+        
+        showBadge(withCount: badgeNumber)
+        
+        if isgoShopping {
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "movePopupView") as? GiftMovePopupVC else { return }
+            vc.dismiss(animated: false)
+//            goToShopping()
+        }
         
     }
     
@@ -99,15 +118,9 @@ class GiftDetailViewController: ViewController {
         vc.location2 = location
         self.present(vc, animated: false)
         
-        
-               
-     
     }
     
-
-    
-    
-    func updateUI() {
+    func updateUIFromMain() {
         if let location = location {
             if location.section == 1 {
                 DetailMenuImageView.image = RecommendMenu[location.row].image
@@ -126,5 +139,62 @@ class GiftDetailViewController: ViewController {
         
     }
     
+    func updateUIFromCategory() {
+        if let productInfo = productInfo {
+            DetailMenuImageView.image = productInfo.image
+            DetailMenuNameLabel.text = productInfo.name
+            DetailMenuExplanationLabel.text = productInfo.explanation
+            priceLabel.text = "\(productInfo.price)"
+        }
+    }
+    
+    let badgeSize: CGFloat = 20
+    let badgeTag = 9830384
 
+    func badgeLabel(withCount count: Int) -> UILabel {
+        let badgeCount = UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
+        badgeCount.translatesAutoresizingMaskIntoConstraints = false
+        badgeCount.tag = badgeTag
+        badgeCount.layer.cornerRadius = badgeCount.bounds.size.height / 2
+        badgeCount.textAlignment = .center
+        badgeCount.layer.masksToBounds = true
+        badgeCount.textColor = .white
+        badgeCount.font = badgeCount.font.withSize(12)
+        badgeCount.backgroundColor = .systemRed
+        badgeCount.text = String(count)
+        return badgeCount
+    }
+    
+    func showBadge(withCount count: Int) {
+        let badge = badgeLabel(withCount: count)
+        shoppingBasket.addSubview(badge)
+
+        NSLayoutConstraint.activate([
+            badge.leftAnchor.constraint(equalTo: shoppingBasket.leftAnchor, constant: 14),
+            badge.topAnchor.constraint(equalTo: shoppingBasket.topAnchor, constant: 4),
+            badge.widthAnchor.constraint(equalToConstant: badgeSize),
+            badge.heightAnchor.constraint(equalToConstant: badgeSize)
+        ])
+    }
+    
+    @IBAction func addButtonClicked(_ sender: UIButton) {
+        badgeNumber += 1
+        showBadge(withCount: badgeNumber)
+            
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "movePopupView") as? GiftMovePopupVC else { return }
+        vc.modalPresentationStyle = .overFullScreen
+        vc.vcRef = self
+        self.present(vc, animated: false)
+    }
+    
+    func goToShopping() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "shoppingView") as? GiftShoppingBasketVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+            
+    }
+    
+    
 }
+
+
