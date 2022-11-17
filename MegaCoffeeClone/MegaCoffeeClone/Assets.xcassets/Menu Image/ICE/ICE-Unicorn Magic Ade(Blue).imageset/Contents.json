@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "ICE-Unicorn Magic Ade(Blue).jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "ICE-Unicorn Magic Ade(Blue)-1.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ICE-Unicorn Magic Ade(Blue)-2.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
