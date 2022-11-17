@@ -15,14 +15,13 @@ class GiftCategoryContainerViewController: ViewController {
     @IBOutlet weak var categoryTableView: UITableView!
     
     
+    var filteredMenu = [MenuModels]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lazy var findButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(clickedFind))
-        
         giftCategory[0].isClicked = true
-        
-//        self.mainCollectionView.register(UINib(nibName: "GiftCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        filteredMenu = Menu.filter({$0.type.rawValue == MenuType.set.rawValue})
         
         self.categoryTableView.register(UINib(nibName: "GiftCategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "tableCustomCell")
     }
@@ -34,12 +33,6 @@ class GiftCategoryContainerViewController: ViewController {
             giftCategory[index].isClicked = false
         }
     }
-    
-    @objc func clickedFind() {
-        
-    }
-    
-    
 }
 
 extension GiftCategoryContainerViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -70,6 +63,7 @@ extension GiftCategoryContainerViewController: UICollectionViewDelegate, UIColle
             cell.categoryLabel.textColor = UIColor.lightGray
         }
         
+        
         return cell
     }
     
@@ -77,18 +71,24 @@ extension GiftCategoryContainerViewController: UICollectionViewDelegate, UIColle
 
 extension GiftCategoryContainerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //click했을 때 호출되는 메서드가 아니라 click한 후에 진짜로 selected가 되었을 때 호출되는 메서드
-//        giftCategory[indexPath.row].isClicked = true
+
         if let cell = collectionView.cellForItem(at: indexPath) {
+
+            filteredMenu.removeAll()
+            filteredMenu = Menu.filter({$0.type.rawValue == cell.tag})
             
-            for (index,item) in giftCategory.enumerated() {
+            categoryTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            
+            for (index,_) in giftCategory.enumerated() {
                 giftCategory[index].isClicked = index == cell.tag ? true : false
-                
+
+                filteredMenu = Menu.filter({$0.type.rawValue == cell.tag})
+
                 categoryCollectionView.reloadData()
+                
             }
-            
-            print(giftCategory)
         }
+        
     }
 }
 
@@ -99,24 +99,27 @@ extension GiftCategoryContainerViewController: UITableViewDelegate {
 }
 
 extension GiftCategoryContainerViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return setMenu.count
+        return filteredMenu[0].products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCustomCell", for: indexPath) as! GiftCategoryTableViewCell
-        
-        cell.productImageView.image = setMenu[indexPath.row].image
-        cell.prodcutNameLabel.text = setMenu[indexPath.row].name
-        cell.productPriceLabel.text = "\(setMenu[indexPath.row].price)원"
-        
+        cell.productImageView.image = filteredMenu[0].products[indexPath.row].image
+        cell.prodcutNameLabel.text = filteredMenu[0].products[indexPath.row].name
+        cell.productPriceLabel.text = "\(filteredMenu[0].products[indexPath.row].price)원"
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc =  storyboard?.instantiateViewController(identifier: "DetailView") as? GiftDetailViewController else
                 { return }
-        vc.location = indexPath
+        vc.productInfo = filteredMenu[0].products[indexPath.row]
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

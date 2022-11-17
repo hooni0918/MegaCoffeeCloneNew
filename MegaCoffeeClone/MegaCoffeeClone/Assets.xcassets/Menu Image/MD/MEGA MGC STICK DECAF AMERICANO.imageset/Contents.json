@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "MEGA MGC STICK DECAF AMERICANO.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "MEGA MGC STICK DECAF AMERICANO-1.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "MEGA MGC STICK DECAF AMERICANO-2.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
