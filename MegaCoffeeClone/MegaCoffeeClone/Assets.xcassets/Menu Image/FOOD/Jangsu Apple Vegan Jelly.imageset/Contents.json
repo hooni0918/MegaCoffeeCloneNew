@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Jangsu Apple Vegan Jelly.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Jangsu Apple Vegan Jelly-1.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Jangsu Apple Vegan Jelly-2.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
