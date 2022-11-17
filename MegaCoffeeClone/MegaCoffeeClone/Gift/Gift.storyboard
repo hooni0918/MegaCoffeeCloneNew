@@ -365,12 +365,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp6-qf-wPg">
                                 <rect key="frame" x="0.0" y="512" width="414" height="350"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="Jxa-K9-cxU">
-                                        <rect key="frame" x="15" y="40" width="384" height="18"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="Jxa-K9-cxU">
+                                        <rect key="frame" x="20" y="40" width="374" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="상품금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1M-7T-Sqi">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="25"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="TZN-gd-lch"/>
                                                     <constraint firstAttribute="width" constant="100" id="yoP-pr-VLr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -378,7 +379,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,400원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZo-H8-CWJ">
-                                                <rect key="frame" x="300" y="0.0" width="84" height="18"/>
+                                                <rect key="frame" x="254" y="0.0" width="120" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="HaR-OK-GFd"/>
                                                 </constraints>
@@ -388,19 +389,14 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="h1M-7T-Sqi" firstAttribute="top" secondItem="Jxa-K9-cxU" secondAttribute="top" id="Rpx-qS-V1L"/>
-                                            <constraint firstItem="h1M-7T-Sqi" firstAttribute="leading" secondItem="Jxa-K9-cxU" secondAttribute="leading" id="hED-EE-WBt"/>
-                                            <constraint firstAttribute="bottom" secondItem="CZo-H8-CWJ" secondAttribute="bottom" id="o4i-u0-JXl"/>
-                                            <constraint firstAttribute="bottom" secondItem="h1M-7T-Sqi" secondAttribute="bottom" id="v5e-dm-JKK"/>
-                                            <constraint firstItem="CZo-H8-CWJ" firstAttribute="top" secondItem="Jxa-K9-cxU" secondAttribute="top" id="ysf-6c-NyY"/>
-                                            <constraint firstAttribute="trailing" secondItem="CZo-H8-CWJ" secondAttribute="trailing" id="zBX-iM-dQb"/>
+                                            <constraint firstAttribute="height" constant="25" id="pMj-fH-dmn"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a5G-8x-STN">
-                                        <rect key="frame" x="15" y="83" width="384" height="47"/>
+                                        <rect key="frame" x="20" y="85" width="374" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kb1-5M-5ze">
-                                                <rect key="frame" x="0.0" y="0.0" width="188" height="47"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="담기">
                                                     <backgroundConfiguration key="background" cornerRadius="8">
@@ -414,7 +410,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-lR-bmf">
-                                                <rect key="frame" x="196" y="0.0" width="188" height="47"/>
+                                                <rect key="frame" x="191" y="0.0" width="183" height="50"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="선물하기">
                                                     <backgroundConfiguration key="background" cornerRadius="8">
@@ -425,17 +421,19 @@
                                                 </buttonConfiguration>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="XGy-2N-dH0"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Jxa-K9-cxU" firstAttribute="leading" secondItem="wp6-qf-wPg" secondAttribute="leading" constant="15" id="5GJ-RN-pg8"/>
-                                    <constraint firstItem="a5G-8x-STN" firstAttribute="leading" secondItem="wp6-qf-wPg" secondAttribute="leading" constant="15" id="IxF-ff-vdm"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jxa-K9-cxU" secondAttribute="trailing" constant="15" id="MX6-zN-FFS"/>
-                                    <constraint firstAttribute="bottom" secondItem="a5G-8x-STN" secondAttribute="bottom" constant="220" id="T26-Ua-4xK"/>
-                                    <constraint firstItem="a5G-8x-STN" firstAttribute="top" secondItem="Jxa-K9-cxU" secondAttribute="bottom" constant="25" id="VDA-wj-vrx"/>
-                                    <constraint firstItem="Jxa-K9-cxU" firstAttribute="top" secondItem="wp6-qf-wPg" secondAttribute="top" constant="40" id="YDy-EI-4aR"/>
-                                    <constraint firstAttribute="trailing" secondItem="a5G-8x-STN" secondAttribute="trailing" constant="15" id="sLA-cE-2sA"/>
+                                    <constraint firstItem="a5G-8x-STN" firstAttribute="top" secondItem="Jxa-K9-cxU" secondAttribute="bottom" constant="20" id="EMf-46-GR7"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jxa-K9-cxU" secondAttribute="trailing" constant="20" id="a2g-er-GS6"/>
+                                    <constraint firstAttribute="trailing" secondItem="a5G-8x-STN" secondAttribute="trailing" constant="20" id="bpm-BF-jQR"/>
+                                    <constraint firstItem="Jxa-K9-cxU" firstAttribute="leading" secondItem="wp6-qf-wPg" secondAttribute="leading" constant="20" id="bxn-EZ-Agl"/>
+                                    <constraint firstItem="Jxa-K9-cxU" firstAttribute="top" secondItem="wp6-qf-wPg" secondAttribute="top" constant="40" id="ijd-3m-xpo"/>
+                                    <constraint firstItem="a5G-8x-STN" firstAttribute="leading" secondItem="wp6-qf-wPg" secondAttribute="leading" constant="20" id="qJI-R0-VE5"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -447,7 +445,6 @@
                             <constraint firstItem="x5e-Ca-7Wu" firstAttribute="trailing" secondItem="wp6-qf-wPg" secondAttribute="trailing" id="Skl-8l-PD4"/>
                             <constraint firstItem="wcH-08-8y7" firstAttribute="trailing" secondItem="x5e-Ca-7Wu" secondAttribute="trailing" id="V1O-rG-uWU"/>
                             <constraint firstItem="wp6-qf-wPg" firstAttribute="top" secondItem="wcH-08-8y7" secondAttribute="bottom" constant="10" id="ZcW-Ka-3p4"/>
-                            <constraint firstItem="wp6-qf-wPg" firstAttribute="top" secondItem="wcH-08-8y7" secondAttribute="bottom" constant="10" id="boj-kT-Ty0"/>
                             <constraint firstItem="wcH-08-8y7" firstAttribute="leading" secondItem="x5e-Ca-7Wu" secondAttribute="leading" id="eDD-rj-Ae4"/>
                             <constraint firstItem="x5e-Ca-7Wu" firstAttribute="bottom" secondItem="wp6-qf-wPg" secondAttribute="bottom" id="qaE-Dd-hxy"/>
                             <constraint firstItem="wp6-qf-wPg" firstAttribute="leading" secondItem="x5e-Ca-7Wu" secondAttribute="leading" id="zgZ-fI-Qs9"/>
