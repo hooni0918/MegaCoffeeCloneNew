@@ -19,7 +19,7 @@
 | Name | link | Part |
 | :---: | :---: | :---: |
 | 박기우 | https://github.com/KiWooPark | 메가오더 |
-| 원준연 | 입력해주세요. | 입력해주세요. |
+| 원준연 | https://github.com/chobo5 | 선물하기 |
 | 이지훈 | 입력해주세요. | 메인페이지 |
 | 김성호 | https://github.com/KemiKIM | 더보기 |
 
