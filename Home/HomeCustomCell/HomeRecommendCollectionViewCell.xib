@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="HomeRecommendCollectionViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="148" height="176"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="148" height="176"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iJ-xO-1OO">
+                        <rect key="frame" x="0.0" y="0.0" width="148" height="176"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="001" translatesAutoresizingMaskIntoConstraints="NO" id="VKx-KP-mhp">
+                                <rect key="frame" x="0.0" y="0.0" width="148" height="132"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="6je-Mm-H1Y"/>
+                                    <constraint firstAttribute="width" constant="148" id="F4T-tt-9ZP"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKW-XP-X3g">
+                                <rect key="frame" x="0.0" y="143" width="140" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VKx-KP-mhp" secondAttribute="trailing" id="9Cf-1C-IUS"/>
+                            <constraint firstItem="VKx-KP-mhp" firstAttribute="leading" secondItem="4iJ-xO-1OO" secondAttribute="leading" id="JDe-Iy-sLc"/>
+                            <constraint firstItem="yKW-XP-X3g" firstAttribute="leading" secondItem="4iJ-xO-1OO" secondAttribute="leading" id="USN-UI-YNy"/>
+                            <constraint firstItem="VKx-KP-mhp" firstAttribute="top" secondItem="4iJ-xO-1OO" secondAttribute="top" id="YIE-ES-rLq"/>
+                            <constraint firstAttribute="trailing" secondItem="VKx-KP-mhp" secondAttribute="trailing" id="bx1-bK-aP8"/>
+                            <constraint firstItem="VKx-KP-mhp" firstAttribute="top" secondItem="4iJ-xO-1OO" secondAttribute="top" id="cKK-1D-fdO"/>
+                            <constraint firstAttribute="bottom" secondItem="yKW-XP-X3g" secondAttribute="bottom" constant="12" id="fLh-aY-E7K"/>
+                            <constraint firstItem="VKx-KP-mhp" firstAttribute="top" secondItem="4iJ-xO-1OO" secondAttribute="top" id="g96-jV-vIj"/>
+                            <constraint firstAttribute="trailing" secondItem="yKW-XP-X3g" secondAttribute="trailing" constant="8" id="hyG-rs-RFA"/>
+                            <constraint firstItem="VKx-KP-mhp" firstAttribute="leading" secondItem="4iJ-xO-1OO" secondAttribute="leading" id="mgc-Pe-yFv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="4iJ-xO-1OO" secondAttribute="bottom" id="RZi-QA-U9J"/>
+                <constraint firstItem="4iJ-xO-1OO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZEA-rW-WXI"/>
+                <constraint firstAttribute="trailing" secondItem="4iJ-xO-1OO" secondAttribute="trailing" id="rvA-3g-PWb"/>
+                <constraint firstItem="4iJ-xO-1OO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zqp-xv-xsB"/>
+            </constraints>
+            <size key="customSize" width="156" height="268"/>
+            <connections>
+                <outlet property="homeRecommendLabel" destination="yKW-XP-X3g" id="VhO-wO-9EV"/>
+                <outlet property="homeRecommendMenu" destination="VKx-KP-mhp" id="j79-uX-WBM"/>
+                <outlet property="homeview" destination="4iJ-xO-1OO" id="UPw-yG-Hrn"/>
+            </connections>
+            <point key="canvasLocation" x="208.69565217391306" y="161.38392857142856"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="001" width="500" height="500"/>
+    </resources>
+</document>
