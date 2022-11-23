@@ -15,10 +15,10 @@ class OrderProductListViewController: UIViewController {
     
     
     var is1Column = false
-    var categoryIndex = 0
+    var categoryName = "세트메뉴"
     var storeData: StoreModel?
     
-    var filteredProducts = [ProductsModel]()
+    var filteredProducts = [MenusModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,8 @@ class OrderProductListViewController: UIViewController {
         productListCollectionView.register(Colume1, forCellWithReuseIdentifier: "product1ColumnCell")
         
         categorys[0].isSelected = true
-        filteredProducts = products.filter({$0.type.rawValue == categoryIndex})
+        
+        filteredProducts = menuList.filter({$0.type.rawValue == categoryName})
         
         changeStoreButton.setTitle(storeData?.name, for: .normal)
        
@@ -208,7 +209,7 @@ extension OrderProductListViewController: UICollectionViewDataSource {
         if section == 0 {
             return categorys.count
         } else if section == 1 {
-            return filteredProducts[0].products.count
+            return filteredProducts.isEmpty ? 0 : filteredProducts[0].menus.count
         } else {
             return 1
         }
@@ -216,7 +217,7 @@ extension OrderProductListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catagoryCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catagoryCell", for: indexPath) as? OrderCategoryCollectionViewCell else { return UICollectionViewCell() }
  
             cell.categoryNameLabel.text = categorys[indexPath.row].name
             cell.tag = indexPath.row
@@ -236,11 +237,11 @@ extension OrderProductListViewController: UICollectionViewDataSource {
         } else if indexPath.section == 1 {
             if is1Column {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "product1ColumnCell", for: indexPath) as? OrderProduct1ColumnCollectionViewCell else{ return UICollectionViewCell() }
+                cell.tag = indexPath.row
+                cell.nameLabel.text = filteredProducts[0].menus[indexPath.row].name
+                cell.priceLabel.text = "\(filteredProducts[0].menus[indexPath.row].price)원"
                 
-                cell.nameLabel.text = filteredProducts[0].products[indexPath.row].name
-                cell.priceLabel.text = "\(filteredProducts[0].products[indexPath.row].price)원"
-                
-                if filteredProducts[0].products[indexPath.row].soldOut {
+                if filteredProducts[0].menus[indexPath.row].soldOut {
                     cell.soldOutView.isHidden = false
                     cell.soldOutLabel.isHidden = false
                 } else {
@@ -251,11 +252,11 @@ extension OrderProductListViewController: UICollectionViewDataSource {
                 
             } else {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "product3ColumnCell", for: indexPath) as? OrderProductCollectionViewCell else { return UICollectionViewCell() }
+                cell.tag = indexPath.row
+                cell.productNameLabel.text = filteredProducts[0].menus[indexPath.row].name
+                cell.priceLabel.text = "\(filteredProducts[0].menus[indexPath.row].price)원"
                 
-                cell.productNameLabel.text = filteredProducts[0].products[indexPath.row].name
-                cell.priceLabel.text = "\(filteredProducts[0].products[indexPath.row].price)원"
-                
-                if filteredProducts[0].products[indexPath.row].soldOut {
+                if filteredProducts[0].menus[indexPath.row].soldOut {
                     cell.soldOutView.isHidden = false
                     cell.soldOutLabel.isHidden = false
                 } else {
@@ -274,7 +275,10 @@ extension OrderProductListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as? OrderListHeaderCollectionReusableView else { return UICollectionReusableView() }
-        header.countLabel.text = "\(products[categoryIndex].products.count)개"
+        
+        let index = menuList.firstIndex(where: {$0.type.rawValue == categoryName}) ?? 0
+        
+        header.countLabel.text = "\(menuList[index].menus.count)개"
         header.delegate = self
         
         if is1Column {
@@ -291,21 +295,25 @@ extension OrderProductListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if let cell = collectionView.cellForItem(at: indexPath) {
-                categoryIndex = cell.tag
+                categoryName = categorys[cell.tag].name
                 
                 for index in 0..<categorys.count {
                     categorys[index].isSelected = index == cell.tag ? true : false
                 }
-                
+
                 filteredProducts.removeAll()
-                filteredProducts = products.filter({$0.type.rawValue == categoryIndex})
+                filteredProducts = menuList.filter({$0.type.rawValue == categoryName})
                 productListCollectionView.reloadData()
             }
             
             
         } else if indexPath.section == 1 {
-            let cell = collectionView.cellForItem(at: indexPath)
-            print(cell?.tag)
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                let storyboard = UIStoryboard(name: "OrderProductList", bundle: nil)
+                guard let vc = storyboard.instantiateViewController(withIdentifier: "menuDetailVC") as? OrderMenuDetailViewController else { return }
+                vc.menuData = filteredProducts[0].menus[cell.tag]
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

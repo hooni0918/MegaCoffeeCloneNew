@@ -91,13 +91,13 @@ class OrderStorePopupViewController: UIViewController {
                             }
                         }
                     } else if topVC == .search {
-                        if let pvc = nvc.topViewController as? OrderSearchStoreViewController {
-                            self.dismiss(animated: false) {
-                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "orderListVC") as? OrderProductListViewController else { return }
-                                vc.storeData = self.storeData
-                                pvc.navigationController?.pushViewController(vc, animated: true)
-                            }
-                        }
+//                        if let pvc = nvc.topViewController as? OrderSearchStoreViewController {
+//                            self.dismiss(animated: false) {
+//                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "orderListVC") as? OrderProductListViewController else { return }
+//                                vc.storeData = self.storeData
+//                                pvc.navigationController?.pushViewController(vc, animated: true)
+//                            }
+//                        }
                     }
                 }
             }

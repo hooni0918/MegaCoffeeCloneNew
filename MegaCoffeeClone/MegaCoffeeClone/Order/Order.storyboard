@@ -485,7 +485,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="catagoryCell" id="fyr-2W-o0C" customClass="CategoryCollectionViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="catagoryCell" id="fyr-2W-o0C" customClass="OrderCategoryCollectionViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="83.5" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0T3-IU-Srf">
