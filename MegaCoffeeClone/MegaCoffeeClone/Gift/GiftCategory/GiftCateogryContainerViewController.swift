@@ -111,6 +111,7 @@ extension GiftCategoryContainerViewController: UITableViewDataSource {
         cell.prodcutNameLabel.text = filteredMenu[0].products[indexPath.row].name
         cell.productPriceLabel.text = "\(filteredMenu[0].products[indexPath.row].price)원"
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.sizeToFit()
         return cell
         
     }

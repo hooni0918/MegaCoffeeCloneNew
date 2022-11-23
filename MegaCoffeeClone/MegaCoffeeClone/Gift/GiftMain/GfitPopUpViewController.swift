@@ -17,8 +17,6 @@ class GiftPopUpViewController: ViewController {
         popUpView.clipsToBounds = true
         popUpView.layer.cornerRadius = 15
         
-        
-        
     }
     
     @IBAction func confirmButtonClicked(_ sender: UIButton) {
