@@ -30,6 +30,7 @@ class GiftViewController: ViewController {
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +48,7 @@ class GiftViewController: ViewController {
         hideFindButton()
         
     }
+    
     
     func changeViewControllers() {
         guard  let mainVC =  self.storyboard?.instantiateViewController(identifier: "mainVC"),
