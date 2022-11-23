@@ -11,7 +11,10 @@ class GiftMovePopupVC: UIViewController {
     
     @IBOutlet weak var popupView: UIView!
     
-    var vcRef: UIViewController?
+//    var vcRef: UIViewController?
+    
+    var PopupDelegate: PopupDelegate?
+    
     
     override func viewDidLoad() {
     
@@ -27,32 +30,19 @@ class GiftMovePopupVC: UIViewController {
     
     @IBAction func moveToButtonClicked(_ sender: UIButton) {
         
-
-        
-//        guard let pvc = storyboard?.instantiateViewController(withIdentifier: "DetailView") as? GiftDetailViewController else { return }
-//
-//        print(pvc)
-//
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "shoppingView") as? GiftShoppingBasketVC else { return }
-        
-        self.dismiss(animated: false) {
-            self.vcRef?.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-        
-        
-//        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailView") as? GiftDetailViewController else { return }
-////        detailVC.isgoShopping = true
-//
-//
-//        guard let pvc = self.presentingViewController else { return }
+        //MARK: - 직접 VC를 가져올때
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: "shoppingView") as? GiftShoppingBasketVC else { return }
 //        self.dismiss(animated: false) {
-//            let shoppingVC = self.storyboard?.instantiateViewController(withIdentifier: "shoppingView") as! GiftShoppingBasketVC
-//            let navController = UINavigationController(rootViewController: shoppingVC)
-//            navController.modalTransitionStyle = .crossDissolve
-//                navController.modalPresentationStyle = .fullScreen
-//            shoppingVC.present(navController, animated:true, completion: nil)
+//            self.vcRef?.navigationController?.pushViewController(vc, animated: true)
 //        }
+        
+        //MARK: - PopupDelegate Protocol을 사용할때
+        self.dismiss(animated: false)
+        PopupDelegate?.goShoppingButtonClicked()
+        
+        
+        
+
         
     }
     

@@ -23,5 +23,18 @@ class HomeAlarmTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    }
+}
+//    @IBAction func couponAction(_ sender: UIButton) {
+//
+//        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "HomeStampViewController") else { return }
+//          self.present(nextVC, animated: true)
+//    }
+//
+//    }
+//
+//    //@IBAction func stampAction(_ sender: Any) {
+//
+//    //}
+//HomeStampViewController.modalPresentationStyle = .fullScreen
+
 

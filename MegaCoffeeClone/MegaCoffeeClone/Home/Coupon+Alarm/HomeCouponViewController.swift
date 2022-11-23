@@ -13,6 +13,8 @@ enum HomeCouponSelectedCategory {
     case history
 }
 
+var didLayout = false
+
 class HomeCouponViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var HomeCouponImage: Array<String> = ["HomeCoupon1","HomeCoupon2"]
@@ -42,7 +44,7 @@ class HomeCouponViewController: UIViewController, UITableViewDelegate,UITableVie
 //        self.HomeCouponTableview.delegate = self
 
         let nib = UINib(nibName: "HomeCouponTableViewCell", bundle: nil)
-        HomeCouponTableview.register(nib, forCellReuseIdentifier: "HomeCouponTableViewCell")
+        HomeCouponTableview?.register(nib, forCellReuseIdentifier: "HomeCouponTableViewCell")
      //   HomeCouponTableview.rowHeight = UITableView.automaticDimension
         
         
@@ -54,15 +56,15 @@ class HomeCouponViewController: UIViewController, UITableViewDelegate,UITableVie
 //        listButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
     }
     
-    @IBAction func tapButton(_ sender: Any) {
-        guard let button = sender as? UIButton else { return }
-        
-        selectedButtonIndex = button.tag
-        
-        
-        HomeCouponTableview.reloadData()
-        
-    }
+//    @IBAction func tapButton(_ sender: Any) {
+//        guard let button = sender as? UIButton else { return }
+//        
+//        selectedButtonIndex = button.tag
+//
+//
+//        HomeCouponTableview?.reloadData()
+//
+//    }
     
     
 
