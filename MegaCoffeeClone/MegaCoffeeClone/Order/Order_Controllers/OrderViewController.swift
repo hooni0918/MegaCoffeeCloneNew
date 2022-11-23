@@ -94,8 +94,6 @@ class OrderViewController: UIViewController {
             self.orderTableView.reloadData()
         }
     }
-    
-    
 }
 
 extension OrderViewController: UITableViewDataSource {
