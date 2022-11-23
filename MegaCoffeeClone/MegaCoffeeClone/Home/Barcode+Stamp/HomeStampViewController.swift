@@ -13,7 +13,7 @@ class HomeStampViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        HomeStamp.layer.cornerRadius = 20
+        HomeStamp?.layer.cornerRadius = 20
     }
     
     
