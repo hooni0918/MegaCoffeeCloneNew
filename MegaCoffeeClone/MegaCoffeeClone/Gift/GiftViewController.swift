@@ -5,11 +5,13 @@
 //  Created by 원준연 on 2022/10/12.
 //https://ios-development.tistory.com/945 (Section > Group > Item)
 
+
 import UIKit
 
 class GiftViewController: ViewController {
     
     @IBOutlet weak var contentsView: UIView!
+    
     
     
     
@@ -41,9 +43,8 @@ class GiftViewController: ViewController {
         )
         self.segmentedControl.selectedSegmentIndex = 0
         
-                changeViewControllers()
+        changeViewControllers()
         hideFindButton()
-        
         
     }
     
@@ -56,8 +57,11 @@ class GiftViewController: ViewController {
         self.addChild(mainVC)
         self.addChild(categoryVC)
         self.addChild(giftboxVC)
-        
+
         self.contentsView.addSubview(mainVC.view)
+//        mainVC.didMove(toParent: self)
+        
+       
         
         self.mainView = mainVC.view
         self.categoryView = categoryVC.view
@@ -74,8 +78,19 @@ class GiftViewController: ViewController {
             giftboxView.removeFromSuperview()
             hideFindButton()
 
+            
         } else if sender.selectedSegmentIndex == 1 {
             self.contentsView.addSubview(categoryView)
+            
+            categoryView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                           categoryView.topAnchor.constraint(equalTo: contentsView.topAnchor),
+                           categoryView.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor),
+                           categoryView.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
+                           categoryView.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor)
+                       ])
+            
             mainView.removeFromSuperview()
             giftboxView.removeFromSuperview()
             findButton.isEnabled = true
@@ -90,17 +105,6 @@ class GiftViewController: ViewController {
         }
     }
     
-           
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     func hideFindButton() {
         findButton.isEnabled = false
         findButton.tintColor = UIColor.clear
@@ -111,6 +115,11 @@ class GiftViewController: ViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "PopUPView") as? GiftPopUpViewController else { return }
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: false)
+    }
+    
+    @IBAction func findButtonClicked(_ sender: UIBarButtonItem) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ProductSearch") as? GiftProductSearchVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
