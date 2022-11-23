@@ -459,27 +459,23 @@ extension MoreViewController: UITableViewDelegate {
             
             
             else if MoreMainModel.sectionList2[indexPath.row] == "주문 내역" {
-                print("주문 내역")
+                let vc = MoreOrderHistroyVC()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             else if MoreMainModel.sectionList2[indexPath.row] == "선물하기" {
-                print("선물하기")
-                
-                // 팝업창 구현 후 선물하기 탭으로 이동
-                
                 self.tabBarController?.selectedIndex = 2
             }
             
             else if MoreMainModel.sectionList2[indexPath.row] == "메가선불카드" {
-                print("메가선불카드")
-                
-                // 팝업창 구현 후 선물하기 탭으로 이동
-                
-                self.tabBarController?.selectedIndex = 2
+                let vc = MorePrepaidCardVC()
+                //present
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             else if MoreMainModel.sectionList2[indexPath.row] == "간편카드 관리" {
-                print("간편카드 관리")
+                let vc = MoreSimpleCardVC()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             else if MoreMainModel.sectionList2[indexPath.row] == "상품권 대량 구매 신청" {
@@ -490,8 +486,12 @@ extension MoreViewController: UITableViewDelegate {
         case 2:
             if MoreMainModel.sectionList3[indexPath.row] == "이벤트" {
                 print("이벤트")
+                let vc = MoreEventAndNoticeVC()
+                self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 print("공지사항")
+                let vc = MoreEventAndNoticeVC()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             

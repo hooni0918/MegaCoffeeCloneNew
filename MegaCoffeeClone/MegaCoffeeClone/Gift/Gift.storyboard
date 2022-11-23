@@ -36,13 +36,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfQ-Qh-n6S">
-                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" id="3cN-yj-i55">
-                                        <rect key="frame" x="0.0" y="10" width="414" height="655"/>
-=======
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-oN-1i4" customClass="UnderlineSegmentedControl" customModule="MegaCoffeeClone" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="108" width="414" height="45"/>
                                 <rect key="contentStretch" x="1" y="1" width="0.5" height="1"/>
@@ -63,61 +56,23 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" id="3cN-yj-i55">
                                         <rect key="frame" x="0.0" y="8" width="414" height="653"/>
->>>>>>> develop
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     </containerView>
-<<<<<<< HEAD
-                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbf-Fs-yds">
-                                        <rect key="frame" x="0.0" y="10" width="414" height="655"/>
-=======
                                     <containerView opaque="NO" contentMode="scaleToFill" id="rbf-Fs-yds">
                                         <rect key="frame" x="0.0" y="8" width="414" height="653"/>
->>>>>>> develop
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     </containerView>
-<<<<<<< HEAD
-                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-xU-exh">
-                                        <rect key="frame" x="0.0" y="10" width="414" height="655"/>
-=======
                                     <containerView opaque="NO" contentMode="scaleToFill" id="Lac-xU-exh">
                                         <rect key="frame" x="0.0" y="8" width="414" height="653"/>
->>>>>>> develop
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     </containerView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-<<<<<<< HEAD
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-oN-1i4" customClass="UnderlineSegmentedControl" customModule="MegaCoffeeClone" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="108" width="414" height="41"/>
-                                <rect key="contentStretch" x="1" y="1" width="0.5" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="l85-tU-VWO"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="메인"/>
-                                    <segment title="카테고리"/>
-                                    <segment title="선물함"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentControlClicked:" destination="Y6W-OH-hqX" eventType="valueChanged" id="G7z-7I-kaz"/>
-                                </connections>
-                            </segmentedControl>
-=======
->>>>>>> develop
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-<<<<<<< HEAD
-                            <constraint firstItem="vqV-oN-1i4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0FH-wo-Rca"/>
-                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6H2-K8-6GP"/>
-                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="CWM-Cf-OyS"/>
-                            <constraint firstItem="vqV-oN-1i4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="DYO-x2-WP8"/>
-                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="top" secondItem="vqV-oN-1i4" secondAttribute="bottom" id="xd0-5I-0ip"/>
-                            <constraint firstItem="vqV-oN-1i4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="yhx-Jp-BYx"/>
-                            <constraint firstItem="LfQ-Qh-n6S" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="yn1-CM-GwU"/>
-=======
                             <constraint firstItem="vqV-oN-1i4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="59Z-hG-Oip"/>
                             <constraint firstItem="vqV-oN-1i4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5mb-FK-rOl"/>
                             <constraint firstItem="LfQ-Qh-n6S" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="DF4-M8-1JB"/>
@@ -125,7 +80,6 @@
                             <constraint firstItem="vqV-oN-1i4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="kul-Wj-V7e"/>
                             <constraint firstItem="LfQ-Qh-n6S" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="l4k-17-2Fn"/>
                             <constraint firstItem="LfQ-Qh-n6S" firstAttribute="top" secondItem="vqV-oN-1i4" secondAttribute="bottom" id="rM0-cE-0iT"/>
->>>>>>> develop
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="선물하기" image="3.circle.fill" catalog="system" id="E9B-I5-YOi"/>
@@ -901,19 +855,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-<<<<<<< HEAD
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="46N-W7-ldY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="8FH-T1-bqP"/>
-=======
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="46N-W7-ldY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Of1-tq-oMl"/>
->>>>>>> develop
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n91-XX-rI4">
                                     <size key="itemSize" width="141" height="92"/>
@@ -923,17 +869,17 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="uuY-LX-svf" customClass="GiftCategoryCollectionViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-16" width="141" height="92"/>
+                                        <rect key="frame" x="0.0" y="-6" width="141" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9xv-t7-gF9">
                                             <rect key="frame" x="0.0" y="0.0" width="141" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8Q-KK-uBb">
-                                                    <rect key="frame" x="15" y="30" width="103.5" height="40.5"/>
+                                                    <rect key="frame" x="8" y="43" width="120" height="53"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET MENU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EC-Po-6n1">
-                                                            <rect key="frame" x="10" y="10" width="83.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="53"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -941,18 +887,18 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="7EC-Po-6n1" secondAttribute="trailing" constant="10" id="IIH-w2-mt2"/>
-                                                        <constraint firstAttribute="bottom" secondItem="7EC-Po-6n1" secondAttribute="bottom" constant="10" id="RGI-bs-v4h"/>
-                                                        <constraint firstItem="7EC-Po-6n1" firstAttribute="leading" secondItem="t8Q-KK-uBb" secondAttribute="leading" constant="10" id="bYc-Rz-wf6"/>
-                                                        <constraint firstItem="7EC-Po-6n1" firstAttribute="top" secondItem="t8Q-KK-uBb" secondAttribute="top" constant="10" id="po0-Nb-AC0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7EC-Po-6n1" secondAttribute="trailing" constant="10" id="2pq-v3-Pux"/>
+                                                        <constraint firstItem="7EC-Po-6n1" firstAttribute="top" secondItem="t8Q-KK-uBb" secondAttribute="top" constant="10" id="idX-Y1-QUi"/>
+                                                        <constraint firstItem="7EC-Po-6n1" firstAttribute="leading" secondItem="t8Q-KK-uBb" secondAttribute="leading" constant="10" id="jd5-eG-5E8"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7EC-Po-6n1" secondAttribute="bottom" constant="10" id="vq2-Gp-qpf"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="t8Q-KK-uBb" firstAttribute="leading" secondItem="9xv-t7-gF9" secondAttribute="leading" constant="15" id="HVX-mB-eKW"/>
-                                                <constraint firstAttribute="bottom" secondItem="t8Q-KK-uBb" secondAttribute="bottom" constant="21.5" id="MlC-jA-Ihn"/>
-                                                <constraint firstAttribute="trailing" secondItem="t8Q-KK-uBb" secondAttribute="trailing" constant="22.5" id="Z6t-5x-S72"/>
-                                                <constraint firstItem="t8Q-KK-uBb" firstAttribute="top" secondItem="9xv-t7-gF9" secondAttribute="top" constant="30" id="hyt-8v-Wxh"/>
+                                                <constraint firstAttribute="trailing" secondItem="t8Q-KK-uBb" secondAttribute="trailing" id="49S-8Q-gVz"/>
+                                                <constraint firstItem="t8Q-KK-uBb" firstAttribute="top" secondItem="9xv-t7-gF9" secondAttribute="top" constant="30" id="7fw-hs-loJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="t8Q-KK-uBb" secondAttribute="bottom" constant="30" id="Kif-y3-nQP"/>
+                                                <constraint firstItem="t8Q-KK-uBb" firstAttribute="leading" secondItem="9xv-t7-gF9" secondAttribute="leading" constant="15" id="wtV-fd-EEX"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="141" height="92"/>
@@ -968,11 +914,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KBR-kf-MTw">
-<<<<<<< HEAD
-                                <rect key="frame" x="0.0" y="60" width="414" height="465"/>
-=======
                                 <rect key="frame" x="0.0" y="80" width="414" height="782"/>
->>>>>>> develop
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="customCell" id="A7X-JQ-CrO" customClass="GiftCategoryTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
@@ -1025,15 +967,6 @@
                         <viewLayoutGuide key="safeArea" id="g0b-lf-wfm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-<<<<<<< HEAD
-                            <constraint firstItem="KBR-kf-MTw" firstAttribute="leading" secondItem="g0b-lf-wfm" secondAttribute="leading" id="2sK-il-QIC"/>
-                            <constraint firstItem="KBR-kf-MTw" firstAttribute="top" secondItem="46N-W7-ldY" secondAttribute="bottom" id="Gfm-Gu-xSe"/>
-                            <constraint firstItem="46N-W7-ldY" firstAttribute="top" secondItem="ZZX-3c-4Kc" secondAttribute="top" id="JFm-4F-Ny1"/>
-                            <constraint firstItem="g0b-lf-wfm" firstAttribute="trailing" secondItem="46N-W7-ldY" secondAttribute="trailing" id="MS4-BX-qpK"/>
-                            <constraint firstItem="g0b-lf-wfm" firstAttribute="bottom" secondItem="KBR-kf-MTw" secondAttribute="bottom" constant="130" id="ScV-Xc-c1A"/>
-                            <constraint firstItem="46N-W7-ldY" firstAttribute="leading" secondItem="g0b-lf-wfm" secondAttribute="leading" id="ghO-dC-jOv"/>
-                            <constraint firstItem="KBR-kf-MTw" firstAttribute="trailing" secondItem="g0b-lf-wfm" secondAttribute="trailing" id="pm6-G5-4ly"/>
-=======
                             <constraint firstItem="46N-W7-ldY" firstAttribute="top" secondItem="ZZX-3c-4Kc" secondAttribute="top" id="AdX-be-C6O"/>
                             <constraint firstItem="KBR-kf-MTw" firstAttribute="top" secondItem="46N-W7-ldY" secondAttribute="bottom" id="OgI-Mj-2pE"/>
                             <constraint firstItem="46N-W7-ldY" firstAttribute="leading" secondItem="g0b-lf-wfm" secondAttribute="leading" id="RnD-I9-ahH"/>
@@ -1041,7 +974,6 @@
                             <constraint firstItem="KBR-kf-MTw" firstAttribute="leading" secondItem="g0b-lf-wfm" secondAttribute="leading" id="f2M-aG-7ae"/>
                             <constraint firstItem="KBR-kf-MTw" firstAttribute="trailing" secondItem="g0b-lf-wfm" secondAttribute="trailing" id="ou7-xR-FxD"/>
                             <constraint firstItem="KBR-kf-MTw" firstAttribute="bottom" secondItem="g0b-lf-wfm" secondAttribute="bottom" id="tDW-vV-Tcu"/>
->>>>>>> develop
                         </constraints>
                     </view>
                     <connections>
