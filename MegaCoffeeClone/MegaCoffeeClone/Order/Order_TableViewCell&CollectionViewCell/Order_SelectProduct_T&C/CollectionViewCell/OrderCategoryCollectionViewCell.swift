@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryCollectionViewCell: UICollectionViewCell {
+class OrderCategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var categoryNameLabel: UILabel!
     

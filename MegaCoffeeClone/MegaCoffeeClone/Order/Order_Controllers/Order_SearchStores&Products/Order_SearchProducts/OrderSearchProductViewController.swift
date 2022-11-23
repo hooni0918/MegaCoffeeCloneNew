@@ -36,45 +36,13 @@ class OrderSearchProductViewController: UIViewController {
     
     func configSearchProducts() {
 
-        var type = ""
         // 메뉴 카테고리 상관없이 섞기
-        for productType in products {
-            
-            switch productType.type {
-            case .set:
-                type = "세트메뉴"
-            case .new:
-                type = "신메뉴"
-            case .hot:
-                type = "커피(HOT)"
-            case .ice:
-                type = "커피(ICE)"
-            case .smoothieAndFrappe:
-                type = "스무디&프라페"
-            case .aidAndJuice:
-                type = "에이드&주스"
-            case .bottle:
-                type = "병음료"
-            case .tea:
-                type = "Tea"
-            case .coldBrew:
-                type = "콜드브루"
-            case .decaffeination:
-                type = "디카페인"
-            case .beverage:
-                type = "BEVERAGE"
-            case .dessert:
-                type = "디저트"
-            case .md:
-                type = "MD상품"
-            }
-            
-            for product in productType.products {
-                let productData = SearchProductModel(type: type, products: SearchProductModel.ProductModel(name: product.name, price: product.price, soldOut: product.soldOut))
-                searchProducts.append(productData)
+        for productType in menuList {
+            for menu in productType.menus {
+                let menuData = SearchProductModel(type: productType.type.rawValue, products: MenuModel2(Image: menu.Image, name: menu.name, description: menu.description, option: menu.option, nutrition: menu.nutrition, allergys: menu.allergys, price: menu.price, soldOut: menu.soldOut))
+                searchProducts.append(menuData)
             }
         }
-        
         searchProducts.shuffle()
     }
     
