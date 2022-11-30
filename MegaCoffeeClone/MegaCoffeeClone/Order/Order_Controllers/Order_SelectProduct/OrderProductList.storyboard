@@ -948,6 +948,11 @@
                                 <action selector="tapBackButton:" destination="i93-zB-pVY" id="dhI-Ty-IfI"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Qtc-1Q-lED">
+                            <connections>
+                                <action selector="tapShoppingBasketButton:" destination="i93-zB-pVY" id="XtC-XX-mTh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="414" height="2000"/>
