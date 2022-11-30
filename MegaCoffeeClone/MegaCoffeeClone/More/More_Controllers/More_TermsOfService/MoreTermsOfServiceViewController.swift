@@ -151,6 +151,8 @@ extension MoreTermsOfServiceViewController {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.title = "이용약관"
         
+        self.navigationItem.largeTitleDisplayMode = .never
+        
     }
     
     // TableView

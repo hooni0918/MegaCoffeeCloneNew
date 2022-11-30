@@ -146,25 +146,25 @@ class MoreCardNameTVC: UITableViewCell {
         
     }
     
-// MARK: [Class End]
+        
+
+
     
+    
+    
+    // Class End
 }
-
-// MARK: [Class End]
-
-
-
-
-
 
 // MARK: [TextField - Delegate]
 extension MoreCardNameTVC: UITextFieldDelegate {
     
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        // 글자수 제한, counting
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-        
+
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         countLabel.text = "\(range.location)/20"
         
@@ -172,6 +172,5 @@ extension MoreCardNameTVC: UITextFieldDelegate {
         
     }
     
+    
 }
-
-

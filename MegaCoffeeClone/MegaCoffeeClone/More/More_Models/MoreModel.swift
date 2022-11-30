@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  MoreModel.swift
 //  MegaCoffeeClone
 //
 //  Created by 김성호 on 2022/09/29.
@@ -8,6 +8,7 @@
 import Foundation
 
 
+// MARK: [ Main Controller ]
 struct MoreMainModel {
     // Section Header
     static var moreSectionHeader: [String] = ["멤버쉽","주문","새소식","약관 및 정책"]
@@ -24,3 +25,22 @@ struct MoreMainModel {
     // 약관 및 정책
     static var sectionList4 = ["이용약관"]
 }
+
+
+// MARK: [ Prepaid Card List Model ]
+struct MorePrepaidCardListModel {
+    var opened = Bool()
+    var title = String()
+    var sectionData = [String]()
+}
+
+
+
+// MARK: [ SimpleCard Management Controller ]
+struct CardModel {
+    
+}
+
+
+
+

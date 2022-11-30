@@ -16,7 +16,7 @@ class MoreNoticeTVC: UITableViewCell {
         
         title.textColor = .label
         title.numberOfLines = 0
-        title.font = .boldSystemFont(ofSize: 18)
+        title.font = .systemFont(ofSize: 18, weight: .bold)
         
         return title
     }()
@@ -25,30 +25,21 @@ class MoreNoticeTVC: UITableViewCell {
        let sub = UILabel()
         
         sub.textColor = .label
-        sub.font = .systemFont(ofSize: 15)
+        sub.font = .systemFont(ofSize: 14, weight: .light)
         
         return sub
     }()
     
-    lazy var stackView: UIStackView = {
-       let stackView = UIStackView()
-        
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        
-        return stackView
-        
-    }()
+  
     
-    
+    // MARK: [Override]
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         
-        
-        self.backgroundColor = .systemGray3
         
         addSubView()
-        layoutStackView()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -57,28 +48,47 @@ class MoreNoticeTVC: UITableViewCell {
       }
     
     
+    
+    
+    
     func addSubView() {
-        self.contentView.addSubview(self.stackView)
-        
-        self.stackView.addArrangedSubview(self.titleLabel)
-        self.stackView.addArrangedSubview(self.subTitleLabel)
+        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.subTitleLabel)
+    }
+    
+    func layout() {
+        layoutTitleLabel()
+        layoutSubTitleLabel()
     }
     
  
-    func layoutStackView() {
-        self.stackView.translatesAutoresizingMaskIntoConstraints = false
+    func layoutTitleLabel() {
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         
         NSLayoutConstraint.activate([
-            self.stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            
             
         ])
     }
     
-    
+    func layoutSubTitleLabel() {
+        self.subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        NSLayoutConstraint.activate([
+            
+            self.subTitleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
+            self.subTitleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            
+            self.subTitleLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10)
+            
+            //self.subTitleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -30)
+            
+        ])
+    }
 
 }
-

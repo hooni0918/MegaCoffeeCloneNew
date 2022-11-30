@@ -445,9 +445,11 @@ extension MoreViewController: UITableViewDelegate {
         case 0:
             if MoreMainModel.sectionList1[indexPath.row] == "스탬프" {
                 print("스탬프")
+                //vc.hidesBottomBarWhenPushed = true
                 
             } else {
                 print("쿠폰")
+                //vc.hidesBottomBarWhenPushed = true
             }
             
             
@@ -460,6 +462,7 @@ extension MoreViewController: UITableViewDelegate {
             
             else if MoreMainModel.sectionList2[indexPath.row] == "주문 내역" {
                 let vc = MoreOrderHistroyVC()
+                vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -475,6 +478,7 @@ extension MoreViewController: UITableViewDelegate {
             
             else if MoreMainModel.sectionList2[indexPath.row] == "간편카드 관리" {
                 let vc = MoreSimpleCardVC()
+                vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -487,10 +491,12 @@ extension MoreViewController: UITableViewDelegate {
             if MoreMainModel.sectionList3[indexPath.row] == "이벤트" {
                 print("이벤트")
                 let vc = MoreEventAndNoticeVC()
+                vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 print("공지사항")
                 let vc = MoreEventAndNoticeVC()
+                vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
