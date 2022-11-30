@@ -167,7 +167,13 @@ extension MoreAccountSettingViewController {
         
         self.navigationItem.title = "계정 설정"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.sizeToFit()
+       
+        let titleAttributes: [NSAttributedString.Key: Any] = [
+        
+            .font: UIFont.systemFont(ofSize: 24, weight: .bold)
+        ]
+        
+        self.navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
         
     }
 

@@ -27,9 +27,9 @@ class MoreEventAndNoticeVC: UIViewController {
         
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.register(MoreEventTVC.self, forCellReuseIdentifier: MoreEventTVC.identifier)
+            tableView.register(MoreEventAndRankingEventTVC.self, forCellReuseIdentifier: MoreEventAndRankingEventTVC.identifier)
             tableView.register(MoreNoticeTVC.self, forCellReuseIdentifier: MoreNoticeTVC.identifier)
-            tableView.register(MoreRankingEventTVC.self, forCellReuseIdentifier: MoreRankingEventTVC.identifier)
+            tableView.register(MoreEventAndRankingEventTVC.self, forCellReuseIdentifier: MoreEventAndRankingEventTVC.identifier)
         
         
         return tableView
@@ -46,22 +46,11 @@ class MoreEventAndNoticeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addHeaderViewToFirstTableView()
-        
+        tableView.register(MoreCustomHeaderView.self, forHeaderFooterViewReuseIdentifier: "CustomHeaderView")
         layout()
     }
     
-    
-    
-    
-    
-    
-    // MARK: [+ Custom HeaderView]
-    private func addHeaderViewToFirstTableView() {
-    
-        tableView.register(MoreCustomHeaderView.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
-    }
-    
+ 
     
     
     
@@ -73,9 +62,8 @@ class MoreEventAndNoticeVC: UIViewController {
     // MARK: [Action]
     @objc func tapListButton(_ sender: UITableViewCell) {
         
-        guard let btn = sender as? UITableViewCell else { return }
         
-        switch btn.tag {
+        switch sender.tag {
             
         case 1: newNotice = .event
         case 2: newNotice = .notice
@@ -123,7 +111,7 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
     
     // 백그라운드
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.yellow
+        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemBackground
     }
     
     
@@ -134,7 +122,7 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
     // Custom Header View
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
        
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader") as! MoreCustomHeaderView
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeaderView") as! MoreCustomHeaderView
         
         view.eventButton.setTitle("이벤트", for: .normal)
         view.noticeButton.setTitle("공지사항", for: .normal)
@@ -163,7 +151,7 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
             
         case .event: return 350
         case .notice: return 90
-        case .rankingEvent: return 300
+        case .rankingEvent: return 350
             
         }
         
@@ -174,9 +162,9 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch newNotice {
             
-        case .event: return 3
-        case .notice: return 1
-        case .rankingEvent: return 1
+        case .event: return eventModel.count
+        case .notice: return noticeModel.count
+        case .rankingEvent: return rankingEventModel.count
             
         }
   
@@ -192,10 +180,12 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
         switch newNotice {
         case .event:
 
-            guard let cell1 = tableView.dequeueReusableCell(withIdentifier: MoreEventTVC.identifier, for: indexPath) as? MoreEventTVC else { return UITableViewCell() }
+            guard let cell1 = tableView.dequeueReusableCell(withIdentifier: MoreEventAndRankingEventTVC.identifier, for: indexPath) as? MoreEventAndRankingEventTVC else { return UITableViewCell() }
             
-            cell1.titleLabel.text = "[공지] MEGA MGC STICK 출시"
-            cell1.subTitleLabel.text = "2022. 11. 17. - 2023. 12. 31."
+            
+            cell1.imgView = eventModel[indexPath.row].titleImgView
+            cell1.titleLabel.text = eventModel[indexPath.row].titleLabel
+            cell1.subTitleLabel.text = eventModel[indexPath.row].dateLabel
             
             
             return cell1
@@ -203,19 +193,26 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
             
         case .notice:
 
+            
             let cell2 = tableView.dequeueReusableCell(withIdentifier: MoreNoticeTVC.identifier, for: indexPath) as! MoreNoticeTVC
             
-            cell2.titleLabel.text = "[신메뉴 출시] 겨울이 오는 달콤한 상상"
-            cell2.subTitleLabel.text = "2022.11.07"
+            cell2.titleLabel.text = noticeModel[indexPath.row].titleLabel
+            cell2.subTitleLabel.text = noticeModel[indexPath.row].dateLabel
+            
             
             return cell2
            
             
         case .rankingEvent:
             
-            guard let cell3 = tableView.dequeueReusableCell(withIdentifier: MoreRankingEventTVC.identifier) else { return UITableViewCell() }
+            guard let cell3 = tableView.dequeueReusableCell(withIdentifier: MoreEventAndRankingEventTVC.identifier, for: indexPath) as? MoreEventAndRankingEventTVC else { return UITableViewCell() }
             
-            //
+            
+            cell3.imgView = rankingEventModel[indexPath.row].titleImgView
+            cell3.titleLabel.text = rankingEventModel[indexPath.row].titleLabel
+            cell3.subTitleLabel.text = rankingEventModel[indexPath.row].dateLabel
+            
+            
             
             return cell3
             
@@ -233,6 +230,40 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
 extension MoreEventAndNoticeVC: UITableViewDelegate {
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch newNotice {
+            
+        case .event:
+            let vc = MoreEventAndNoticeDetailVC()
+            
+            vc.titleLabel.text = eventModel[indexPath.row].titleLabel
+            vc.dateLabel.text = eventModel[indexPath.row].dateLabel
+            
+            self.navigationController?.pushViewController(vc, animated: false)
+            
+            
+            
+        case .notice:
+            let vc = MoreEventAndNoticeDetailVC()
+            
+            vc.titleLabel.text = noticeModel[indexPath.row].titleLabel
+            vc.dateLabel.text = noticeModel[indexPath.row].dateLabel
+            
+            self.navigationController?.pushViewController(vc, animated: false)
+            
+            
+            
+        case .rankingEvent:
+            let vc = MoreEventAndNoticeDetailVC()
+            
+            vc.titleLabel.text = rankingEventModel[indexPath.row].titleLabel
+            vc.dateLabel.text = rankingEventModel[indexPath.row].dateLabel
+            
+            self.navigationController?.pushViewController(vc, animated: false)
+            
+        }
+        
+    }
     
     
 }
@@ -250,7 +281,6 @@ extension MoreEventAndNoticeVC {
     
     private func layout() {
         self.view.backgroundColor = .systemBackground
-        self.tabBarController?.tabBar.isHidden = true
         
         naviCustom()
         layoutTableView()
@@ -269,7 +299,13 @@ extension MoreEventAndNoticeVC {
         
         self.navigationItem.title = "새소식"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.sizeToFit()
+        
+        let titleAttributes: [NSAttributedString.Key: Any] = [
+        
+            .font: UIFont.systemFont(ofSize: 24, weight: .bold)
+        ]
+        
+        self.navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
     }
     
     

@@ -11,9 +11,7 @@ import UIKit
 
 class MoreCardNumberTVC: UITableViewCell {
     static var identifier: String { return String(describing: self) }
-    
-    var dotTextField2 = ""
-    var dotTextField3 = ""
+
     
     
     // MARK: [변수 선언]
@@ -38,6 +36,7 @@ class MoreCardNumberTVC: UITableViewCell {
     lazy var textField1: UITextField = {
         let text1 = UITextField()
         
+        text1.tag = 1
         text1.layer.borderWidth = 1
         text1.layer.borderColor = UIColor.gray.cgColor
         text1.layer.cornerRadius = 6
@@ -46,11 +45,14 @@ class MoreCardNumberTVC: UITableViewCell {
         
         text1.keyboardType = .numberPad
         
+        text1.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
+        
         return text1
     }()
     lazy var textField2: UITextField = {
         let text2 = UITextField()
         
+        text2.tag = 2
         text2.layer.borderWidth = 1
         text2.layer.borderColor = UIColor.gray.cgColor
         text2.layer.cornerRadius = 6
@@ -59,11 +61,14 @@ class MoreCardNumberTVC: UITableViewCell {
         
         text2.keyboardType = .numberPad
         
+        text2.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
+        
         return text2
     }()
     lazy var textField3: UITextField = {
         let text3 = UITextField()
         
+        text3.tag = 3
         text3.layer.borderWidth = 1
         text3.layer.borderColor = UIColor.gray.cgColor
         text3.layer.cornerRadius = 6
@@ -72,11 +77,14 @@ class MoreCardNumberTVC: UITableViewCell {
         
         text3.keyboardType = .numberPad
         
+        text3.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
+        
         return text3
     }()
     lazy var textField4: UITextField = {
         let text4 = UITextField()
         
+        text4.tag = 4
         text4.layer.borderWidth = 1
         text4.layer.borderColor = UIColor.gray.cgColor
         text4.layer.cornerRadius = 6
@@ -84,6 +92,8 @@ class MoreCardNumberTVC: UITableViewCell {
         text4.textAlignment = .center
         
         text4.keyboardType = .numberPad
+        
+        text4.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
         return text4
     }()
@@ -101,6 +111,9 @@ class MoreCardNumberTVC: UITableViewCell {
         self.textField3.delegate = self
         self.textField4.delegate = self
         
+        self.textField2.isSecureTextEntry = true
+        self.textField3.isSecureTextEntry = true
+        
         addSubView()
         layout()
     }
@@ -110,6 +123,35 @@ class MoreCardNumberTVC: UITableViewCell {
         
         
       }
+    
+    
+    // MARK: [Action]
+    @objc func textFieldNextFocus(_ sender: UITextField) {
+       
+        switch sender.tag {
+        case 1:
+            if textField1.text?.count == 4 {
+                textField2.becomeFirstResponder()
+            }
+        case 2:
+            if textField2.text?.count == 4 {
+                textField3.becomeFirstResponder()
+            }
+        case 3:
+            if textField3.text?.count == 4 {
+                textField4.becomeFirstResponder()
+            }
+        case 4:
+            if textField4.text?.count == 4 {
+                textField4.resignFirstResponder()
+            }
+        default:
+            break
+        }
+        
+        
+    }
+    
     
     
     
@@ -168,75 +210,25 @@ class MoreCardNumberTVC: UITableViewCell {
     }
     
     
-// MARK: [Class End]
-    
 }
-
-// MARK: [Class End]
 
 
 
 
 // MARK: [TextField - Delegate]
+
+
 extension MoreCardNumberTVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        
-        var hashPassword = String()
-        let newChar = string.first
-        
-        
-        // textField 2
-        if textField == textField2 {
-            
-            let offsetToUpdate = dotTextField2.index(dotTextField2.startIndex, offsetBy: range.location)
-            
-            if string == "" {
-                dotTextField2.remove(at: offsetToUpdate)
-                return true
-                
-            } else { dotTextField2.insert(newChar!, at: offsetToUpdate) }
-            
-            for _ in 0..<dotTextField2.count {  hashPassword += "●" }
-            textField.text = hashPassword
-            return false
-        }
-        
-        
-        
-        // textField 3
-        if textField == textField3 {
-            
-            let offsetToUpdate = dotTextField3.index(dotTextField3.startIndex, offsetBy: range.location)
-            
-            if string == "" {
-                dotTextField3.remove(at: offsetToUpdate)
-                return true
-                
-            } else { dotTextField3.insert(newChar!, at: offsetToUpdate) }
-            
-            for _ in 0..<dotTextField3.count {  hashPassword += "●" }
-            textField.text = hashPassword
-            return false
-        }
-        
-        
-        
         // 글자수 제한, counting
         
-        
         let currentText = textField.text ?? ""
-        
         guard let stringRange = Range(range, in: currentText) else { return false }
-        
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
         return updatedText.count <= 4
-        
-        
-        //return true
-        
     }
     
 }

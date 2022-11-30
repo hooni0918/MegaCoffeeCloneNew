@@ -1,5 +1,5 @@
 //
-//  MoreEventTableViewCell.swift
+//  MoreEventAndRankingEventTVC.swift
 //  MegaCoffeeClone
 //
 //  Created by 김성호 on 2022/11/22.
@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class MoreEventTVC: UITableViewCell {
+class MoreEventAndRankingEventTVC: UITableViewCell {
     static var identifier: String { return String(describing: self) }
     
     lazy var imgView: UIImageView = {
        let imgView = UIImageView()
         
-        imgView.backgroundColor = .black
+        imgView.backgroundColor = .systemGray5
         imgView.layer.cornerRadius = 6
         
         return imgView
@@ -25,7 +25,7 @@ class MoreEventTVC: UITableViewCell {
        let title = UILabel()
         
         title.textColor = .label
-        title.font = .boldSystemFont(ofSize: 20)
+        title.font = .boldSystemFont(ofSize: 18)
         
         return title
     }()
@@ -55,31 +55,32 @@ class MoreEventTVC: UITableViewCell {
         self.selectionStyle = .none
         
         
+        
         addSubView()
         layout()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("")
-    }
+          fatalError("")
+      }
     
     
-    // MARK: [Add View]
+    
     func addSubView() {
         self.contentView.addSubview(self.imgView)
         self.contentView.addSubview(self.stackView)
         
         self.stackView.addArrangedSubview(self.titleLabel)
         self.stackView.addArrangedSubview(self.subTitleLabel)
+        
     }
     
     
-    
-    // MARK: [Layout - Total]
     func layout() {
         layoutImgView()
         layoutStackView()
     }
+    
     
     
     
@@ -115,11 +116,5 @@ class MoreEventTVC: UITableViewCell {
         
     }
     
-    
-    
-    
-    
-    
 }
-
 
