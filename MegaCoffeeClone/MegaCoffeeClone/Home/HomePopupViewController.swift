@@ -11,28 +11,44 @@ class HomePopupViewController: UIViewController {
     
     @IBOutlet weak var homePopupimage: UIImageView!
     
-    @IBOutlet weak var homePopupMenuName: UILabel!
+    @IBOutlet weak var homePopupMenu: UILabel!
     
-    @IBOutlet weak var homePopupExplanation: UILabel!
+    @IBOutlet weak var homePopupText: UILabel!
+    
+    @IBOutlet weak var homePopupClose: UIView!
+    
+    
+    var imageReceived  = UIImage()
+    var menuReceive : String = ""
+    var menuText : String = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        print(menuReceive)
+        
+        //homePopupimage?.image = UIImage(named: imageReceived)
+        homePopupMenu?.text = menuReceive
+        homePopupText?.text = menuText
     }
-//    func homeMenuConfig() {
-//        if let aaa = aaaData {
-//        titleLabel.text = "'\(storeData.name)'에서\n주문하시겠습니까?"
-//
-//
-//        popupViewHeight.constant = storeData.isOn ? view.frame.height * 0.6 : view.frame.height * 0.7
-//
-//        orderButton.isEnabled = storeData.isOn ? true : false
-//        orderButton.backgroundColor = storeData.isOn ? .done() : .gray
-//    }
-//
-//    }
-
+    
+    @IBAction func homeGoToOrder(_ sender: Any) {
+        
+            let vvc = self.storyboard?.instantiateViewController(withIdentifier: "orderVC")
+            as? OrderViewController
+            self.navigationController?.pushViewController(vvc!, animated: true)
+    }
+    
+    @IBAction func homeGoToGift(_ sender: Any) {
+        let popvc = self.storyboard?.instantiateViewController(withIdentifier: "orderVC")
+          
+        //vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+            popvc?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
+            self.present(popvc!, animated: true, completion: nil)
+    }
+    
+    @IBAction func homeClose(_ sender: Any) {
+        self.dismiss(animated: false)
+    }
    
 }

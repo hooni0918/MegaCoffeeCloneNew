@@ -83,12 +83,10 @@ class OrderStorePopupViewController: UIViewController {
                 if let nvc = pvc.selectedViewController as? UINavigationController {
 
                     if topVC == .select {
-                        if let pvc = nvc.topViewController as? OrderViewController {
-                            self.dismiss(animated: false) {
-                                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "orderListVC") as? OrderProductListViewController else { return }
-                                vc.storeData = self.storeData
-                                pvc.navigationController?.pushViewController(vc, animated: true)
-                            }
+                        self.dismiss(animated: false) {
+                            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "orderListVC") as? OrderProductListViewController else { return }
+                            vc.storeData = self.storeData
+                            nvc.viewControllers.first?.navigationController?.pushViewController(vc, animated: true)
                         }
                     } else if topVC == .search {
 //                        if let pvc = nvc.topViewController as? OrderSearchStoreViewController {

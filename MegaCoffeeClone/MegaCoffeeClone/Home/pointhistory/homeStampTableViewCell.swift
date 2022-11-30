@@ -1,14 +1,22 @@
 //
-//  OrderMenuDetail1TableViewCell.swift
+//  homeStampTableViewCell.swift
 //  MegaCoffeeClone
 //
-//  Created by PKW on 2022/11/28.
+//  Created by 이지훈 on 2022/11/28.
 //
 
 import UIKit
 
-class OrderMenuDetail1TableViewCell: UITableViewCell {
+class homeStampTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var stampPlace: UILabel!
+    
+    @IBOutlet weak var stampWhen: UILabel!
+    
+    @IBOutlet weak var stampNumber: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +27,5 @@ class OrderMenuDetail1TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

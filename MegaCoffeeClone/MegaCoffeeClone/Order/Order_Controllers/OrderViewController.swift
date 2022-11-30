@@ -5,7 +5,7 @@
 //  Created by PKW on 2022/10/04.
 //
 
- 
+
 // 내 지역 근처 매장 정보만 가져오도록 추가 필요
 
 import UIKit
@@ -17,21 +17,21 @@ enum SelectedCategory {
 }
 
 class OrderViewController: UIViewController {
-
+    
     @IBOutlet var orderTableView: UITableView!
     @IBOutlet var orderHeaderView: UIView!
     
     @IBOutlet var listButton: UIButton!
     @IBOutlet var mapButton: UIButton!
     @IBOutlet var likeButton: UIButton!
-
+    
     @IBOutlet var underBarView: UIView!
     @IBOutlet var underBarViewWidth: NSLayoutConstraint!
     
     @IBOutlet var listButtonCenterX: NSLayoutConstraint!
     @IBOutlet var mapButtonCenterX: NSLayoutConstraint!
     @IBOutlet var likeButtonCenterX: NSLayoutConstraint!
-     
+    
     
     var selectedCategory = SelectedCategory.list
     
@@ -42,7 +42,10 @@ class OrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // present된 VC가 이 VC위에 띄워지도록 
+        
+        //UserDefaults.standard.removeObject(forKey: "test123")
+        
+        // present된 VC가 이 VC위에 띄워지도록
         definesPresentationContext = true
         
         orderTableView.bounces = false
@@ -52,7 +55,7 @@ class OrderViewController: UIViewController {
         
         listButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
     }
-       
+    
     
     func setupOrderHeaderView() {
         orderHeaderView.backgroundColor = .brown
@@ -60,7 +63,7 @@ class OrderViewController: UIViewController {
         
         let nibName = UINib(nibName: "OrderStoreInfoTableViewCell", bundle: nil)
         orderTableView.register(nibName, forCellReuseIdentifier: "storeCell")
-
+        
     }
     
     @IBAction func tapCategoryButton(_ sender: Any) {
@@ -130,7 +133,7 @@ extension OrderViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         switch selectedCategory {
         case .list:
             switch indexPath.section {
@@ -212,7 +215,7 @@ extension UIViewController {
     func loadPopupView(storeData: StoreModel? = nil, topVC: VcType = .select, presentationStyle: ViewPresentationStyle = .push) {
         
         if presentationStyle == .present {
-
+            
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "popOrderVC") as? OrderStorePopupViewController else { return }
             vc.modalPresentationStyle = .overCurrentContext
             vc.storeData = storeData
@@ -224,7 +227,7 @@ extension UIViewController {
             vc.modalPresentationStyle = .overFullScreen
             vc.storeData = storeData
             vc.topVC = topVC
-
+            
             self.present(vc, animated: false)
         }
     }
