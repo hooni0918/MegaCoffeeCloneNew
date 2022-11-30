@@ -496,7 +496,9 @@ extension MoreViewController: UITableViewDelegate {
             } else {
                 print("공지사항")
                 let vc = MoreEventAndNoticeVC()
+                
                 vc.hidesBottomBarWhenPushed = true
+                
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
