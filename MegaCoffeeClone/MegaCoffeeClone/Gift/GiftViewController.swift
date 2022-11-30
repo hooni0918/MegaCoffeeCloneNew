@@ -33,6 +33,7 @@ class GiftViewController: ViewController {
     let badgeManager = BadgeManager.shared
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +66,7 @@ class GiftViewController: ViewController {
         badgeManager.showBadge(withCount: badgeManager.badgeNumber, object: shoppingBasket)
       
     }
+    
     
     func changeViewControllers() {
         guard  let mainVC =  self.storyboard?.instantiateViewController(identifier: "mainVC"),

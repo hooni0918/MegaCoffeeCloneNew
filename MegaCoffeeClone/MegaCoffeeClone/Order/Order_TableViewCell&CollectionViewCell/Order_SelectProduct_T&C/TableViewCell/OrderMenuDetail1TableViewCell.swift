@@ -1,18 +1,14 @@
 //
-//  OrderDetail1TableViewCell.swift
+//  OrderMenuDetail1TableViewCell.swift
 //  MegaCoffeeClone
 //
-//  Created by PKW on 2022/11/18.
+//  Created by PKW on 2022/11/28.
 //
 
 import UIKit
 
 class OrderMenuDetail1TableViewCell: UITableViewCell {
-    
-    @IBOutlet var menuImageView: UIImageView!
-    @IBOutlet var menuNameLabel: UILabel!
-    @IBOutlet var menuDescriptionLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
