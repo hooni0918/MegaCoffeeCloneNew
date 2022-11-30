@@ -41,8 +41,8 @@ class OrderMenuDetailViewController: UIViewController {
 //        menuDetailTableView.sectionHeaderHeight = 0
         
         
-        menuDetailTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
-        menuDetailTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
+//        menuDetailTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
+//        menuDetailTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
 //        menuDetailTableView.tableHeaderView = UIView(frame: .zero)
 //        menuDetailTableView.sectionHeaderHeight = 0
 //        menuDetailTableView.tableFooterView?.backgroundColor = .black
@@ -69,13 +69,13 @@ class OrderMenuDetailViewController: UIViewController {
 }
 
 extension OrderMenuDetailViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == 1 {
-//            return CGFloat.leastNormalMagnitude
-//        } else {
-//            return 10
-//        }
-//    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return CGFloat.leastNormalMagnitude
+        } else {
+            return 10
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
