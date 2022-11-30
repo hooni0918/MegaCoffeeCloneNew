@@ -13,6 +13,8 @@ class GiftViewController: ViewController {
     @IBOutlet weak var contentsView: UIView!
     
     
+    @IBOutlet weak var shoppingBasket: UIButton!
+    
     
     
     var mainView: UIView!
@@ -27,7 +29,8 @@ class GiftViewController: ViewController {
     
     @IBOutlet weak var segmentedControl: UnderlineSegmentedControl!
     
-    
+    let coreDataManager = CoreDataManager.shared
+    let badgeManager = BadgeManager.shared
     
     
     override func viewDidLoad() {
@@ -46,6 +49,21 @@ class GiftViewController: ViewController {
         changeViewControllers()
         hideFindButton()
         
+        NSLayoutConstraint.activate([
+            shoppingBasket.widthAnchor.constraint(equalToConstant: 34),
+            shoppingBasket.heightAnchor.constraint(equalToConstant: 44),
+        ])
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        coreDataManager.loadItem()
+        badgeManager.updateBadgeNumber()
+        badgeManager.badgeLabel(withCount: badgeManager.badgeNumber)
+        badgeManager.showBadge(withCount: badgeManager.badgeNumber, object: shoppingBasket)
+      
     }
     
     func changeViewControllers() {
@@ -122,6 +140,10 @@ class GiftViewController: ViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func shoppingBasketClicked(_ sender: UIButton) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "shoppingView") as? GiftShoppingBasketVC else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 

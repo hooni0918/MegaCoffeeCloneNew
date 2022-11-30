@@ -44,7 +44,6 @@ class GiftShoppingBasketTableViewCell: UITableViewCell {
     }
     
     @objc func tappedCancel(_ gesture: UITapGestureRecognizer) {
-        print("clicked")
         cancelDelegate?.cancelClicked(index: row)
     }
     
