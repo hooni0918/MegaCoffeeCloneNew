@@ -21,8 +21,12 @@ enum History {
 class MoreOrderHistroyVC: UIViewController {
     var history = History.week1
     
+    let headerView = MoreOrderCustomHeaderView()
     
-    // MARK: [변수 선언]
+    
+    
+    
+    // MARK: TableView
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         
@@ -33,63 +37,51 @@ class MoreOrderHistroyVC: UIViewController {
         tableView.register(MoreMonth3TVC.self, forCellReuseIdentifier: MoreMonth3TVC.identifier)
         tableView.register(MoreTotalTVC.self, forCellReuseIdentifier: MoreTotalTVC.identifier)
         
+        tableView.rowHeight = 100
+        
         return tableView
     }()
     
     
     
     
-    // MARK: [Override]
+    // MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        layout()
-        addHeaderViewToFirstTableView()
-    }
-    
-    // MARK: [+ Custom HeaderView]
-    private func addHeaderViewToFirstTableView() {
-    
+        
+        
+        
+        
+        
         tableView.register(MoreOrderCustomHeaderView.self, forHeaderFooterViewReuseIdentifier: "OrderCustomHeaderView")
+        
+        
+        layout()
     }
     
+   
     
     
     
-    // MARK: [Action]
+    
+    
     @objc func tapListButton(_ sender: UITableViewCell) {
 
-        guard let btn = sender as? UITableViewCell else { return }
         
-        switch btn.tag {
+        
+        
+        switch sender.tag {
             
-        case 1:
+        case 1: history = .week1
             
-            history = .week1
-            print("1")
+        case 2: history = .month1
             
+        case 3: history = .month3
             
-        case 2:
-           
-            history = .month1
-            print("2")
-            
-            
-        case 3:
-            
-            history = .month3
-            print("3")
-            
-        case 4:
-            
-            history = .total
-            print("4")
-            
-            
-            
-            
-        default:
-            break
+        case 4: history = .total
+
+        default: break
             
         }
         
@@ -99,7 +91,7 @@ class MoreOrderHistroyVC: UIViewController {
         
         
     }
-    
+     
     
     
     
@@ -115,7 +107,7 @@ class MoreOrderHistroyVC: UIViewController {
 
 
 
-// MARK: [TableView - DataSource]
+
 
 extension MoreOrderHistroyVC: UITableViewDataSource {
     
@@ -127,20 +119,24 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
         return 50.0
     }
     
+    
+    /*
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
+     */
     
     // 백그라운드
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.yellow
+        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.white
     }
     
     
     
     
     
-    
+    // 즉, 초기세팅 지점임.
     // MARK: [Custom Header View]
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
        
@@ -150,8 +146,10 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
         hed.month1Button.setTitle("1개월", for: .normal)
         hed.month3Button.setTitle("3개월", for: .normal)
         hed.totalButton.setTitle("전체", for: .normal)
-
         
+      
+        
+       
         
         hed.week1Button.addTarget(self, action: #selector(tapListButton(_:)), for: .touchUpInside)
         
@@ -160,8 +158,6 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
         hed.month3Button.addTarget(self, action: #selector(tapListButton(_:)), for: .touchUpInside)
         
         hed.totalButton.addTarget(self, action: #selector(tapListButton(_:)), for: .touchUpInside)
-        
-
         
         
     
@@ -183,16 +179,23 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
         }
         
     }
-    
     */
     
+    
+    
+    
 
-
+    
+    
+    
+    
+    // MARK: numberOfRowsInSection
+    // 필수 method
     // numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch history {
             
-        case .week1: return 1
+        case .week1: return week1Data.count
         case .month1: return 2
         case .month3: return 3
         case .total: return 4
@@ -201,9 +204,11 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
   
     }
     
-
     
     
+    
+    // MARK: [cellForRowAt]
+    // 필수 method
     // cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -216,7 +221,15 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
 
             guard let cell1 = tableView.dequeueReusableCell(withIdentifier: MoreWeek1TVC.identifier, for: indexPath) as? MoreWeek1TVC else { return UITableViewCell() }
             
-            //
+            
+            
+            cell1.stateLabel.text = week1Data[indexPath.row].stateLabel
+            cell1.storeLabel.text = week1Data[indexPath.row].storeLabel
+            cell1.menuLabel.text = week1Data[indexPath.row].menuLabel
+            cell1.menuCountLabel.text = week1Data[indexPath.row].menuCountLabel
+            cell1.centerLabel.text = "|"
+            cell1.dateLabel.text = week1Data[indexPath.row].dateLabel
+
             
             return cell1
             
@@ -238,7 +251,7 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
             
             guard let cell3 = tableView.dequeueReusableCell(withIdentifier: MoreMonth3TVC.identifier, for: indexPath) as? MoreMonth3TVC else { return UITableViewCell() }
             
-         
+           
             //
             
             return cell3
@@ -262,10 +275,41 @@ extension MoreOrderHistroyVC: UITableViewDataSource {
     
 }
 
-// MARK: [TableView - Delegate]
+
+
+
 extension MoreOrderHistroyVC: UITableViewDelegate {
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch history {
+            
+            
+        case .week1:
+            let vc = MoreOrderDetailVC()
+     
+            
+            
+            self.navigationController?.pushViewController(vc, animated: false)
+            
+            
+        case .month1:
+            print("22")
+        case .month3:
+            print("33")
+        case .total:
+            print("44")
+            
+        }
+        
+    }
+    
+    
 }
+
+
+
 
 
 
@@ -302,14 +346,14 @@ extension MoreOrderHistroyVC {
     private func layoutTableView() {
         self.view.addSubview(self.tableView)
         
-        self.tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
+     
         
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     

@@ -15,3 +15,7 @@ protocol PopupDelegate {
 protocol CanCelDelegate {
     func cancelClicked(index: Int)
 }
+
+protocol GoToPaymentView {
+    func orderClicked()
+}

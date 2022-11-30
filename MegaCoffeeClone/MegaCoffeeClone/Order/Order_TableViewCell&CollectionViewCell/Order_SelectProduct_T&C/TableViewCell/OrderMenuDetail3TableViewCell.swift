@@ -8,7 +8,7 @@
 import UIKit
 
 protocol OrderMenuDetail3TableViewCellDelegate {
-    func changeSection2(count: Int)
+    func changeSection3(count: Int)
 }
 
 class OrderMenuDetail3TableViewCell: UITableViewCell {
@@ -19,7 +19,7 @@ class OrderMenuDetail3TableViewCell: UITableViewCell {
     var delegate: OrderMenuDetail3TableViewCellDelegate?
     
     var count = 1
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,12 +36,12 @@ class OrderMenuDetail3TableViewCell: UITableViewCell {
             count -= 1
         }
         countLabel.text = "\(count)"
-        delegate?.changeSection2(count: count)
+        delegate?.changeSection3(count: count)
     }
     
     @IBAction func additionButton(_ sender: Any) {
         count += 1
         countLabel.text = "\(count)"
-        delegate?.changeSection2(count: count)
+        delegate?.changeSection3(count: count)
     }
 }

@@ -39,7 +39,7 @@ class OrderSearchProductViewController: UIViewController {
         // 메뉴 카테고리 상관없이 섞기
         for productType in menuList {
             for menu in productType.menus {
-                let menuData = SearchProductModel(type: productType.type.rawValue, products: MenuModel2(Image: menu.Image, name: menu.name, description: menu.description, option: menu.option, nutrition: menu.nutrition, allergys: menu.allergys, price: menu.price, soldOut: menu.soldOut))
+                let menuData = SearchProductModel(type: productType.type.rawValue, products: MenuModel2(imageName: menu.imageName, name: menu.name, description: menu.description, option: menu.option, nutrition: menu.nutrition, allergys: menu.allergys, price: menu.price, soldOut: menu.soldOut))
                 searchProducts.append(menuData)
             }
         }
