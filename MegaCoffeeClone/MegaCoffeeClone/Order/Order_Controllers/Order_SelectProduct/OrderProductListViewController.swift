@@ -23,6 +23,8 @@ class OrderProductListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    
         configNavigationBarReightButton()
         productListCollectionView.collectionViewLayout = getLayout()
         
@@ -312,6 +314,7 @@ extension OrderProductListViewController: UICollectionViewDelegate {
                 let storyboard = UIStoryboard(name: "OrderProductList", bundle: nil)
                 guard let vc = storyboard.instantiateViewController(withIdentifier: "menuDetailVC") as? OrderMenuDetailViewController else { return }
                 vc.menuData = filteredProducts[0].menus[cell.tag]
+                vc.storeData = self.storeData
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -322,5 +325,11 @@ extension OrderProductListViewController: OrderListHeaderCollectionReusableViewD
     func changeColumn() {
         is1Column.toggle()
         productListCollectionView.reloadSections(IndexSet(integer: 1))
+    }
+}
+
+extension OrderProductListViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController?.viewControllers.count ?? 0 > 1
     }
 }

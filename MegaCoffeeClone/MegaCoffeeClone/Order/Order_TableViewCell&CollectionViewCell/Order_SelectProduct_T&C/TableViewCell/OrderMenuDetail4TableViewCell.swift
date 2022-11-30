@@ -8,12 +8,15 @@
 import UIKit
 
 protocol OrderMenuDetail4TableViewCellDelegate {
-    func changeSection3(index: Int)
+    func changeSection4(index: Int)
+    func putShoppingBasket()
 }
 
 class OrderMenuDetail4TableViewCell: UITableViewCell {
 
     var delegate: OrderMenuDetail4TableViewCellDelegate?
+    
+    
     
     @IBOutlet var menuImageView1: UIImageView!
     @IBOutlet var menuImageView2: UIImageView!
@@ -33,9 +36,28 @@ class OrderMenuDetail4TableViewCell: UITableViewCell {
     
     @IBOutlet var sumLabel: UILabel!
     
+    @IBOutlet var doneButtonAndShoppingButtonStackView: UIStackView!
+
+    @IBOutlet var doneButton: UIButton!
+    @IBOutlet var shoppingbasketButton: UIButton!
+    @IBOutlet var soldOutButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        doneButton.layer.cornerRadius = 10
+        shoppingbasketButton.layer.cornerRadius = 10
+        soldOutButton.layer.cornerRadius = 10
+    }
+    
+    func configBottomButton(isSoldOut: Bool) {
+        if isSoldOut {
+            doneButtonAndShoppingButtonStackView.isHidden = true
+            
+        } else {
+            soldOutButton.isHidden = true
+            
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -56,12 +78,17 @@ class OrderMenuDetail4TableViewCell: UITableViewCell {
             button.setImage(UIImage(systemName: "circle"), for: .normal)
             button.tintColor = .systemGray
         }
-        delegate?.changeSection3(index: button.tag)
+        delegate?.changeSection4(index: button.tag)
     }
     
     
     @IBAction func tapDoneButton(_ sender: Any) {
         
     
+    }
+    
+    @IBAction func tapShoppingBasketButton(_ sender: Any) {
+        // 장바구니에 담기만 하면 됨
+        delegate?.putShoppingBasket()
     }
 }
