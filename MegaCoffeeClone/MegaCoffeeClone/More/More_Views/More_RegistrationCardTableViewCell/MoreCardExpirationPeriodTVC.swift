@@ -42,6 +42,12 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
         
         text1.keyboardType = .numberPad
         
+        text1.tag = 1
+        
+        text1.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
+        
+        //text1.selectedTextRange = text1.textRange(from: text1.endOfDocument, to: text1.endOfDocument)
+        
         return text1
     }()
     lazy var centerNonButton: UIButton = {
@@ -67,6 +73,10 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
         text2.layer.cornerRadius = 6
         
         text2.keyboardType = .numberPad
+        
+        text2.tag = 2
+        
+        text2.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
         return text2
     }()
@@ -95,9 +105,23 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
     
     
     
+    // MARK: [Action]
+    @objc func textFieldNextFocus(_ sender: UITextField) {
+       
+        switch sender.tag {
+        case 1:
+            if textFieldFirst.text?.count == 2 {
+                textFieldSecond.becomeFirstResponder()
+            }
+        case 2:
+            if textFieldSecond.text?.count == 2 {
+                textFieldSecond.resignFirstResponder()
+            }
+        default:
+            break
+        }
     
-    
-    
+    }
     
     
     // MARK: [Add View]
@@ -157,12 +181,7 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
 
     
     
-    
-// MARK: [Class End]
-            
 }
-
-// MARK: [Class End]
 
 
 
@@ -180,4 +199,3 @@ extension MoreCardExpirationPeriodTVC: UITextFieldDelegate {
         return updatedText.count <= 2
     }
 }
-
