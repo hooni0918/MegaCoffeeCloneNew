@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     // 현재페이지 체크 변수 (자동 스크롤할 때 필요)
     var nowPage: Int = 0
     
+    //MARK: String Data 모음
     // Banner 데이터 배열
     let bannerDataArray: Array<UIImage> = [UIImage(named: "homeBanner1")!,UIImage(named: "homeBanner2")!,UIImage(named: "homeBanner3")!]
     
@@ -40,6 +41,10 @@ class HomeViewController: UIViewController {
     var homeNewsImagedata:[String] = ["img1","img2"]
     var homeNewsText:[String] = ["[이벤트] 겨울 신메뉴 출시기념 이벤트","뉴스2"]
     
+    //recommend popup데이터
+    var homePopupimage:[String] = ["homeRecommend1","homeRecommend2","homeRecommend3","homeRecommend4"]
+    var homePopupMenu = ["태극전사레드불에너지","스모어블랙쿠키프라페","(뜨거워)레드오렌지뱅쇼티플레져","따끈따끈간식꾸러미"]
+    var homePopupText = ["우리나라 국기의 태극 문양을 표현한 트로피컬 맛의 에너지드링크(with Red Bull Sugarfree)","진한 초코 스무디에 바삭한 쿠키를 넣어 퐁신퐁신한 마시멜로우 잼과 함께 달콤하게 즐기는 스무디","안토시아닌이 풍부하게 들어간 레드오렌지 뱅쇼베이스에 와인 티백을 활용한 티플레저","겨울에 생각나는 팥부어빵빵빵빵으로 구성된 간식 꾸러미"]
     override func viewDidLoad() {
         super.viewDidLoad()
         //gif
@@ -78,13 +83,8 @@ class HomeViewController: UIViewController {
         webimage.clipsToBounds = true
         
         
-        //button.translatesAutoresizingMaskIntoConstraints = false
     }
-    //  NSLayoutConstraint.activate([
     
-    //            button.bottomAnchor.constraint(equalTo: scrollView.frameLayoutGuide.bottomAnchor, constant: -30),
-    //            button.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -30])
-    //
     
     //  Main화면에서 네비게이션 바 없애줌
     override func viewWillAppear(_ animated: Bool) {
@@ -198,16 +198,43 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         return CGSize.zero
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.tag == 101 {
-            if let cell = collectionView.cellForItem(at: indexPath) as? HomeRecommendCollectionViewCell {
-                
-               
-                
     
-            }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //        if collectionview.tag == 100{
+        //            if let cell = collectionView.cellForItem(at: indexPath) as? HomeBannerCollectionViewCell {
+        //                cell.data = bannerDataArray[cell.tag]
+        //                print(bannerDataArray[cell.tag])
+        //            }
+        
+        if collectionView.tag == 101 {
+            //  if let cell = collectionView.cellForItem(at: indexPath) as? HomeRecommendCollectionViewCell {
+            //
+            //                cell.data = homeRecommendText[cell.tag]
+            //                print(homeRecommendText[cell.tag])
+            //                guard let vc = storyboard?.instantiateViewController(withIdentifier: "HomePopupViewController") as? HomePopupViewController else { return }
+            //
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomePopupViewController")
+            as? HomePopupViewController
+           
+            vc?.imageReceived = UIImage(named: homePopupimage[indexPath.row])!
+            vc?.menuReceive = homePopupMenu[indexPath.row]
+            vc?.menuText = homePopupText[indexPath.row]
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
+        //vc.data = homeRecommendText[cell.tag]
+        
+        //  이걸로 돌리면 돌가가긴 함
+        //            let mainStoryBoard = UIStoryboard(name: "Home", bundle: nil)
+        //            let desVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomePopupViewController") as! HomePopupViewController
+        //            desVC.imageReceived = UIImage(named: homePopupimage[indexPath.row])!
+        //            desVC.modalPresentationStyle = .overCurrentContext
+        //            self.navigationController?.pushViewController(desVC, animated: true)
+        
+        
     }
+    
     
     
     //컬렉션뷰 감속 끝났을 때 현재 페이지 체크
@@ -215,92 +242,5 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
     }
     
-    
 }
-
-
-
-
-// MARK: compositional layout
-//
-//func getLayout() -> UICollectionViewCompositionalLayout {
-//    UICollectionViewCompositionalLayout { (section , env) -> NSCollectionLayoutSection in
-//        switch section {
-//        case 0:
-//            return firstSection()
-//        case 1:
-//            return secondeSection()
-//        default:
-//            return firstSection()
-//        }
-//    }
-//}
-//
-//
-//func firstSection() -> NSCollectionLayoutSection {
-//
-//    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(260))
-//
-//    let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//
-//    item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(0))
-//
-//    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(2.0), heightDimension: .absolute(260))
-//
-//    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 10)
-//
-//    let section = NSCollectionLayoutSection(group: group)
-//
-//    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-//
-//    section.orthogonalScrollingBehavior = .paging
-
-//    return section
-//}
-//
-//func secondeSection() -> NSCollectionLayoutSection {
-//    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .absolute(220))
-//    let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//
-//    item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0)
-//
-//    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(5.2), heightDimension: .absolute(220))
-//    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 10)
-//
-//    let section = NSCollectionLayoutSection(group: group)
-//    section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 140, trailing: 0)
-//    section.orthogonalScrollingBehavior = .continuous
-//
-//    return section
-//}
-//
-
-
-
-//
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 2
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//
-//        if section == 0 {
-//            return bannerDataArray.count
-//        } else {
-//            return 10
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        if indexPath.section == 0 {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Homecell1", for: indexPath)
-//            return cell
-//        } else {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Homecell2", for: indexPath)
-//            return cell
-//        }
-//    }
-//}
 
