@@ -27,6 +27,8 @@ class GiftMainContainerViewController: ViewController {
     }
     
     
+    
+    
     func getLayout() -> UICollectionViewCompositionalLayout {
             UICollectionViewCompositionalLayout { (section , env) -> NSCollectionLayoutSection in
                 switch section {
