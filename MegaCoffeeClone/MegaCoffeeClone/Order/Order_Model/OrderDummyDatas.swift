@@ -165,6 +165,23 @@ struct RecommendMenuModel {
     var isSelect: Bool
 }
 
+//Gift- 상품검색 페이지 모델
+struct GiftSearchProductModel {
+    let type: String
+    let products: SimpleMenuModel
+}
+
+struct SimpleMenuModel {
+    let image: UIImage
+    let name: String
+    let price: Int
+}
+
+struct GiftCategoryModel {
+    let categoryName: String
+    var isClicked: Bool
+}
+
 let menuList = [
     MenusModel(type: .set,
                menus: [MenuModel2(imageName: "ICE-32oz Americano",
@@ -315,7 +332,370 @@ let menuList = [
                                   price: 12600,
                                   soldOut: false)
                        
-               ])]
+               ]),
+    
+    //MARK: - chobo5가 만듬(추후 수정필요)
+    //MARK: - new
+    MenusModel(type: .new,
+               menus: [MenuModel2(imageName: "ICE-Taegeuk Warriors' Red Bull Energy", name: "태극전사레드불에너지", description: "우리나라 국기의 태극 문양을 표현한 트로피컬 맛의 에너지 드링크(With Red Bull Sugarfree)",
+                                  
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                                  
+                                  nutrition: NutritionModel(calorie: 184.1, saturatedFat: 0.0, sugars: 42.8, natrium: 52.9, protein: 0.8, caffeine: 32.2),
+                                  
+                                  allergys: AllergyModel(names: [""]),
+                                  
+                                  price: 4400,
+                                  soldOut: false),
+                       
+                       //정보가 존재하지 않는 상품
+                       MenuModel2(imageName: "ICE-The Red Devils' Red Bull Energy", name: "붉은악마레드불에너지", description: "",
+                                  
+                                          option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                                          
+                                          nutrition: NutritionModel(calorie: 0, saturatedFat: 0.0, sugars: 0, natrium: 0, protein: 0, caffeine: 0),
+                                          
+                                          allergys: AllergyModel(names: [""]),
+                                  
+                                          price: 4400,
+                                          soldOut: false),
+                       
+                       //정보가 존재하지 않는 상품
+                       MenuModel2(imageName: "ICE-S'more Black Cookie Frappe", name: "스모어블랙쿠키프라페", description: "",
+                                  
+                                          option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                                          
+                                          nutrition: NutritionModel(calorie: 0, saturatedFat: 0.0, sugars: 0, natrium: 0, protein: 0, caffeine: 0),
+                                          
+                                          allergys: AllergyModel(names: [""]),
+                                  
+                                          price: 4400,
+                                          soldOut: false),
+                       //정보가 존재하지 않는 상품
+                       MenuModel2(imageName: "HOT-Red Orange Vin Chaud TEAPLEASURE", name: "(HOT)레드오렌지뱅쇼티플레저", description: "",
+                                  
+                                          option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                                          
+                                          nutrition: NutritionModel(calorie: 0, saturatedFat: 0.0, sugars: 0, natrium: 0, protein: 0, caffeine: 0),
+                                          
+                                          allergys: AllergyModel(names: [""]),
+                                  
+                                          price: 3900,
+                                          soldOut: false)
+               ]),
+    
+    //MARK: - 커피(ICE)
+    MenusModel(type: .ice,
+               menus: [MenuModel2(imageName: "ICE-Americano", name: "(ICE)아메리카노",
+                                  description: "메가MGC커피 블렌드 원두로 추출한 에스프레소에 물을 더해, 풍부한 바디감을 느낄 수 있는 스탠다드 커피.",
+                                  
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                                  
+                                  nutrition: NutritionModel(calorie: 18, saturatedFat: 0.9, sugars: 0, natrium: 0.3, protein: 0.3, caffeine: 193.1),
+                                  
+                                  allergys: AllergyModel(names: [""]),
+                                  
+                                  price: 2000, soldOut: false),
+                       
+                       MenuModel2(imageName: "ICE-32oz Americano", name: "(ICE)메가리카노",
+                                          description: "",
+                                  
+                                          option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                                  
+                                          nutrition: NutritionModel(calorie: 18, saturatedFat: 0.9, sugars: 0, natrium: 0.3, protein: 0.3, caffeine: 193.1),
+                                  
+                                          allergys: AllergyModel(names: [""]),
+                                  
+                                          price: 3000, soldOut: false)
+                       
+               ]),
+    
+    //MARK: - 커피(HOT)
+    MenusModel(type: .hot,
+               menus:
+                //정보가 존재하지 않는 상품
+                [MenuModel2(imageName: "HOT-Americano", name: "(HOT)아메리카노",
+                                  description: "메가MGC커피 블렌드 원두로 추출한 에스프레소에 물을 더해, 풍부한 바디감을 느낄 수 있는 스탠다드 커피.",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                                  nutrition: NutritionModel(calorie: 18, saturatedFat: 0.9, sugars: 0, natrium: 0.3, protein: 0.3, caffeine: 193.1),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 1500, soldOut: false),
+                       
+               ]),
+    
+    //MARK: - 스무디&프라페
+    MenusModel(type: .smoothieAndFrappe,
+               menus:
+                
+                [MenuModel2(imageName: "ICE-Green Tea Frappe", name: "녹차프라페",
+                                  description: "향긋한 녹차 위에 우유와 휘핑크림을 더해 더 부드럽게 즐길 수 있는 프라페.",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                            nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 3900, soldOut: false),
+                       
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "ICE-Strawberry Cookie Frappe", name: "딸기쿠키프라페",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3900, soldOut: false),
+                 
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "ICE-Strawberry Yogurt Smoothie", name: "딸기요거트스무디",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3900, soldOut: false)
+               ]),
+    
+    //MARK: - 에이드&주스
+    MenusModel(type: .aidAndJuice,
+               menus:
+                
+                [MenuModel2(imageName: "ICE-Lime Mojito", name: "라임모히또",
+                                  description: "상큼한 라임과 달콤한 향기의 애플민트가 어우러진 상쾌함을 한잔에 가득 채운 모히또 음료.",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                            nutrition: NutritionModel(calorie: 227.1, saturatedFat: 0, sugars: 53.5, natrium: 1.5, protein: 0.2, caffeine: 0),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 3800, soldOut: false),
+                       
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "ICE-Lemon Ade", name: "레몬에이드",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3500, soldOut: false),
+                 
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "ICE-MEGA Ade", name: "메가에이드",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3900, soldOut: false),
+               ]),
+    
+    //MARK: - 음료
+    MenusModel(type: .beverage,
+               menus:
+                
+                [MenuModel2(imageName: "HOT-Sweet Potato Latte", name: "(HOT)고구마라떼",
+                                  description: "달콤하고 고소한 고구마와 부드러운 우유가 만나 누구나 즐기기 좋은 든든한 라떼",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                            nutrition: NutritionModel(calorie: 348.9, saturatedFat: 7.5, sugars: 44.9, natrium: 146.4, protein: 9.1, caffeine: 0),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 3500, soldOut: false),
+                       
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "HOT-Grain Latte", name: "(HOT)곡물라떼",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3000, soldOut: false),
+                 
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "HOT-MEGA Chocolate", name: "(HOT)메가초코",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3800, soldOut: false),
+               ]),
+    
+    //MARK: - 티(TEA)
+    MenusModel(type: .tea,
+               menus:
+                
+                [MenuModel2(imageName: "HOT-Green Tea", name: "(HOT)녹차",
+                                  description: "고소한 감칠맛과 부드러운 목넘김으로 산뜻하게 마음을 위로하는 국내산 녹차",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                            nutrition: NutritionModel(calorie: 4.1, saturatedFat: 0.1, sugars: 0.4, natrium: 1.3, protein: 0.1, caffeine: 0.1),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 2500, soldOut: false),
+                       
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "HOT-Applecitron Tea", name: "(HOT)사과유자차",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3500, soldOut: false),
+                 
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "HOT-Earl Grey", name: "(HOT)얼그레이",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 2500, soldOut: false),
+               ]),
+    
+    //MARK: - 디저트
+    MenusModel(type: .dessert,
+               menus:
+                
+                [MenuModel2(imageName: "Salty Butter Roll", name: "버터소금빵(프레지덩버터)",
+                                  description: "고소한 프랑스산 버터를 품어, 더 부드럽고 짭쪼롬하게 즐길 수 있는 베이커리 메뉴.",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                            nutrition: NutritionModel(calorie: 260.0, saturatedFat: 7.4, sugars: 2.3, natrium: 442.0, protein: 8.0, caffeine: 0),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 3200, soldOut: false),
+                       
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "Croissant", name: "크루아상(프레지덩버터)",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3200, soldOut: false),
+                 
+               ]),
+    //MARK: - 디카페인
+    MenusModel(type: .decaffeination,
+               menus:
+                
+                [MenuModel2(imageName: "ICE-Coldbrew", name: "(ICE)콜드브루디카페인",
+                                  description: "카페인을 줄였지만, 원두 본연의 향미를 풍부하게 살려 맛을 잡은 디카페인 콜드브루.",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                            nutrition: NutritionModel(calorie: 7.7, saturatedFat: 0, sugars: 0, natrium: 0.1, protein: 0.5, caffeine: 8.7),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 3500, soldOut: false),
+                       
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "HOT-Coldbrew", name: "(HOT)콜드브루디카페인",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 3500, soldOut: false),
+                 
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "ICE-Coldbrew Latte", name: "(ICE)콜드브루디카페인라떼",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 4000, soldOut: false),
+               ]),
+    
+    //MARK: - MD
+    MenusModel(type: .md,
+               menus:
+                //정보가 존재하지 않는 상품
+                [MenuModel2(imageName: "MEGA MGC STICK ORIGINAL AMERICANO", name: "메가엠지씨스틱 오리지날 아메리카노",
+                                  description: "",
+                            
+                                  option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                            
+                            nutrition: NutritionModel(calorie: 7.7, saturatedFat: 0, sugars: 0, natrium: 0.1, protein: 0.5, caffeine: 8.7),
+                            
+                                  allergys: AllergyModel(names: [""]),
+                            
+                                  price: 4100, soldOut: false),
+                       
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "MEGA MGC STICK DECAF AMERICANO", name: "메가엠지씨스틱 디카페인 아메리카노",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 4900, soldOut: false),
+                 
+                 //정보가 존재하지 않는 상품
+                 MenuModel2(imageName: "MEGA MGC STICK STEVIA MIX COFFEE", name: "메가엠지씨스틱 스테비아 믹스커피",
+                                   description: "",
+                             
+                                   option: [OptionModel(essentialCount: 0, header: "", details: [DetailsModel(name: "", price: 0, count: 0, soldOut: false, isSelect: false)])],
+                             
+                             nutrition: NutritionModel(calorie: 720.5, saturatedFat: 16.7, sugars: 97.5, natrium: 189.5, protein: 8.4, caffeine: 223.5),
+                             
+                                   allergys: AllergyModel(names: [""]),
+                             
+                                   price: 4800, soldOut: false),
+               ]),
+    
+]
 
 
 var recommendMenus = [

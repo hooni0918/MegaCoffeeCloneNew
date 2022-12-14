@@ -63,7 +63,6 @@ extension GiftCategoryContainerViewController: UICollectionViewDelegate, UIColle
             cell.categoryLabel.textColor = UIColor.lightGray
         }
         
-        
         return cell
     }
     

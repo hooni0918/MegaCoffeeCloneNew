@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PopupDelegate {
     func goShoppingButtonClicked()
@@ -18,4 +19,13 @@ protocol CanCelDelegate {
 
 protocol GoToPaymentView {
     func orderClicked()
+}
+
+protocol ShowMoreDelegate {
+    func paging()
+}
+
+protocol searchBarDelegate {
+    func searchClicked(text: String)
+    func resetTable()
 }

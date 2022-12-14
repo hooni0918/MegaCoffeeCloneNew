@@ -144,7 +144,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return homeNewsImagedata.count
         }
         
-        return 10
+        return 1
         
     }
     
@@ -202,45 +202,48 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //        if collectionview.tag == 100{
-        //            if let cell = collectionView.cellForItem(at: indexPath) as? HomeBannerCollectionViewCell {
-        //                cell.data = bannerDataArray[cell.tag]
-        //                print(bannerDataArray[cell.tag])
-        //            }
+        if collectionView.tag == 100 {
+//
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoreEventAndRankingEventTVC")
+//            as? MoreEventAndRankingEventTVC
+//
+//
+//            self.navigationController?.pushViewController(vc, animated: true)
+//            //--
+//
         
-        if collectionView.tag == 101 {
-            //  if let cell = collectionView.cellForItem(at: indexPath) as? HomeRecommendCollectionViewCell {
-            //
-            //                cell.data = homeRecommendText[cell.tag]
-            //                print(homeRecommendText[cell.tag])
-            //                guard let vc = storyboard?.instantiateViewController(withIdentifier: "HomePopupViewController") as? HomePopupViewController else { return }
-            //
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomePopupViewController")
-            as? HomePopupViewController
-           
-            vc?.imageReceived = UIImage(named: homePopupimage[indexPath.row])!
-            vc?.menuReceive = homePopupMenu[indexPath.row]
-            vc?.menuText = homePopupText[indexPath.row]
-            self.navigationController?.pushViewController(vc!, animated: true)
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "MoreEventAndRankingEventTVC")
+                vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+                vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
+                self.present(vcName!, animated: true, completion: nil)
         }
-        //vc.data = homeRecommendText[cell.tag]
+        if collectionView.tag == 101 {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "HomePopupViewController") as! HomePopupViewController
+            vc.viewcontroller = self
+            //vc.imageReceived = UIImage(named: homePopupimage[indexPath.row])!
+            vc.menuReceive = homePopupMenu[indexPath.row]
+            vc.menuText = homePopupText[indexPath.row]
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: false, completion: nil)
+            
+        }
         
-        //  이걸로 돌리면 돌가가긴 함
-        //            let mainStoryBoard = UIStoryboard(name: "Home", bundle: nil)
-        //            let desVC = mainStoryBoard.instantiateViewController(withIdentifier: "HomePopupViewController") as! HomePopupViewController
-        //            desVC.imageReceived = UIImage(named: homePopupimage[indexPath.row])!
-        //            desVC.modalPresentationStyle = .overCurrentContext
-        //            self.navigationController?.pushViewController(desVC, animated: true)
+        if collectionView.tag == 102 {
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeStampViewController")
+            as? HomeStampViewController
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+            
+        }
         
+        //컬렉션뷰 감속 끝났을 때 현재 페이지 체크
+        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+            
+        }
         
     }
-    
-    
-    
-    //컬렉션뷰 감속 끝났을 때 현재 페이지 체크
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        nowPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-    }
-    
 }
 

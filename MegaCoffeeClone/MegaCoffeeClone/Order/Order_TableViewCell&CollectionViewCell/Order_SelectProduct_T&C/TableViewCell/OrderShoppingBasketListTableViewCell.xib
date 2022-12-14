@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-bs-3bM">
-                        <rect key="frame" x="353" y="10" width="20" height="22"/>
+                        <rect key="frame" x="343" y="10" width="20" height="22"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="xmark.circle.fill" catalog="system"/>
@@ -85,7 +85,7 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4700원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lD-sa-FNl">
-                        <rect key="frame" x="305" y="232.5" width="68" height="24"/>
+                        <rect key="frame" x="295" y="232.5" width="68" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -102,11 +102,12 @@
                     <constraint firstItem="fvT-4f-Zft" firstAttribute="leading" secondItem="iHh-Xk-oLg" secondAttribute="trailing" constant="10" id="29E-8H-gwo"/>
                     <constraint firstItem="1hr-Ai-kJN" firstAttribute="leading" secondItem="iHh-Xk-oLg" secondAttribute="trailing" constant="10" id="3nJ-2P-In9"/>
                     <constraint firstItem="fvT-4f-Zft" firstAttribute="top" secondItem="IQM-qC-Pog" secondAttribute="bottom" constant="5" id="4MT-Tg-3Ra"/>
-                    <constraint firstAttribute="trailing" secondItem="0lD-sa-FNl" secondAttribute="trailing" constant="10" id="Gog-7s-fGY"/>
+                    <constraint firstAttribute="trailing" secondItem="0lD-sa-FNl" secondAttribute="trailing" constant="20" id="Gog-7s-fGY"/>
                     <constraint firstItem="Ns3-bs-3bM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="KcT-Vo-94P"/>
                     <constraint firstAttribute="bottomMargin" secondItem="1hr-Ai-kJN" secondAttribute="bottom" constant="10" id="SN5-90-K7W"/>
                     <constraint firstItem="0lD-sa-FNl" firstAttribute="centerY" secondItem="1hr-Ai-kJN" secondAttribute="centerY" id="Toh-MY-ihi"/>
-                    <constraint firstAttribute="trailing" secondItem="Ns3-bs-3bM" secondAttribute="trailing" constant="10" id="XHn-SY-yWC"/>
+                    <constraint firstItem="0lD-sa-FNl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1hr-Ai-kJN" secondAttribute="trailing" constant="10" id="U9f-lx-IF3"/>
+                    <constraint firstAttribute="trailing" secondItem="Ns3-bs-3bM" secondAttribute="trailing" constant="20" id="XHn-SY-yWC"/>
                     <constraint firstItem="iHh-Xk-oLg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="XaH-Nc-tkH"/>
                     <constraint firstItem="Ef3-Wy-VHs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="YoB-dV-3WO"/>
                     <constraint firstItem="iHh-Xk-oLg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="aRz-fM-cRb"/>

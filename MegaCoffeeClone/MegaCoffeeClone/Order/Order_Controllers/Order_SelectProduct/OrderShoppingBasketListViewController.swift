@@ -10,12 +10,11 @@ import UIKit
 class OrderShoppingBasketListViewController: UIViewController {
     
     @IBOutlet var shoppingBasketListTableView: UITableView!
+    
     var shoppingBasketList = [ShoppingBasketModel]()
     var storeData: StoreModel?
     
     @IBOutlet var storeNameLabel: UILabel!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +26,7 @@ class OrderShoppingBasketListViewController: UIViewController {
         
         storeNameLabel.text = storeData?.name ?? ""
         
-        
-        
-        
+        shoppingBasketListTableView.tableHeaderView?.frame.size.height = 50
     }
     
     func getImage(name: String) -> UIImage {
@@ -40,6 +37,7 @@ class OrderShoppingBasketListViewController: UIViewController {
     }
     
     
+    // 매장별로 키값 바꾸기
     func getShoppingBasketList() {
         let decoder = PropertyListDecoder()
         
@@ -71,30 +69,41 @@ class OrderShoppingBasketListViewController: UIViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func tapOrderButton(_ sender: Any) {
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "paymentVC") as? OrderPaymentViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 
 extension OrderShoppingBasketListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 0 {
-            return shoppingBasketList.count
-        } else if section == 1 {
-            // 추후 품절 제품 카운트
-            return 0
-        } else if section == 2 {
             return 1
+        } else if section == 1 {
+            return shoppingBasketList.count
+        } else if section == 2 {
+            // 품절 제품 있을때 추가
+            return 0
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? OrderShoppingBasketHeaderTableViewCell else { return UITableViewCell() }
+            cell.titleLabel.text = "주문 상품"
+            return cell
+        } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as? OrderShoppingBasketListTableViewCell else { return UITableViewCell() }
             
             var str = ""
@@ -109,17 +118,20 @@ extension OrderShoppingBasketListViewController: UITableViewDataSource {
             
             cell.menuNameLabel.text = target.productName
             cell.menuOptionLabel.text = str
-            cell.menuImageView.image = getImage(name: target.productImage)
             cell.menuCountLabel.text = "\(target.count)"
             cell.menuTotalPriceLabel.text = "\(target.totalPrice)원"
             cell.deleteButton.tag = indexPath.row
             cell.minusButton.tag = indexPath.row
             cell.plusButton.tag = indexPath.row
             
+            DispatchQueue.main.async {
+                cell.menuImageView.image = self.getImage(name: target.productImage)
+            }
+            
             return cell
-        } else if indexPath.section == 1 {
-            return UITableViewCell()
         } else if indexPath.section == 2 {
+            return UITableViewCell()
+        } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell")
             return cell!
         } else {
@@ -136,6 +148,20 @@ extension OrderShoppingBasketListViewController: UITableViewDataSource {
         }
     }
 }
+
+extension OrderShoppingBasketListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+        if indexPath.section == 0 {
+            return 50
+        } else if indexPath.section == 3 {
+            return 50
+        }
+        
+        return UITableView.automaticDimension
+    }
+}
+
 
 extension OrderShoppingBasketListViewController: OrderShoppingBasketListTableViewCellDelegate {
     func deleteMenu(index: Int) {
