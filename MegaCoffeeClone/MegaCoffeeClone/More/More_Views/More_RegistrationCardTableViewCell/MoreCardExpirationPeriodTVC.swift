@@ -30,8 +30,11 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
         
         return stackView
     }()
+    
+    
     lazy var textFieldFirst: UITextField = {
         let text1 = UITextField()
+        text1.tag = 1
         
         text1.placeholder = "MM"
         text1.textAlignment = .center
@@ -41,15 +44,15 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
         text1.layer.cornerRadius = 6
         
         text1.keyboardType = .numberPad
+        text1.addDoneButtonOnKeyboard()
         
-        text1.tag = 1
         
         text1.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
-        //text1.selectedTextRange = text1.textRange(from: text1.endOfDocument, to: text1.endOfDocument)
-        
         return text1
     }()
+    
+    
     lazy var centerNonButton: UIButton = {
         let notBtn = UIButton(type: .system)
         
@@ -60,10 +63,9 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
     }()
     
     
-    
-    
     lazy var textFieldSecond: UITextField = {
         let text2 = UITextField()
+        text2.tag = 2
         
         text2.placeholder = "YY"
         text2.textAlignment = .center
@@ -73,8 +75,9 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
         text2.layer.cornerRadius = 6
         
         text2.keyboardType = .numberPad
+        text2.addDoneButtonOnKeyboard()
         
-        text2.tag = 2
+        
         
         text2.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
@@ -102,6 +105,8 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
     required init?(coder: NSCoder) {
           fatalError("")
       }
+    
+    
     
     
     
@@ -146,7 +151,7 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
     }
     
     
-    // Layout - TitleLabel
+    // TitleLabel
     func layoutTitleLabel() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -160,7 +165,7 @@ class MoreCardExpirationPeriodTVC: UITableViewCell {
             ])
     }
     
-    // Layout - StackView
+    // StackView
     func layoutStackView() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         

@@ -12,10 +12,11 @@ import UIKit
 class MoreEventAndRankingEventTVC: UITableViewCell {
     static var identifier: String { return String(describing: self) }
     
+    
+    // MARK: [변수 선언]
     lazy var imgView: UIImageView = {
        let imgView = UIImageView()
         
-        imgView.backgroundColor = .systemGray5
         imgView.layer.cornerRadius = 6
         
         return imgView
@@ -50,10 +51,14 @@ class MoreEventAndRankingEventTVC: UITableViewCell {
     
     
     
+    
+    
+    
+    
+    // MARK: [Override]
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        
         
         
         addSubView()
@@ -66,52 +71,49 @@ class MoreEventAndRankingEventTVC: UITableViewCell {
     
     
     
+    
+    // MARK: [Add View]
     func addSubView() {
         self.contentView.addSubview(self.imgView)
         self.contentView.addSubview(self.stackView)
         
         self.stackView.addArrangedSubview(self.titleLabel)
         self.stackView.addArrangedSubview(self.subTitleLabel)
-        
     }
     
     
+    // MARK: [Add View]
     func layout() {
         layoutImgView()
         layoutStackView()
     }
     
     
-    
-    
-    
+    // ImageView
     func layoutImgView() {
         self.imgView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
+        self.imgView.backgroundColor = .systemGray5
         
+        NSLayoutConstraint.activate([
             self.imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             self.imgView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             self.imgView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             self.imgView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.7)
-           
         ])
     }
     
     
-    
+    // StackView
     func layoutStackView() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        
             self.stackView.topAnchor.constraint(equalTo: self.imgView.bottomAnchor),
             self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
-           
         ])
-        
         
         
     }

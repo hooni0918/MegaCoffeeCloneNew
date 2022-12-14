@@ -36,6 +36,8 @@ class MoreCardNameTVC: UITableViewCell {
         text.placeholder = "나의간편카드"
         text.isUserInteractionEnabled = true
         
+        text.addDoneButtonOnKeyboard()
+        
         return text
     }()
     lazy var countLabel = UILabel()
@@ -126,12 +128,10 @@ class MoreCardNameTVC: UITableViewCell {
     
     // Layout - TextField View
     func layoutTextFieldBackView() {
-        //self.textFieldBackView.translatesAutoresizingMaskIntoConstraints = false
         self.textField.translatesAutoresizingMaskIntoConstraints = false
         self.countLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-
             self.textField.topAnchor.constraint(equalTo: self.textFieldBackView.topAnchor),
             self.textField.leadingAnchor.constraint(equalTo: self.textFieldBackView.leadingAnchor, constant: 10),
             self.textField.bottomAnchor.constraint(equalTo: self.textFieldBackView.bottomAnchor),
@@ -141,7 +141,7 @@ class MoreCardNameTVC: UITableViewCell {
             self.countLabel.trailingAnchor.constraint(equalTo: self.textFieldBackView.trailingAnchor),
             self.countLabel.bottomAnchor.constraint(equalTo: self.textFieldBackView.bottomAnchor),
             self.countLabel.widthAnchor.constraint(equalTo: self.textFieldBackView.widthAnchor, multiplier: 0.15)
-            ])
+        ])
         
         
     }
@@ -152,8 +152,13 @@ class MoreCardNameTVC: UITableViewCell {
     
     
     
-    // Class End
+// MARK: [Class End]
+    
 }
+
+// MARK: [Class End]
+
+
 
 // MARK: [TextField - Delegate]
 extension MoreCardNameTVC: UITextFieldDelegate {

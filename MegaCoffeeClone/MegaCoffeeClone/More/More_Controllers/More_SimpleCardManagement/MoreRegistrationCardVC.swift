@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-// MARK: Enum
+// MARK: [Enum]
 enum cardList {
     case cardName([CardModel])
     case cardNumber([CardModel])
@@ -23,7 +23,7 @@ enum cardList {
 
 class MoreRegistrationCardVC: UIViewController {
     var dataSource = [cardList]()
-    
+    var keyHeight: CGFloat = 0.0
    
     
     
@@ -46,6 +46,8 @@ class MoreRegistrationCardVC: UIViewController {
         
         tableView.sectionFooterHeight = 0
         
+        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
+        
         return tableView
     }()
     
@@ -66,7 +68,37 @@ class MoreRegistrationCardVC: UIViewController {
         sectionCell()
         
         layout()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    
+    
+    
+    
+    // MARK: [Keyboard] -> 미완성
+    @objc func keyboardWillShow(_ sender: NSNotification) {
+        let userInfo:NSDictionary = sender.userInfo! as NSDictionary
+                let keyboardFrame:NSValue = userInfo.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height + 40
+        
+                keyHeight = keyboardHeight
+
+                self.view.frame.size.height -= keyboardHeight
+    }
+    
+    @objc func keyboardWillHide(_ sender: NSNotification) {
+        self.view.frame.size.height += keyHeight
+    }
+    
+    
+    
+    
+    
+    
     
     
     
@@ -263,6 +295,9 @@ extension MoreRegistrationCardVC: UITableViewDataSource {
 }
 
 
+
+
+
 // MARK: [TableView - Delegate]
 extension MoreRegistrationCardVC: UITableViewDelegate {
     
@@ -286,18 +321,6 @@ extension MoreRegistrationCardVC: UITableViewDelegate {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // MARK: [Layout]
 extension MoreRegistrationCardVC {
     
@@ -307,12 +330,11 @@ extension MoreRegistrationCardVC {
         naviCustom()
         
         layoutTableView()
-        
     }
     
     
     
-    
+    // Navi Custom
     private func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -324,12 +346,13 @@ extension MoreRegistrationCardVC {
         self.navigationItem.largeTitleDisplayMode = .never
     }
 
+    
+    // TableView
     private func layoutTableView() {
         self.view.addSubview(self.tableView)
         
         tableView.backgroundColor = .systemBackground
-        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
-        
+       
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),

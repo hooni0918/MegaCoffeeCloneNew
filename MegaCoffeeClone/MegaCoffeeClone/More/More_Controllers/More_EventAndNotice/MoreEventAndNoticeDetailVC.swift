@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class MoreEventAndNoticeDetailVC: UIViewController {
+    
+    
     // MARK: [변수 선언] [0] : Frame
     private lazy var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -23,6 +25,8 @@ class MoreEventAndNoticeDetailVC: UIViewController {
     private lazy var contentView = UIView()
     
     
+    
+    // MARK: [변수 선언] [1]: Main
     lazy var titleLabel: UILabel = {
        let title = UILabel()
         
@@ -52,14 +56,25 @@ class MoreEventAndNoticeDetailVC: UIViewController {
     }()
     
     
+    
+    // MARK: [Override]
     override func viewDidLoad() {
         super.viewDidLoad()
         
         layout()
     }
  
+    
+// MARK: [Class End]
+    
 }
 
+// MARK: [Class End]
+
+
+
+
+// MARK: [Layout]
 extension MoreEventAndNoticeDetailVC {
     private func layout() {
         self.view.backgroundColor = .systemBackground
@@ -85,7 +100,7 @@ extension MoreEventAndNoticeDetailVC {
         
     }
     
-    
+    // ScrollView
     private func layoutScrollView() {
         self.view.addSubview(self.scrollView)
         
@@ -98,6 +113,7 @@ extension MoreEventAndNoticeDetailVC {
         ])
     }
     
+    // ContentView
     private func layoutContentView() {
         self.scrollView.addSubview(self.contentView)
         
@@ -117,13 +133,12 @@ extension MoreEventAndNoticeDetailVC {
     
     
     
-    
+    // TitleLabel
     private func layoutTitleLabel() {
         self.contentView.addSubview(self.titleLabel)
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
@@ -132,12 +147,13 @@ extension MoreEventAndNoticeDetailVC {
         ])
     }
     
+    
+    // DateLabel
     private func layoutDateLabel() {
         self.contentView.addSubview(self.dateLabel)
         
         self.dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            
             self.dateLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
             self.dateLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.dateLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
@@ -146,12 +162,12 @@ extension MoreEventAndNoticeDetailVC {
         ])
     }
     
+    // ImageView
     private func layoutImgView() {
         self.contentView.addSubview(self.imgView)
         
         self.imgView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            
             self.imgView.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor, constant: 10),
             self.imgView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.imgView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),

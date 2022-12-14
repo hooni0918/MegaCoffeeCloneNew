@@ -12,70 +12,60 @@ import UIKit
 class MoreOrderCustomHeaderView: UITableViewHeaderFooterView {
     
     
-    
-    // week1
+    // MARK: [변수 선언] [1]: Week1
     lazy var week1Button: UIButton = {
         let week1 = UIButton(type: .system)
+        week1.tag = 1
         
         week1.colorSetting()
         
         week1.addTarget(self, action: #selector(week1ButtonTapped(_sender:)), for: .touchUpInside)
         
-        week1.tag = 1
-        
-        
         return week1
     }()
     
     
-    // month1
+    // MARK: [변수 선언] [2]: Month1
     lazy var month1Button: UIButton = {
         let month1 = UIButton(type: .system)
+        month1.tag = 2
         
         month1.noneSetting()
         
         month1.addTarget(self, action: #selector(month1ButtonTapped(_sender:)), for: .touchUpInside)
         
-        month1.tag = 2
-        
-        
         return month1
     }()
     
     
-    // month3
+    // MARK: [변수 선언] [3]: Month3
     lazy var month3Button: UIButton = {
         let month3 = UIButton(type: .system)
+        month3.tag = 3
         
         month3.noneSetting()
         
         month3.addTarget(self, action: #selector(month3ButtonTapped(_sender:)), for: .touchUpInside)
         
-        month3.tag = 3
-        
-        
         return month3
     }()
     
     
-    // total
+    // MARK: [변수 선언] [4]: Total
     lazy var totalButton: UIButton = {
         let total = UIButton(type: .system)
+        total.tag = 4
         
         total.noneSetting()
         
         total.addTarget(self, action: #selector(totalButtonTapped(_sender:)), for: .touchUpInside)
         
-        
-        total.tag = 4
-        
         return total
-        
     }()
     
     
     
-    // stackView
+    // MARK: [변수 선언] [5]: StackView
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         
@@ -105,7 +95,6 @@ class MoreOrderCustomHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        
     }
     
     
@@ -113,9 +102,7 @@ class MoreOrderCustomHeaderView: UITableViewHeaderFooterView {
     
     
     // MARK: [Action]
-    
     @objc func week1ButtonTapped(_sender: UIButton) {
-        
         week1Button.colorSetting()
         
         month1Button.noneSetting()
@@ -125,34 +112,29 @@ class MoreOrderCustomHeaderView: UITableViewHeaderFooterView {
     
     
     @objc func month1ButtonTapped(_sender: UIButton) {
-        
-        week1Button.noneSetting()
-        
         month1Button.colorSetting()
         
+        week1Button.noneSetting()
         month3Button.noneSetting()
         totalButton.noneSetting()
     }
     
 
     @objc func month3ButtonTapped(_sender: UIButton) {
+        month3Button.colorSetting()
         
         week1Button.noneSetting()
         month1Button.noneSetting()
-        
-        month3Button.colorSetting()
-        
         totalButton.noneSetting()
     }
     
     
     @objc func totalButtonTapped(_sender: UIButton) {
+        totalButton.colorSetting()
         
         week1Button.noneSetting()
         month1Button.noneSetting()
         month3Button.noneSetting()
-        
-        totalButton.colorSetting()
     }
     
     
@@ -161,13 +143,10 @@ class MoreOrderCustomHeaderView: UITableViewHeaderFooterView {
     
    
     
-    
-    // MARK: [Layout]
+    // MARK: [Add View]
     func addSubView() {
         self.contentView.addSubview(self.stackView)
 
-        
-        
         self.stackView.addArrangedSubview(self.week1Button)
         self.stackView.addArrangedSubview(self.month1Button)
         self.stackView.addArrangedSubview(self.month3Button)
@@ -178,45 +157,27 @@ class MoreOrderCustomHeaderView: UITableViewHeaderFooterView {
     
     
     
-    
+    // MARK: [Layout - Total]
     func layout() {
         layoutStackView()
-
-      
     }
     
     
+    // StackView
     func layoutStackView() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            
-            /*
-            self.stackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.stackView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.85)
-            */
-            
-            
-            /*
-            self.stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
-            */
-        
-        self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-        self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-        self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-        self.stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
-            
-            
-            
-            ])
+            self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.stackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
+        ])
     }
     
-  
 }
+
+
 
 
 

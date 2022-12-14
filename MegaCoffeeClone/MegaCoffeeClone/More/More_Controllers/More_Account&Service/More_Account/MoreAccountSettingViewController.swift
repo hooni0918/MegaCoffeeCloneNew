@@ -158,6 +158,7 @@ extension MoreAccountSettingViewController {
         layoutTableView()
     }
     
+    // Navi Custom
     func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -169,17 +170,15 @@ extension MoreAccountSettingViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
        
         let titleAttributes: [NSAttributedString.Key: Any] = [
-        
             .font: UIFont.systemFont(ofSize: 24, weight: .bold)
         ]
         
         self.navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
-        
     }
 
     
     
-    
+    // TableView
     @objc func layoutTableView() {
         self.view.addSubview(self.tableView)
         

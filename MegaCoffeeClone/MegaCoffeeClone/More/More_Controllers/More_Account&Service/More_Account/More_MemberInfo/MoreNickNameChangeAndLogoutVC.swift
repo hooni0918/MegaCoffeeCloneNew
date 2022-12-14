@@ -207,11 +207,7 @@ class MoreNickNameChangeAndLogoutVC: UIViewController {
         
         
         textfield.font = .systemFont(ofSize: 18)
-        
-        // let vc = MemberInformationManagementViewController()
-        // cell.textLabel?.text = list[indexPath.section] == 0
-        //  cell.detailTextLabel?.text = "Mega"
-        textfield.placeholder = "" // <- 여기에 받아와야 함.
+        textfield.placeholder = ""
         
         
         return textfield
@@ -297,7 +293,6 @@ class MoreNickNameChangeAndLogoutVC: UIViewController {
     
     
     // MARK: [Keyboard]
-    // 키보드가 올라감에 따라 뷰도 따라 올라감.
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -319,7 +314,6 @@ class MoreNickNameChangeAndLogoutVC: UIViewController {
     
     
     // MARK: [Action]
-    
     @objc func cancelTapped(sender: UIButton) {
         self.dismiss(animated: false)
     }
@@ -345,7 +339,6 @@ class MoreNickNameChangeAndLogoutVC: UIViewController {
     
     
     // MARK: [Func] - Move
-    
     func nickName() {
         logoutStackView.isHidden = true
         logoutCenterView.isHidden = true
@@ -376,7 +369,7 @@ class MoreNickNameChangeAndLogoutVC: UIViewController {
 
 
 
-// MARK: TextField - Delegate
+// MARK: [TextField - Delegate]
 extension MoreNickNameChangeAndLogoutVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -392,12 +385,6 @@ extension MoreNickNameChangeAndLogoutVC: UITextFieldDelegate {
         
     }
 }
-
-
-
-
-
-
 
 
 

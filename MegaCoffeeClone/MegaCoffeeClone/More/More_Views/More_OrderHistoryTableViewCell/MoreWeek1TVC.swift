@@ -212,6 +212,8 @@ class MoreWeek1TVC: UITableViewCell {
     
 }
 
+
+// MARK: [Extension - UILabel]
 extension UILabel {
     
     func setting() {
