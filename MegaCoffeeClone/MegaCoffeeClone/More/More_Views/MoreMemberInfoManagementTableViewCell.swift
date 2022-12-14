@@ -11,25 +11,6 @@ import UIKit
 class MoreMemberInfoManagementTableViewCell: UITableViewCell {
     static var identifier: String { return String(describing: self) }
     
-    lazy var nickNameLabel: UILabel = {
-        let nick = UILabel()
-        
-        //nick.text = "닉네임"
-        //nick.tintColor = .black
-        
-        return nick
-    }()
-    
-    lazy var birthday: UILabel = {
-       let birth = UILabel()
-        return birth
-    }()
-    
-    lazy var bye: UILabel = {
-        let bye = UILabel()
-        return bye
-    }()
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
@@ -39,16 +20,6 @@ class MoreMemberInfoManagementTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
           fatalError("")
       }
-    
-    
-    
-    
-    // MARK: [Layout]
-    private func layout() {
-        
-    }
-    
-   
     
     
 }

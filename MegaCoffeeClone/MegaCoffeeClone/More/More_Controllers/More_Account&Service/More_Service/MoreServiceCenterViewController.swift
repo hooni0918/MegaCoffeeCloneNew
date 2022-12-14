@@ -134,7 +134,6 @@ class MoreServiceCenterViewController: UIViewController {
     }
     
     
-    
     @objc private func callingButtonTapped() {
         alertCall()
     }
@@ -153,9 +152,6 @@ class MoreServiceCenterViewController: UIViewController {
     
     
     
-    
-    
-    
 
 // MARK: [Class End]
                 
@@ -163,18 +159,6 @@ class MoreServiceCenterViewController: UIViewController {
 
 // MARK: [Class End]
 
-
-
-
-
-
-
-
-
-
-
-    
- 
 
 
 
@@ -207,7 +191,6 @@ extension MoreServiceCenterViewController {
     }
     
     private func number2Layout() {
-        
         layoutTimeLabel()
         layoutInfoLabel()
     }
@@ -220,8 +203,7 @@ extension MoreServiceCenterViewController {
     
     
     
-    
-    
+    // Navi Custom
     private func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -261,7 +243,7 @@ extension MoreServiceCenterViewController {
     
     
     
-    
+    // Calling Button
     private func layoutHelloLabel() {
         self.contentView.addSubview(self.helloLabel)
         
@@ -275,7 +257,7 @@ extension MoreServiceCenterViewController {
     }
     
 
-    
+    // Calling Button
     private func layoutCallingButton() {
         self.contentView.addSubview(self.callingButton)
 
@@ -293,7 +275,7 @@ extension MoreServiceCenterViewController {
     }
     
     
-    
+    // Time Label
     private func layoutTimeLabel() {
         self.contentView.addSubview(self.timeLabel)
         
@@ -307,6 +289,7 @@ extension MoreServiceCenterViewController {
         
     }
     
+    // Info Label
     private func layoutInfoLabel() {
         self.contentView.addSubview(self.inforLabel)
         
@@ -320,6 +303,7 @@ extension MoreServiceCenterViewController {
         
     }
     
+    // Service Center Link Button
     private func layoutServiceCenterLinkButton() {
         self.contentView.addSubview(self.serviceCenterLinkButton)
         
@@ -333,6 +317,7 @@ extension MoreServiceCenterViewController {
         
     }
     
+    // App Inquiry Button
     private func layoutAppInquiryButton() {
         self.contentView.addSubview(self.appInquiryButton)
         

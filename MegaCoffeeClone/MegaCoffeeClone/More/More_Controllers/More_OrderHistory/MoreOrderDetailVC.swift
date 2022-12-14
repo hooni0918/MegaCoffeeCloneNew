@@ -137,6 +137,23 @@ class MoreOrderDetailVC: UIViewController {
 extension MoreOrderDetailVC: UITableViewDataSource {
     
     
+    // header title
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+    }
+    
+    
+    // header height
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    
+    // header background
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemGray6
+    }
+    
     // height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -177,23 +194,6 @@ extension MoreOrderDetailVC: UITableViewDataSource {
         
     }
     
-    
-    // header title
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
-    }
-    
-    
-    // header height
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10.0
-    }
-    
-    
-    // header background
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemGray6
-    }
     
     
     
@@ -283,9 +283,7 @@ extension MoreOrderDetailVC {
         
     }
     
-    
-    
-    
+    // Navi Custom
     private func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -297,6 +295,8 @@ extension MoreOrderDetailVC {
         self.navigationItem.largeTitleDisplayMode = .never
     }
 
+    
+    // TableView
     private func layoutTableView() {
         self.view.addSubview(self.tableView)
         

@@ -9,8 +9,19 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    // MARK: [.alert]
     
+    // MARK: [.alert]
+    func alert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
     
     
     

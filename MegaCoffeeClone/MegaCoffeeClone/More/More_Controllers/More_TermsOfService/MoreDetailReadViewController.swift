@@ -16,6 +16,9 @@ class MoreDetailReadViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: MoreTableViewCell.identifier)
+        
+        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
+        tableView.separatorStyle = .none
 
         return tableView
     }()
@@ -33,17 +36,11 @@ class MoreDetailReadViewController: UIViewController {
         layout()
     }
     
-    // viewWillAppear를 실행함으로 인해 계속 테이블뷰를 리로드해서 새로고침을 해줘야 다른 셀을 받아올 수 있음.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tableView.reloadData()
     }
-    
-    
-    
-    
-    
     
     
     
@@ -87,15 +84,15 @@ extension MoreDetailReadViewController: UITableViewDataSource {
         
         switch self.navigationItem.title {
         case "서비스 이용약관":
-            cell.textLabel?.text = MoreTermsOfServiceModel.menu1
+            cell.textLabel?.text = MoreTermsOfServiceDummyData.termsOfServiceData
         case "메가선불카드 이용약관":
-            cell.textLabel?.text = MoreTermsOfServiceModel.menu2
+            cell.textLabel?.text = MoreTermsOfServiceDummyData.termsOfMegaCardData
         case "개인정보 처리방침":
-            cell.textLabel?.text = MoreTermsOfServiceModel.menu3
+            cell.textLabel?.text = MoreTermsOfServiceDummyData.privacyPolicy
         case "마케팅 활용 동의":
-            cell.textLabel?.text = MoreTermsOfServiceModel.menu4
+            cell.textLabel?.text = MoreTermsOfServiceDummyData.consentToUseForMarketing
         case "위치 기반 서비스 이용 동의":
-            cell.textLabel?.text = MoreTermsOfServiceModel.menu5
+            cell.textLabel?.text = MoreTermsOfServiceDummyData.consentToUseOfLocationBasedServices
         default:
             print("DetailReadViewController - didSelectRowAt")
         }
@@ -126,34 +123,20 @@ extension MoreDetailReadViewController {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
-    
-    // none
-    /*
-    private func naviCustom1() {
-        let leftImage = UIImage(systemName: "xmark")
-        
-        self.navigationController?.navigationBar.backIndicatorImage = leftImage
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = leftImage
-    }
-     */
-    
+
     
     // TableView
     private func layoutTableView() {
         self.view.addSubview(self.tableView)
         
         tableView.backgroundColor = .systemBackground
-        // iOS15 padding issue
-        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
-        tableView.separatorStyle = .none
-        
+
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

@@ -44,6 +44,7 @@ class MoreCardNumberTVC: UITableViewCell {
         text1.textAlignment = .center
         
         text1.keyboardType = .numberPad
+        text1.addDoneButtonOnKeyboard()
         
         text1.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
@@ -60,6 +61,7 @@ class MoreCardNumberTVC: UITableViewCell {
         text2.textAlignment = .center
         
         text2.keyboardType = .numberPad
+        text2.addDoneButtonOnKeyboard()
         
         text2.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
@@ -76,6 +78,7 @@ class MoreCardNumberTVC: UITableViewCell {
         text3.textAlignment = .center
         
         text3.keyboardType = .numberPad
+        text3.addDoneButtonOnKeyboard()
         
         text3.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
@@ -92,6 +95,7 @@ class MoreCardNumberTVC: UITableViewCell {
         text4.textAlignment = .center
         
         text4.keyboardType = .numberPad
+        text4.addDoneButtonOnKeyboard()
         
         text4.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
         
@@ -178,23 +182,21 @@ class MoreCardNumberTVC: UITableViewCell {
     
     }
     
-    // Layout - TitleLabel
+    // TitleLabel
     func layoutTitleLabel() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         
         NSLayoutConstraint.activate([
-            
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
-            
         ])
     }
     
     
-    // Layout - StackView
+    // StackView
     func layoutStackView() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -216,8 +218,6 @@ class MoreCardNumberTVC: UITableViewCell {
 
 
 // MARK: [TextField - Delegate]
-
-
 extension MoreCardNumberTVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

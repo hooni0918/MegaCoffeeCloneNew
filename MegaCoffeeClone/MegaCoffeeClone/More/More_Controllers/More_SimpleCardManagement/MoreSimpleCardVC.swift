@@ -28,10 +28,15 @@ class MoreSimpleCardVC: UIViewController {
     
     private lazy var regisButton: UIButton = {
         let regis = UIButton(type: .system)
+        let img = UIImage(systemName: "plus.circle")?.withTintColor(UIColor.gray, renderingMode: .alwaysOriginal)
         
-        regis.setTitle("+ 카드 등록하기", for: .normal)
-        
+        regis.setTitle("  카드 등록하기", for: .normal)
         regis.setTitleColor(UIColor.black, for: .normal)
+        regis.titleLabel?.font = .systemFont(ofSize: 15)
+        
+        regis.setImage(img, for: .normal)
+        regis.imageView?.contentMode = .scaleAspectFit
+        regis.semanticContentAttribute = .forceLeftToRight
         
         regis.layer.borderWidth = 1
         regis.layer.borderColor = UIColor.gray.cgColor
@@ -52,11 +57,6 @@ class MoreSimpleCardVC: UIViewController {
         
         return label
     }()
-    
-    
-    
-    
-    
     
     
     // MARK: [변수 선언]: Navi Item
@@ -98,15 +98,9 @@ class MoreSimpleCardVC: UIViewController {
     
     @objc private func uiBarButtonTapped(_ sender: UIBarButtonItem) {
         
-        print("1")
+        alertOK(message: "카드 등록 후 이용해주세요.")
         
     }
-    
-    
-    
-    
-    
-    
     
     
     

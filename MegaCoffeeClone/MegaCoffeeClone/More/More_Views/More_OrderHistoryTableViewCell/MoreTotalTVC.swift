@@ -17,7 +17,6 @@ class MoreTotalTVC: UITableViewCell {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         
-        self.backgroundColor = .orange
     }
     
     required init?(coder: NSCoder) {

@@ -7,11 +7,6 @@
 
 
 
-// 고객센터 - 모바일 앱 관련 문의 - 문의하기, 문의내역
-// 멤버십 - 쿠폰 -> 이건 탑뷰가 고정이 되어 있네...
-// 3개
-
-
 import UIKit
 
 class MoreInquiryBaseViewController: UIViewController {
@@ -195,7 +190,6 @@ extension MoreInquiryBaseViewController {
             self.contentView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
             self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
-            // MARK: ⭐️Dynamic Height⭐️
             self.contentView.heightAnchor.constraint(equalToConstant: 780)
         ])
     }

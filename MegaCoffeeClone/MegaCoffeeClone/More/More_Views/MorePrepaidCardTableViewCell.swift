@@ -12,6 +12,7 @@ import UIKit
 class MorePrepaidCardTableViewCell: UITableViewCell {
     static var identifier: String { return String(describing: self) }
     
+    // MARK: [변수 선언]
     let tableLabel : UILabel = {
             let label = UILabel()
             label.font = .systemFont(ofSize: 15, weight: .regular)
@@ -19,14 +20,7 @@ class MorePrepaidCardTableViewCell: UITableViewCell {
         }()
     
     
-    lazy var textView: UITextView = {
-       let t = UITextView()
-        
-        
-        
-        
-        return t
-    }()
+    lazy var textView = UITextView()
     
     
     
@@ -36,8 +30,9 @@ class MorePrepaidCardTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
+        
+        addSubView()
         layout()
-     
     }
     
     required init?(coder: NSCoder) {
@@ -47,20 +42,27 @@ class MorePrepaidCardTableViewCell: UITableViewCell {
     
     
     
-    func layout() {
+    // MARK: [Add View]
+    func addSubView() {
         addSubview(tableLabel)
-
-        
+    }
+    
+    
+    
+    // MARK: [Layout - Total]
+    func layout() {
+        layoutTitleLabel()
+    }
+    
+    
+    
+    func layoutTitleLabel() {
         tableLabel.translatesAutoresizingMaskIntoConstraints = false
-
         
         NSLayoutConstraint.activate([
-        
             self.tableLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.tableLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            
-             
-             ])
+        ])
     }
     
 

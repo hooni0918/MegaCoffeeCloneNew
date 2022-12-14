@@ -623,7 +623,7 @@
         <!--쿠폰-->
         <scene sceneID="oN9-EE-faJ">
             <objects>
-                <viewController id="WPE-FG-fFO" customClass="HomeCouponViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeCouponVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WPE-FG-fFO" customClass="HomeCouponViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K0W-R7-Tpn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -783,7 +783,6 @@
         <!--View Controller-->
         <scene sceneID="w4M-DG-tJS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rqS-Lc-zlN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="NZF-ra-4zp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zAV-TY-XaK">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="634"/>
@@ -801,13 +800,13 @@
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rqS-Lc-zlN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4105" y="-1158"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="PqX-56-fhZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lH8-L7-wuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="56p-59-wAQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GeF-3Q-4Ym">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="634"/>
@@ -834,6 +833,7 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lH8-L7-wuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4104.6153846153848" y="-614.21800947867291"/>
         </scene>
@@ -952,7 +952,6 @@
         <!--Home Point Main View Controller-->
         <scene sceneID="XRL-J8-M0d">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cFz-4h-WtT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="0t0-be-MJd" customClass="HomePointMainViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yM1-CH-ZUp">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -1018,6 +1017,7 @@
                         <outlet property="stampTable" destination="mNn-Ab-AjD" id="Cmr-ws-ysI"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cFz-4h-WtT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2409" y="-1396"/>
         </scene>

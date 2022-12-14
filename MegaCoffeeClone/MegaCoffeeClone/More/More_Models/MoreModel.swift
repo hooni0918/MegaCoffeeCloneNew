@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 
-// MARK: [ Main Controller ]
+// MARK: [0] [ Main ]
 struct MoreMainModel {
     // Section Header
     static var moreSectionHeader: [String] = ["멤버쉽","주문","새소식","약관 및 정책"]
@@ -27,7 +28,36 @@ struct MoreMainModel {
 }
 
 
-// MARK: [ Prepaid Card List Model ]
+// MARK: [1] [ 주문내역 ]
+
+struct Week1Model {
+    let stateLabel: String
+    let storeLabel: String
+    let menuLabel: String
+    let menuCountLabel: String
+    let dateLabel: String
+    
+    let orderNumberLabel: String
+    let detailDateLabel: String
+    let priceLabel: String
+    
+}
+
+struct Month1Model { }
+
+struct Month3Model { }
+
+struct TotalModel { }
+
+
+// Order Detail
+struct OrderDetailModel {
+    
+}
+
+
+
+// MARK: [2] [ 메가선불카드 ]
 struct MorePrepaidCardListModel {
     var opened = Bool()
     var title = String()
@@ -36,10 +66,36 @@ struct MorePrepaidCardListModel {
 
 
 
-// MARK: [ SimpleCard Management Controller ]
+// MARK: [3] [ 간편카드 관리 ]
 struct CardModel {
     
 }
+
+
+
+
+// MARK: [4] [ 이벤트 및 공지사항 ]
+// 이벤트
+struct EventModel {
+    let titleImgView: UIImageView
+    let titleLabel: String
+    let dateLabel: String
+}
+
+// 공지사항
+struct NoticeModel {
+    let titleLabel: String
+    let dateLabel: String
+}
+
+// 랭킹이벤트
+struct RankingEventModel {
+    let titleImgView: UIImageView
+    let titleLabel: String
+    let dateLabel: String
+}
+
+
 
 
 
