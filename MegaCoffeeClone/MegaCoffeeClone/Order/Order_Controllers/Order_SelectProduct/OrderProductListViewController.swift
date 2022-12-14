@@ -11,7 +11,9 @@ class OrderProductListViewController: UIViewController {
 
     @IBOutlet var productListCollectionView: UICollectionView!
     @IBOutlet var changeStoreButton: UIButton!
-    @IBOutlet var shoppingBasketCountLabel: UILabel!
+    @IBOutlet var shoppingBasketBottomButton: UIButton!
+    @IBOutlet var shoppingCountView: UIView!
+    @IBOutlet var shoppingCountLabel: UILabel!
     
     
     var is1Column = false
@@ -45,7 +47,11 @@ class OrderProductListViewController: UIViewController {
             
             self.changeStoreButton.setTitle(self.storeData?.name, for: .normal)
         }
+        
+        shoppingCountView.layer.cornerRadius = 8
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -59,9 +65,13 @@ class OrderProductListViewController: UIViewController {
     }
     
     @IBAction func tapShoppingBasketButton(_ sender: Any) {
-    
-    
+        let storyBoard = UIStoryboard(name: "OrderProductList", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "shoppingBasketVC") as? OrderShoppingBasketListViewController else { return }
+        vc.storeData = storeData
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+ 
     
     
     
