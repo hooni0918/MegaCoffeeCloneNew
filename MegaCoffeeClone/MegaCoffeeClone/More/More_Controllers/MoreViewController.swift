@@ -268,10 +268,10 @@ extension MoreViewController: UITableViewDelegate {
             } else {
                 
                 let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-                 guard let vc = storyBoard.instantiateViewController(withIdentifier: "HomeCouponVC") as? HomeCouponViewController else { return }
-                 vc.hidesBottomBarWhenPushed = true
-                 self.navigationController?.pushViewController(vc, animated: true)
-                 
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: "HomeCouponViewController") as? HomeCouponViewController else { return }
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+                
                 
             }
             
