@@ -38,12 +38,6 @@ final class UnderlineSegmentedControl: UISegmentedControl {
       self.setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
     }
     
-    
-
-    
-
-    
-    
     override func layoutSubviews() {
       super.layoutSubviews()
       

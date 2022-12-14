@@ -235,7 +235,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LzV-Xr-a65">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LzV-Xr-a65">
                                 <rect key="frame" x="0.0" y="44" width="414" height="810"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -248,26 +248,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C5K-nE-fZr">
-                                                    <rect key="frame" x="15" y="5" width="384" height="90"/>
+                                                    <rect key="frame" x="15" y="15" width="384" height="70"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5Q-k1-IMy">
-                                                    <rect key="frame" x="359.5" y="74" width="34.5" height="16"/>
+                                                    <rect key="frame" x="359.5" y="64" width="34.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="C5K-nE-fZr" firstAttribute="top" secondItem="ntd-ZM-jTh" secondAttribute="top" constant="5" id="9yP-6t-SnO"/>
+                                                <constraint firstItem="C5K-nE-fZr" firstAttribute="top" secondItem="ntd-ZM-jTh" secondAttribute="top" constant="15" id="9yP-6t-SnO"/>
                                                 <constraint firstAttribute="trailing" secondItem="C5K-nE-fZr" secondAttribute="trailing" constant="15" id="Cev-eq-Q2G"/>
                                                 <constraint firstItem="C5K-nE-fZr" firstAttribute="leading" secondItem="ntd-ZM-jTh" secondAttribute="leading" constant="15" id="RuK-hK-NF4"/>
                                                 <constraint firstAttribute="trailing" secondItem="t5Q-k1-IMy" secondAttribute="trailing" constant="20" id="UHR-qY-YHP"/>
-                                                <constraint firstAttribute="bottom" secondItem="C5K-nE-fZr" secondAttribute="bottom" constant="5" id="jD2-9K-Ngc"/>
-                                                <constraint firstAttribute="bottom" secondItem="t5Q-k1-IMy" secondAttribute="bottom" constant="10" id="so5-Ia-y4P"/>
+                                                <constraint firstAttribute="bottom" secondItem="C5K-nE-fZr" secondAttribute="bottom" constant="15" id="jD2-9K-Ngc"/>
+                                                <constraint firstAttribute="bottom" secondItem="t5Q-k1-IMy" secondAttribute="bottom" constant="20" id="so5-Ia-y4P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -410,11 +410,11 @@
                                             <outlet property="totalPriceLabel" destination="Cm7-Yr-Y85" id="0UK-QL-oi2"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentButtonCell" rowHeight="140" id="Bot-2C-mCv" customClass="GiftPaymentButtonTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="399.5" width="414" height="140"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="60" id="Bot-2C-mCv" customClass="GiftNoteTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="399.5" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bot-2C-mCv" id="foL-js-Qcl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="226" translatesAutoresizingMaskIntoConstraints="NO" id="chn-sW-be5">
@@ -432,58 +432,68 @@
                                                             <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system">
                                                                 <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
-                                                            <connections>
-                                                                <action selector="moreButtonClicked:" destination="Bot-2C-mCv" eventType="touchUpInside" id="HA7-z1-Vh4"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-iH-hj7">
-                                                    <rect key="frame" x="20" y="71" width="374" height="48"/>
-                                                    <color key="backgroundColor" name="done"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="결제하기">
-                                                        <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <color key="baseForegroundColor" name="close"/>
-                                                    </buttonConfiguration>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="2ih-iH-hj7" secondAttribute="trailing" id="1j2-q3-acj"/>
                                                 <constraint firstItem="chn-sW-be5" firstAttribute="leading" secondItem="foL-js-Qcl" secondAttribute="leading" constant="15" id="Loh-ky-jRt"/>
                                                 <constraint firstItem="chn-sW-be5" firstAttribute="top" secondItem="foL-js-Qcl" secondAttribute="top" constant="20" id="RSF-BU-rgI"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="2ih-iH-hj7" secondAttribute="bottom" constant="10" id="ZqS-qj-cSc"/>
-                                                <constraint firstItem="2ih-iH-hj7" firstAttribute="leading" secondItem="foL-js-Qcl" secondAttribute="leadingMargin" id="dM0-Ob-Rep"/>
                                                 <constraint firstAttribute="trailing" secondItem="chn-sW-be5" secondAttribute="trailing" constant="15" id="edE-Ja-La4"/>
-                                                <constraint firstItem="2ih-iH-hj7" firstAttribute="top" secondItem="chn-sW-be5" secondAttribute="bottom" constant="20" id="g84-aX-zyp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="moreButton" destination="sGA-we-AsJ" id="mSa-NW-vSY"/>
-                                            <outlet property="paymentButton" destination="2ih-iH-hj7" id="g30-vl-xBt"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textContentCell" rowHeight="210" id="NXY-Ja-QX7">
-                                        <rect key="frame" x="0.0" y="539.5" width="414" height="210"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteTextCell" rowHeight="400" id="rcm-xo-WIY">
+                                        <rect key="frame" x="0.0" y="459.5" width="414" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NXY-Ja-QX7" id="Ng4-tm-KBk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rcm-xo-WIY" id="lkL-tX-6Oh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pUs-DC-DoV">
-                                                    <rect key="frame" x="20" y="11" width="374" height="188"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="400"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <string key="text">1. 본 쿠폰은 해당 제품으로 교환가능합니다. 2. 본 상품은 매장 재고 상황에 따라 동일 상품으로 교환이 불가능 할 수 있습니다. 3. 해당 메뉴의 구매가 어려운 경우, 다른 매장을 이용하거나 동일 가격 이상의 타 메뉴로 교환가능하며, 높은 가격의 메뉴 구매시에는 차액을 지불해야 합니다. 4. 본 쿠폰을 사용할 시, 스탬프 적립이 불가능합니다.</string>
+                                                    <string key="text">1. 본 쿠폰은 해당 제품으로 교환가능합니다.                                          2. 본 상품은 매장 재고 상황에 따라 동일 상품으로 교환이 불가능 할 수 있습니다.                                                                       3. 해당 메뉴의 구매가 어려운 경우, 다른 매장을 이용하거나 동일 가격 이상의 타 메뉴로 교환가능하며, 높은 가격의 메뉴 구매시에는 차액을 지불해야 합니다.                                                                                                                                4. 본 쿠폰을 사용할 시, 스탬프 적립이 불가능합니다.                                                                                5.해당 쿠폰이 이미 환불/결제취소가 이루어진 경우에는 사용할 수 없습니다.                                          6. 쿠폰은 매장 행사 및 가격 할인에 적용 받지 않습니다.                                                               7. 쿠폰은 매장에서 현금으로 교환되지 않으며 , 별도 거래될 수 없습니다.                                              8. 본 쿠폰의 최초 발행일자 기준으로 유효기간은 5년이며, 취소는 유효기간 내 구매자의 요청에 의해 가능합니다.                                                            9. 본 쿠폰의 유효기간 연장 및 재발송 문의는 쿠프마케팅1644-5093 (9:30~18:00)로 문의 부탁드립니다.                                                   10. 최초 발해일자 기준 5년 이내 환불은 최초 유효기간(93일)내 100% 환불 가능하며 최초유효기간 이후 90% 환불 가능합니다.                          11. 최초 유효기간(93일)만료 이후의 환불건은 쿠프마케팅1644-5093으로 문의 부탁드리며 최초 유효기간(93일) 이내의 환불건은 카카오톡채널(ID:발트루스트)로 문의 부탁드립니다.                                                                       12. 2022.07.06 이전 구매 건은 즐거운 선물하기 고객센터(1661-8191)로 문의 부탁드립니다.</string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pUs-DC-DoV" firstAttribute="leading" secondItem="Ng4-tm-KBk" secondAttribute="leadingMargin" id="QLd-z5-sxP"/>
-                                                <constraint firstItem="pUs-DC-DoV" firstAttribute="top" secondItem="Ng4-tm-KBk" secondAttribute="topMargin" id="RBD-6x-bZK"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pUs-DC-DoV" secondAttribute="trailing" id="d9j-yS-2zP"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="pUs-DC-DoV" secondAttribute="bottom" id="sqK-nG-OM0"/>
+                                                <constraint firstItem="pUs-DC-DoV" firstAttribute="top" secondItem="lkL-tX-6Oh" secondAttribute="top" id="UNY-4p-ok5"/>
+                                                <constraint firstAttribute="bottom" secondItem="pUs-DC-DoV" secondAttribute="bottom" id="ZUr-KC-dmZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="pUs-DC-DoV" secondAttribute="trailing" constant="15" id="dy0-s1-I6l"/>
+                                                <constraint firstItem="pUs-DC-DoV" firstAttribute="leading" secondItem="lkL-tX-6Oh" secondAttribute="leading" constant="15" id="vfO-W1-D1G"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="payButtonCell" rowHeight="60" id="FTp-Lj-Xrm">
+                                        <rect key="frame" x="0.0" y="859.5" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FTp-Lj-Xrm" id="Y1r-6u-4t1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6h-yT-rGX">
+                                                    <rect key="frame" x="15" y="5" width="384" height="45"/>
+                                                    <color key="backgroundColor" name="done"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="PEH-8p-Oa4"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="결제하기">
+                                                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="19"/>
+                                                        <color key="baseForegroundColor" name="close"/>
+                                                    </buttonConfiguration>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="o6h-yT-rGX" secondAttribute="trailing" constant="15" id="GzS-5d-AmX"/>
+                                                <constraint firstItem="o6h-yT-rGX" firstAttribute="top" secondItem="Y1r-6u-4t1" secondAttribute="top" constant="5" id="bv6-u3-D8f"/>
+                                                <constraint firstItem="o6h-yT-rGX" firstAttribute="leading" secondItem="Y1r-6u-4t1" secondAttribute="leading" constant="15" id="xci-vH-9aS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -504,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zQ-nR-aGm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-965.21739130434787" y="1512.7232142857142"/>
+            <point key="canvasLocation" x="-975" y="1563"/>
         </scene>
         <!--Gift Move PopupVC-->
         <scene sceneID="xmc-wB-f5Q">
@@ -1355,36 +1365,128 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eqZ-5U-BZX">
-                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F9M-tY-UJa">
-                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F9M-tY-UJa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchProdcutCell" id="RYt-9P-Hsw" customClass="GiftSearchBarTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RYt-9P-Hsw" id="sIV-tk-znH">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <searchBar contentMode="redraw" placeholder="상품명으로 검색" translatesAutoresizingMaskIntoConstraints="NO" id="WyY-NC-qN6">
+                                                    <rect key="frame" x="10" y="0.0" width="394" height="51"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <scopeButtonTitles>
+                                                        <string>Title</string>
+                                                        <string>Title</string>
+                                                    </scopeButtonTitles>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="TPz-tv-46m" id="Q68-1O-iJi"/>
+                                                    </connections>
+                                                </searchBar>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="WyY-NC-qN6" secondAttribute="trailing" constant="10" id="Jof-KQ-JwV"/>
+                                                <constraint firstItem="WyY-NC-qN6" firstAttribute="leading" secondItem="sIV-tk-znH" secondAttribute="leading" constant="10" id="KTe-u1-rwm"/>
+                                                <constraint firstItem="WyY-NC-qN6" firstAttribute="top" secondItem="sIV-tk-znH" secondAttribute="top" id="reD-BQ-n4k"/>
+                                                <constraint firstAttribute="bottom" secondItem="WyY-NC-qN6" secondAttribute="bottom" id="zy9-vY-EgM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="searchBar" destination="WyY-NC-qN6" id="fUK-99-ctu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreButtonCell" id="saH-Rh-18l" customClass="GiftPagingButtonTableViewCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="95.5" width="414" height="45.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="saH-Rh-18l" id="NUQ-6x-PVe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gk-Ki-dzm">
+                                                    <rect key="frame" x="15" y="5" width="384" height="35.5"/>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="더보기">
+                                                        <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="moreButtonClicked:" destination="saH-Rh-18l" eventType="touchUpInside" id="A6c-Ug-XYu"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8Gk-Ki-dzm" firstAttribute="top" secondItem="NUQ-6x-PVe" secondAttribute="top" constant="5" id="2qK-Gv-UfU"/>
+                                                <constraint firstItem="8Gk-Ki-dzm" firstAttribute="leading" secondItem="NUQ-6x-PVe" secondAttribute="leading" constant="15" id="Oii-6j-y5Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Gk-Ki-dzm" secondAttribute="trailing" constant="15" id="Y1R-97-huz"/>
+                                                <constraint firstAttribute="bottom" secondItem="8Gk-Ki-dzm" secondAttribute="bottom" constant="5" id="iPa-lh-LiZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="moreButton" destination="8Gk-Ki-dzm" id="eE6-V5-oYF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noProductCell" rowHeight="200" id="cvZ-Gj-WOx">
+                                        <rect key="frame" x="0.0" y="141" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cvZ-Gj-WOx" id="9aq-cZ-J21">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 조건에 맞는 상품이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgn-3S-HRE">
+                                                    <rect key="frame" x="74" y="155" width="266" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.triangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t2G-yH-ECS">
+                                                    <rect key="frame" x="166" y="57" width="83" height="87"/>
+                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="89" id="7ZJ-KW-Kp0"/>
+                                                        <constraint firstAttribute="width" constant="83" id="eXQ-a9-TJc"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qgn-3S-HRE" secondAttribute="bottom" constant="10" id="GLB-3R-y7u"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="t2G-yH-ECS" secondAttribute="trailing" constant="145" id="Hkz-ES-Ogw"/>
+                                                <constraint firstItem="t2G-yH-ECS" firstAttribute="top" secondItem="9aq-cZ-J21" secondAttribute="topMargin" constant="45" id="YPt-W5-VU5"/>
+                                                <constraint firstItem="qgn-3S-HRE" firstAttribute="leading" secondItem="9aq-cZ-J21" secondAttribute="leadingMargin" constant="54" id="c5V-vQ-KEk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qgn-3S-HRE" secondAttribute="trailing" constant="54" id="jik-o1-7wD"/>
+                                                <constraint firstItem="qgn-3S-HRE" firstAttribute="top" secondItem="t2G-yH-ECS" secondAttribute="bottom" constant="10" id="m5e-PD-Hhj"/>
+                                                <constraint firstItem="t2G-yH-ECS" firstAttribute="leading" secondItem="9aq-cZ-J21" secondAttribute="leadingMargin" constant="146" id="mL2-bL-z8B"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="TPz-tv-46m" id="FGO-O7-piv"/>
+                                    <outlet property="delegate" destination="TPz-tv-46m" id="nPX-AL-PFV"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kid-PT-NAA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kid-PT-NAA" firstAttribute="trailing" secondItem="F9M-tY-UJa" secondAttribute="trailing" id="EWw-8S-ryP"/>
-                            <constraint firstItem="eqZ-5U-BZX" firstAttribute="top" secondItem="kid-PT-NAA" secondAttribute="top" id="IBl-dm-g95"/>
-                            <constraint firstItem="eqZ-5U-BZX" firstAttribute="trailing" secondItem="kid-PT-NAA" secondAttribute="trailing" id="MiN-be-QIM"/>
                             <constraint firstItem="kid-PT-NAA" firstAttribute="bottom" secondItem="F9M-tY-UJa" secondAttribute="bottom" id="X9w-Hr-phQ"/>
-                            <constraint firstItem="eqZ-5U-BZX" firstAttribute="leading" secondItem="kid-PT-NAA" secondAttribute="leading" id="ZS4-A6-ATw"/>
+                            <constraint firstItem="F9M-tY-UJa" firstAttribute="top" secondItem="kid-PT-NAA" secondAttribute="top" id="fCD-Ys-rps"/>
                             <constraint firstItem="F9M-tY-UJa" firstAttribute="leading" secondItem="kid-PT-NAA" secondAttribute="leading" id="jir-Ed-wfc"/>
-                            <constraint firstItem="F9M-tY-UJa" firstAttribute="top" secondItem="eqZ-5U-BZX" secondAttribute="bottom" id="rep-wf-Uik"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="상품 검색" id="ik9-jT-kRf"/>
                     <connections>
-                        <outlet property="searchBar" destination="eqZ-5U-BZX" id="GqS-wt-tVb"/>
                         <outlet property="tableView" destination="F9M-tY-UJa" id="MNy-u8-TV3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDr-6Z-Bgm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2951" y="199"/>
+            <point key="canvasLocation" x="2950.7246376811595" y="198.88392857142856"/>
         </scene>
         <!--Gift Box Container View Controller-->
         <scene sceneID="6ay-DF-J5N">
@@ -1393,13 +1495,137 @@
                     <view key="view" contentMode="scaleToFill" id="UOh-Vw-EDI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BNI-7k-cL3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iM1-zR-s5s">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="registCouponCell" id="OhL-2O-aWv" customClass="GiftRegistCouponCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cuR-3M-u3U">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEn-oP-TSF">
+                                                    <rect key="frame" x="15" y="10" width="384" height="40"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="  쿠폰 등록하기" image="plus.circle" catalog="system">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VEn-oP-TSF" firstAttribute="top" secondItem="cuR-3M-u3U" secondAttribute="top" constant="10" id="BET-fw-eQp"/>
+                                                <constraint firstItem="VEn-oP-TSF" firstAttribute="leading" secondItem="cuR-3M-u3U" secondAttribute="leading" constant="15" id="D7R-5k-6Vx"/>
+                                                <constraint firstAttribute="trailing" secondItem="VEn-oP-TSF" secondAttribute="trailing" constant="15" id="rAI-4x-7pE"/>
+                                                <constraint firstAttribute="bottom" secondItem="VEn-oP-TSF" secondAttribute="bottom" constant="10" id="rsl-cy-aGo"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="60"/>
+                                        <connections>
+                                            <outlet property="registCouponButton" destination="VEn-oP-TSF" id="m3D-dn-Duw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noBoxCell" id="vAF-mx-d5m" customClass="GiftNoBoxCell" customModule="MegaCoffeeClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="70" width="414" height="350"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Bk9-uo-fum">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.triangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wq1-V6-2ll">
+                                                    <rect key="frame" x="169.5" y="118.5" width="75" height="113"/>
+                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="115" id="8Be-1y-AsG"/>
+                                                        <constraint firstAttribute="width" constant="75" id="pOf-gF-Cn2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="받은 선물이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuk-DT-eWf">
+                                                    <rect key="frame" x="130" y="248.5" width="154.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wq1-V6-2ll" firstAttribute="centerX" secondItem="Bk9-uo-fum" secondAttribute="centerX" id="6HD-CR-Wgs"/>
+                                                <constraint firstAttribute="trailing" secondItem="nuk-DT-eWf" secondAttribute="trailing" constant="129.5" id="AIc-gd-Gds"/>
+                                                <constraint firstItem="nuk-DT-eWf" firstAttribute="leading" secondItem="Bk9-uo-fum" secondAttribute="leading" constant="130" id="doj-Uc-Gmv"/>
+                                                <constraint firstAttribute="bottom" secondItem="nuk-DT-eWf" secondAttribute="bottom" constant="80" id="lFy-1I-jgN"/>
+                                                <constraint firstItem="wq1-V6-2ll" firstAttribute="centerY" secondItem="Bk9-uo-fum" secondAttribute="centerY" id="qr7-lL-CFn"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="350"/>
+                                        <connections>
+                                            <outlet property="label" destination="nuk-DT-eWf" id="czO-MC-mGE"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="couponNoteCell" id="Iuf-yK-4pq">
+                                        <rect key="frame" x="0.0" y="430" width="414" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hMl-1Z-LTV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-VI-sty">
+                                                    <rect key="frame" x="15" y="38" width="384" height="92"/>
+                                                    <string key="text">1. "사용완료"는 쿠폰이 정상적으로 사용된 상태를 의미합니다.                      2. "기간 만료"는 쿠폰의 유효기간이 만료되어 사용하지 못하는 상태를 의미합니다.                                                                                         3. "결제 취소"는 선물하신 분이 결제를 취소하여 사용할 수 없는 상태입니다.</string>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유의사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-e4-toh">
+                                                    <rect key="frame" x="20" y="20" width="52" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <constraints>
+                                                <constraint firstItem="JJt-e4-toh" firstAttribute="leading" secondItem="hMl-1Z-LTV" secondAttribute="leading" constant="20" id="Flt-xe-JzG"/>
+                                                <constraint firstAttribute="bottom" secondItem="6bJ-VI-sty" secondAttribute="bottom" constant="20" id="Ns2-gJ-Dd8"/>
+                                                <constraint firstAttribute="trailing" secondItem="6bJ-VI-sty" secondAttribute="trailing" constant="15" id="Nuc-u6-tt1"/>
+                                                <constraint firstItem="JJt-e4-toh" firstAttribute="top" secondItem="hMl-1Z-LTV" secondAttribute="top" constant="20" id="Sf2-wh-imb"/>
+                                                <constraint firstItem="6bJ-VI-sty" firstAttribute="leading" secondItem="hMl-1Z-LTV" secondAttribute="leading" constant="15" id="lGg-Ze-637"/>
+                                                <constraint firstItem="6bJ-VI-sty" firstAttribute="top" secondItem="JJt-e4-toh" secondAttribute="bottom" id="nOS-6P-k6Z"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="150"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="nXz-hL-ZIz" id="IHQ-YQ-AdK"/>
+                                    <outlet property="delegate" destination="nXz-hL-ZIz" id="hUv-bI-uC0"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="EH7-aX-ZEI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="BNI-7k-cL3" secondAttribute="bottom" id="Uik-Ze-ekr"/>
+                            <constraint firstItem="BNI-7k-cL3" firstAttribute="trailing" secondItem="EH7-aX-ZEI" secondAttribute="trailing" id="dWh-2d-AtM"/>
+                            <constraint firstItem="BNI-7k-cL3" firstAttribute="top" secondItem="UOh-Vw-EDI" secondAttribute="top" id="iMc-ng-dNZ"/>
+                            <constraint firstItem="BNI-7k-cL3" firstAttribute="leading" secondItem="EH7-aX-ZEI" secondAttribute="leading" id="vtz-Jr-gBi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="GiftBoxColletionView" destination="BNI-7k-cL3" id="URu-j8-pNC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09O-e2-qn5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="935"/>
+            <point key="canvasLocation" x="1953.6231884057972" y="934.82142857142856"/>
         </scene>
     </scenes>
     <resources>
@@ -1408,7 +1634,9 @@
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="circle.inset.filled" catalog="system" width="128" height="121"/>
         <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
+        <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="112"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <namedColor name="close">
             <color red="0.90588235294117647" green="0.89803921568627454" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
