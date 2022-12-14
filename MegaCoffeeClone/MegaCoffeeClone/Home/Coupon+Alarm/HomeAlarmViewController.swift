@@ -41,6 +41,7 @@ extension HomeAlarmViewController: UITableViewDelegate,UITableViewDataSource {
         return cell 
         
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeStampViewController")
         as? HomeStampViewController

@@ -1,13 +1,10 @@
-//
-//  CateogryViewController.swift
-//  MegaCoffeeClone
-//
-//  Created by 원준연 on 2022/10/26.
-//
+
+
+
 
 import UIKit
 
-class GiftCategoryContainerViewController: ViewController {
+class HomeCategoryViewController: ViewController {
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
@@ -35,7 +32,7 @@ class GiftCategoryContainerViewController: ViewController {
     }
 }
 
-extension GiftCategoryContainerViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension HomeCategoryViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return giftCategory.count
@@ -68,7 +65,7 @@ extension GiftCategoryContainerViewController: UICollectionViewDelegate, UIColle
     
 }
 
-extension GiftCategoryContainerViewController: UICollectionViewDataSource {
+extension HomeCategoryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if let cell = collectionView.cellForItem(at: indexPath) {
@@ -91,13 +88,13 @@ extension GiftCategoryContainerViewController: UICollectionViewDataSource {
     }
 }
 
-extension GiftCategoryContainerViewController: UITableViewDelegate {
+extension HomeCategoryViewController: UITableViewDelegate {
     
 
     
 }
 
-extension GiftCategoryContainerViewController: UITableViewDataSource {
+extension HomeCategoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredMenu[0].products.count

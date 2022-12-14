@@ -642,46 +642,54 @@
                                             <action selector="tapChangeStoreButton:" destination="kVL-Kh-piy" eventType="touchUpInside" id="CSm-aR-LJg"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MU-Tc-sPV">
-                                        <rect key="frame" x="360" y="21.5" width="34" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17C-2d-OO9">
+                                        <rect key="frame" x="350" y="13" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="17C-2d-OO9" secondAttribute="height" id="1qf-jL-cib"/>
+                                            <constraint firstAttribute="height" constant="44" id="Avm-CM-i7q"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="cart" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="pointSize">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="tapShoppingBasketButton:" destination="kVL-Kh-piy" eventType="touchUpInside" id="2bA-ja-6oo"/>
+                                            <action selector="tapShoppingBasketButton:" destination="kVL-Kh-piy" eventType="touchUpInside" id="FfI-OA-kyi"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brS-Br-2t6">
-                                        <rect key="frame" x="377.5" y="17.5" width="23" height="15"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b67-fu-ZQn">
+                                        <rect key="frame" x="375" y="13" width="19" height="17"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8W-ZN-brS">
-                                                <rect key="frame" x="4" y="-2" width="15" height="18"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnK-4X-WQb">
+                                                <rect key="frame" x="5" y="0.0" width="9" height="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="r8W-ZN-brS" secondAttribute="trailing" constant="4" id="Knm-Cq-hVW"/>
-                                            <constraint firstItem="r8W-ZN-brS" firstAttribute="top" secondItem="brS-Br-2t6" secondAttribute="top" constant="-2" id="QLs-q7-cix"/>
-                                            <constraint firstItem="r8W-ZN-brS" firstAttribute="leading" secondItem="brS-Br-2t6" secondAttribute="leading" constant="4" id="aX8-8L-ep2"/>
-                                            <constraint firstAttribute="bottom" secondItem="r8W-ZN-brS" secondAttribute="bottom" constant="-1" id="iT9-AT-HCM"/>
+                                            <constraint firstItem="RnK-4X-WQb" firstAttribute="top" secondItem="b67-fu-ZQn" secondAttribute="top" id="85c-kq-vML"/>
+                                            <constraint firstItem="RnK-4X-WQb" firstAttribute="leading" secondItem="b67-fu-ZQn" secondAttribute="leading" constant="5" id="8S1-1t-iaT"/>
+                                            <constraint firstAttribute="trailing" secondItem="RnK-4X-WQb" secondAttribute="trailing" constant="5" id="PK6-rb-ULC"/>
+                                            <constraint firstAttribute="bottom" secondItem="RnK-4X-WQb" secondAttribute="bottom" id="yHe-DT-xNm"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="17C-2d-OO9" firstAttribute="centerY" secondItem="keA-uB-z5W" secondAttribute="centerY" id="2s9-Nv-WKe"/>
                                     <constraint firstItem="keA-uB-z5W" firstAttribute="centerY" secondItem="JTT-tN-UzK" secondAttribute="centerY" id="Hew-XC-QVT"/>
-                                    <constraint firstItem="9MU-Tc-sPV" firstAttribute="centerY" secondItem="JTT-tN-UzK" secondAttribute="centerY" id="KpM-b7-G7l"/>
-                                    <constraint firstItem="brS-Br-2t6" firstAttribute="centerY" secondItem="9MU-Tc-sPV" secondAttribute="centerY" constant="-10" id="RBZ-m5-8dc"/>
-                                    <constraint firstAttribute="trailing" secondItem="9MU-Tc-sPV" secondAttribute="trailing" constant="20" id="RRv-UX-3P3"/>
+                                    <constraint firstItem="b67-fu-ZQn" firstAttribute="top" secondItem="17C-2d-OO9" secondAttribute="top" id="Nsj-qK-hgo"/>
+                                    <constraint firstAttribute="trailing" secondItem="17C-2d-OO9" secondAttribute="trailing" constant="20" id="Qlj-HZ-Whc"/>
+                                    <constraint firstItem="b67-fu-ZQn" firstAttribute="trailing" secondItem="17C-2d-OO9" secondAttribute="trailing" id="f1R-vo-4AU"/>
                                     <constraint firstItem="keA-uB-z5W" firstAttribute="leading" secondItem="JTT-tN-UzK" secondAttribute="leading" constant="20" id="hXJ-KI-XdQ"/>
                                     <constraint firstAttribute="height" constant="70" id="nWa-zb-EyU"/>
-                                    <constraint firstItem="brS-Br-2t6" firstAttribute="centerX" secondItem="9MU-Tc-sPV" secondAttribute="centerX" constant="12" id="ob0-RC-KnU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -709,7 +717,9 @@
                     <connections>
                         <outlet property="changeStoreButton" destination="keA-uB-z5W" id="bfx-MH-AfA"/>
                         <outlet property="productListCollectionView" destination="s8h-Th-ere" id="3Rz-ag-SGh"/>
-                        <outlet property="shoppingBasketCountLabel" destination="r8W-ZN-brS" id="jx3-a2-jYR"/>
+                        <outlet property="shoppingBasketBottomButton" destination="17C-2d-OO9" id="Lah-Aa-YhN"/>
+                        <outlet property="shoppingCountLabel" destination="RnK-4X-WQb" id="cWV-1W-e2n"/>
+                        <outlet property="shoppingCountView" destination="b67-fu-ZQn" id="5uS-Oy-u01"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngF-Bk-S1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
