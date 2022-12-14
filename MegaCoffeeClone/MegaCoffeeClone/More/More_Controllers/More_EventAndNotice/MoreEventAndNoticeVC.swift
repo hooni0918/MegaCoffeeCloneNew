@@ -170,9 +170,6 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
   
     }
     
-    
-    
-
     // cell For Row At
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -182,14 +179,11 @@ extension MoreEventAndNoticeVC: UITableViewDataSource {
 
             guard let cell1 = tableView.dequeueReusableCell(withIdentifier: MoreEventAndRankingEventTVC.identifier, for: indexPath) as? MoreEventAndRankingEventTVC else { return UITableViewCell() }
             
-            
             cell1.imgView = eventModel[indexPath.row].titleImgView
             cell1.titleLabel.text = eventModel[indexPath.row].titleLabel
             cell1.subTitleLabel.text = eventModel[indexPath.row].dateLabel
             
-            
             return cell1
-            
             
         case .notice:
 
