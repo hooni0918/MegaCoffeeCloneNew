@@ -7,45 +7,67 @@
 
 import UIKit
 
-enum HomeCouponSelectedCategory {
-    case coupon
-    case download
-    case history
-}
-
-var didLayout = false
-
-class HomeCouponViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class HomeCouponViewController: UIViewController {
     
     var HomeCouponImage: Array<String> = ["HomeCoupon1","HomeCoupon2"]
-    var arr2 = [1,2,3]
-    var arr3 = [1,2,3,4,5]
-    
-    
+ 
     var HomeCouponPlace: Array<String> = ["강남 로데오점","왕십리역점"]
     var HomeCouponMenu: Array<String> = ["아이스 아메리카노","따끈따끈간식꾸러미세트"]
     var HomeCouponPeriod: Array<String> = ["유효기간: ~ 11.07","유효기간 ~ 11.09"]
+
+   
+    //@IBOutlet weak var HomeCouponTableview: UITableView!
+//
+//    @IBOutlet weak var button1: UIButton!
+//
+//    @IBOutlet weak var button2: UIButton!
+//
+//    @IBOutlet weak var button3: UIButton!
+//    //var homeCouponSelectedCategory = HomeCouponSelectedCategory.coupon
+//
+//    var selectedButtonIndex = 100
+//
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var secondView: UIView!
+    @IBOutlet weak var thirdView: UIView!
+
     
-    @IBOutlet weak var HomeCouponTableview: UITableView!
-    
-    @IBOutlet weak var button1: UIButton!
-    
-    @IBOutlet weak var button2: UIButton!
-    
-    @IBOutlet weak var button3: UIButton!
-    //var homeCouponSelectedCategory = HomeCouponSelectedCategory.coupon
-    
-    var selectedButtonIndex = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+
+    }
+
+    
+    @IBAction func switchViews(_ sender: UISegmentedControl) {
+        if (sender.selectedSegmentIndex == 0) {
+            firstView.alpha = 1
+            secondView.alpha = 0
+            thirdView.alpha = 0
+        }else if (sender.selectedSegmentIndex == 1){
+            firstView.alpha = 0
+            secondView.alpha = 1
+            thirdView.alpha = 0
+            
+        } else if (sender.selectedSegmentIndex == 2){
+            firstView.alpha = 0
+            secondView.alpha = 0
+            thirdView.alpha = 1
+            
+        }
+    }
+    
+}
+
+
+
 //        self.HomeCouponTableview.dataSource = self
 //        self.HomeCouponTableview.delegate = self
-
-        let nib = UINib(nibName: "HomeCouponTableViewCell", bundle: nil)
-        HomeCouponTableview?.register(nib, forCellReuseIdentifier: "HomeCouponTableViewCell")
-     //   HomeCouponTableview.rowHeight = UITableView.automaticDimension
+//
+//        let nib = UINib(nibName: "HomeCouponTableViewCell", bundle: nil)
+//        HomeCouponTableview?.register(nib, forCellReuseIdentifier: "HomeCouponTableViewCell")
+//     //   HomeCouponTableview.rowHeight = UITableView.automaticDimension
         
         
 //        orderTableView.bounces = false
@@ -54,7 +76,6 @@ class HomeCouponViewController: UIViewController, UITableViewDelegate,UITableVie
 //        underBarViewWidth.constant = listButton.frame.size.width
 //
 //        listButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
-    }
     
 //    @IBAction func tapButton(_ sender: Any) {
 //        guard let button = sender as? UIButton else { return }
@@ -102,48 +123,48 @@ class HomeCouponViewController: UIViewController, UITableViewDelegate,UITableVie
 //
     
     // MARK: 기본 테이블
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedButtonIndex {
-        case 100:
-            return HomeCouponImage.count
-        case 101:
-            return arr2.count
-        case 102:
-            return arr3.count
-        default:
-            return 0
-        }
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        switch selectedButtonIndex {
+//        case 100:
+//            return HomeCouponImage.count
+//        case 101:
+//            return arr2.count
+//        case 102:
+//            return arr3.count
+//        default:
+//            return 0
+//        }
+//    }
+//
+//
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        switch selectedButtonIndex {
+//        case 100:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCouponTableViewCell", for: indexPath) as! HomeCouponTableViewCell
+//
+//
+//            cell.HomeCouponImage.image = UIImage(named: HomeCouponImage[indexPath.row])
+//            cell.HomeCouponMenu.text =  HomeCouponMenu[indexPath.row]
+//            cell.HomeCouponPlace.text =  HomeCouponPlace[indexPath.row]
+//            cell.HomeCouponPeriod.text =  HomeCouponPeriod[indexPath.row]
+//            return cell
+//        case 101:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2")!
+//            cell.textLabel?.text = "\(arr2[indexPath.row])"
+//            return cell
+//        case 102:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3")!
+//            cell.textLabel?.text = "\(arr3[indexPath.row])"
+//            return cell
+//        default:
+//            return UITableViewCell()
+//        }
+//
+//    }
     
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch selectedButtonIndex {
-        case 100:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCouponTableViewCell", for: indexPath) as! HomeCouponTableViewCell
-            
-            
-            cell.HomeCouponImage.image = UIImage(named: HomeCouponImage[indexPath.row])
-            cell.HomeCouponMenu.text =  HomeCouponMenu[indexPath.row]
-            cell.HomeCouponPlace.text =  HomeCouponPlace[indexPath.row]
-            cell.HomeCouponPeriod.text =  HomeCouponPeriod[indexPath.row]
-            return cell
-        case 101:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2")!
-            cell.textLabel?.text = "\(arr2[indexPath.row])"
-            return cell
-        case 102:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3")!
-            cell.textLabel?.text = "\(arr3[indexPath.row])"
-            return cell
-        default:
-            return UITableViewCell()
-        }
 
-    }
-    
-}
     
 
 
