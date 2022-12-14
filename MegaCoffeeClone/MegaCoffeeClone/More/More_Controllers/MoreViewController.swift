@@ -10,6 +10,7 @@ import UIKit
 
 class MoreViewController: UIViewController {
     var dummy = MoreMainModel.moreSectionHeader
+    var giftCardURL = "https://event.multicon.co.kr/survey/megacoffee_b2b?pid=7Y6nRsuYxwbrGE%2BK13zbGQ%3D%3D&curr_time=1666352003&uid=7822996253187061"
     
     // MARK: [변수 선언] [0] : Frame
     private lazy var scrollView : UIScrollView = {
@@ -259,19 +260,20 @@ extension MoreViewController: UITableViewDelegate {
         case 0:
             if MoreMainModel.sectionList1[indexPath.row] == "스탬프" {
                 
-                /*
-                 guard let vc = storyboard?.instantiateViewController(withIdentifier: "HomeStampViewController") as? HomeStampViewController else { return }
-                 vc.hidesBottomBarWhenPushed = true
-                 self.navigationController?.pushViewController(vc, animated: true)
-                 */
+                
+                let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: "HomeStampViewController") as? HomeStampViewController else { return }
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+                
                 
             } else {
                 
-                /*
-                 guard let vc = storyboard?.instantiateViewController(withIdentifier: "HomeCouponVC") as? HomeCouponViewController else { return }
+                let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+                 guard let vc = storyBoard.instantiateViewController(withIdentifier: "HomeCouponVC") as? HomeCouponViewController else { return }
                  vc.hidesBottomBarWhenPushed = true
                  self.navigationController?.pushViewController(vc, animated: true)
-                 */
+                 
                 
             }
             
@@ -304,7 +306,10 @@ extension MoreViewController: UITableViewDelegate {
             }
             
             else if MoreMainModel.sectionList2[indexPath.row] == "상품권 대량 구매 신청" {
-                if let url = URL(string: "https://event.multicon.co.kr/survey/megacoffee_b2b?pid=7Y6nRsuYxwbrGE%2BK13zbGQ%3D%3D&curr_time=1666352003&uid=7822996253187061") { UIApplication.shared.open(url, options: [:]) }
+                if let url = URL(string: giftCardURL) {
+                    UIApplication.shared.open(url, options: [:])
+                    
+                }
             }
             
             // 새소식
@@ -330,7 +335,8 @@ extension MoreViewController: UITableViewDelegate {
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             
-    
+            
+            
         default: print("MoreViewController - didSelectRowAt")
         }
         
