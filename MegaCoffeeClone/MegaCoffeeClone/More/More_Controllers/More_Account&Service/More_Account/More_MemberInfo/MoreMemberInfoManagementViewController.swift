@@ -19,7 +19,6 @@ class MoreMemberInfoManagementViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MoreMemberInfoManagementTableViewCell.self, forCellReuseIdentifier: MoreMemberInfoManagementTableViewCell.identifier)
-    
        
         tableView.separatorStyle = .none
 
@@ -99,6 +98,7 @@ extension MoreMemberInfoManagementViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MoreMemberInfoManagementTableViewCell.identifier) else { return UITableViewCell(style: .value1, reuseIdentifier: MoreMemberInfoManagementTableViewCell.identifier)
             }
             return cell
@@ -107,14 +107,14 @@ extension MoreMemberInfoManagementViewController: UITableViewDataSource {
         
         cell.textLabel?.text = titleList[indexPath.section]
         cell.textLabel?.numberOfLines = 0
-        cell.detailTextLabel?.tintColor = .black
+        cell.detailTextLabel?.textColor = .black
         cell.selectionStyle = .none
         
         
-        // 닉네임
+        
         if indexPath.section == 0 {
-            // 변경이미지 요청.
-            let img = UIImageView(image: UIImage(systemName: "arrow.up.right.and.arrow.down.left.rectangle.fill"))
+            // 닉네임
+            let img = UIImageView(image: UIImage(systemName: "arrow.2.circlepath"))
             img.tintColor = .black
             cell.accessoryView = img
             cell.detailTextLabel?.text = "Mega"
@@ -122,7 +122,7 @@ extension MoreMemberInfoManagementViewController: UITableViewDataSource {
             
             // 생년월일, 휴대전화번호
         } else if indexPath.section == 1 {
-            cell.detailTextLabel?.text = "0000년 00월 00일\n\n010-1234-5678"
+            cell.detailTextLabel?.text = "0000년 00월 00일\n\n010-0000-0000"
             cell.detailTextLabel?.numberOfLines = 0
             cell.isUserInteractionEnabled = false
             
@@ -196,6 +196,8 @@ extension MoreMemberInfoManagementViewController {
         layoutTableView()
     }
     
+    
+    // Navi Custom
     func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -207,7 +209,7 @@ extension MoreMemberInfoManagementViewController {
 
     
     
-    
+    // TableView
     @objc func layoutTableView() {
         self.view.addSubview(self.tableView)
         

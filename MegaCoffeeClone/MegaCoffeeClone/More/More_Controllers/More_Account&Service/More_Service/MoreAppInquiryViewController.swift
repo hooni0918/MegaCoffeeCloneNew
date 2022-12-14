@@ -118,7 +118,7 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     
     
     
-    // MARK: 이미지 경로 이미지 경로 이미지 경로
+    // MARK: [이미지 경로]
     private lazy var imageLabelView = UIView()
     private lazy var imageLabel: UILabel = {
         let imageLabel = UILabel()
@@ -270,8 +270,10 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     // MARK: [Action]
 
     
-    // MARK: [Top]
     
+    
+    
+    // MARK: [Action] [1]: Top
     // to History
     @objc override func historyInquiriesButtonTapped(sender: UIButton) {
         let vc = MoreHistoryInquiriyViewController()
@@ -293,8 +295,7 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     
     
     
-    // MARK: [Center]
-    
+    // MARK: [Action] [2]: Center
     @objc func photoTapped(sender: UIButton) {
         let gallery = UIAction(title: "사진 보관함", image: UIImage(systemName: "photo.on.rectangle")) { _ in
             print("사진 보관함 실행")
@@ -323,8 +324,7 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
     
     
     
-    // MARK: [Bottom]
-    
+    // MARK: [Action] [3]: Bottom
     // Inquiry Registration Button
     @objc private func inquiryRegistrationButtonTapped(sender: UIButton) {
         let buttonCondition = choiceInquiryTypeButton.titleLabel?.text
@@ -461,7 +461,7 @@ class MoreAppInquiryViewController: MoreInquiryBaseViewController {
 
 
 
-// MARK: [Protocol]
+// MARK: [ (S) Protocol]
 
 extension MoreAppInquiryViewController: choiceInquiryTypeData {
     func choiceStampData() {

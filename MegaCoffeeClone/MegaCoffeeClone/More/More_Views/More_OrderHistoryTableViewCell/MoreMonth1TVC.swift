@@ -17,7 +17,6 @@ class MoreMonth1TVC: UITableViewCell {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         
-        self.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {

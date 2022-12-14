@@ -12,13 +12,13 @@ import UIKit
 class MoreCustomHeaderView: UITableViewHeaderFooterView {
     
 
-    // MARK: [변수 선언]
+    // MARK: [변수 선언] [1]: Button
     lazy var eventButton: UIButton = {
         let event = UIButton(type: .system)
+        event.tag = 1
         
         event.setTitleColor(UIColor.black, for: .normal)
         event.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        event.tag = 1
         
         event.addTarget(self, action: #selector(eventButtonTapped(_sender:)), for: .touchUpInside)
         
@@ -26,31 +26,34 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
     }()
     
     
-    
     lazy var noticeButton: UIButton = {
         let notice = UIButton(type: .system)
+        notice.tag = 2
 
         notice.setTitleColor(UIColor.black, for: .normal)
         notice.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
-        notice.tag = 2
         
         notice.addTarget(self, action: #selector(noticeButtonTapped(_sender:)), for: .touchUpInside)
         
         return notice
         
     }()
+    
+    
     lazy var rankingEventButton: UIButton = {
         let ranking = UIButton(type: .system)
+        ranking.tag = 3
         
         ranking.setTitleColor(UIColor.black, for: .normal)
         ranking.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
-        ranking.tag = 3
         
         ranking.addTarget(self, action: #selector(rankingButtonTapped(_sender:)), for: .touchUpInside)
         
         return ranking
         
     }()
+    
+    
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         
@@ -61,29 +64,27 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
     }()
     
     
-    lazy var underBar1: UIView = {
+    
+    // MARK: [변수 선언] [2]: underBar
+    lazy var eventUnderBar: UIView = {
         let bar = UIView()
-        
-        bar.backgroundColor = .black
+
         bar.layer.cornerRadius = 3
         
         return bar
     }()
     
-    lazy var underBar2: UIView = {
+    lazy var noticeUnderBar: UIView = {
         let bar = UIView()
         
-        bar.backgroundColor = .black
         bar.layer.cornerRadius = 3
-        
         
         return bar
     }()
     
-    lazy var underBar3: UIView = {
+    lazy var rankingUnderBar: UIView = {
         let bar = UIView()
         
-        bar.backgroundColor = .black
         bar.layer.cornerRadius = 3
         
         return bar
@@ -91,14 +92,8 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
     
     
     
-    
-    lazy var underLine: UIView = {
-        let line = UIView()
-        
-        line.backgroundColor = .systemGray
-        
-        return line
-    }()
+    // MARK: [변수 선언] [3]: Bottom
+    lazy var bottomLine = UIView()
     
     
     
@@ -111,9 +106,9 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         
 
-        underBar1.isHidden = false
-        underBar2.isHidden = true
-        underBar3.isHidden = true
+        eventUnderBar.isHidden = false
+        noticeUnderBar.isHidden = true
+        rankingUnderBar.isHidden = true
 
         addSubView()
         layout()
@@ -123,8 +118,7 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
-        //configureLayout()
+
     }
     
     
@@ -135,37 +129,37 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
     // MARK: [Action]
     @objc func eventButtonTapped(_sender: UIButton) {
         
-        underBar1.isHidden = false
+        eventUnderBar.isHidden = false
         eventButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         
-        underBar2.isHidden = true
+        noticeUnderBar.isHidden = true
         noticeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
         
-        underBar3.isHidden = true
+        rankingUnderBar.isHidden = true
         rankingEventButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
     }
     
     @objc func noticeButtonTapped(_sender: UIButton) {
         
-        underBar1.isHidden = true
+        eventUnderBar.isHidden = true
         eventButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
         
-        underBar2.isHidden = false
+        noticeUnderBar.isHidden = false
         noticeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         
-        underBar3.isHidden = true
+        rankingUnderBar.isHidden = true
         rankingEventButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
     }
     
     @objc func rankingButtonTapped(_sender: UIButton) {
         
-        underBar1.isHidden = true
+        eventUnderBar.isHidden = true
         eventButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
         
-        underBar2.isHidden = true
+        noticeUnderBar.isHidden = true
         noticeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
         
-        underBar3.isHidden = false
+        rankingUnderBar.isHidden = false
         rankingEventButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
     }
     
@@ -180,11 +174,11 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
     func addSubView() {
         self.contentView.addSubview(self.stackView)
         
-        self.contentView.addSubview(self.underBar1)
-        self.contentView.addSubview(self.underBar2)
-        self.contentView.addSubview(self.underBar3)
+        self.contentView.addSubview(self.eventUnderBar)
+        self.contentView.addSubview(self.noticeUnderBar)
+        self.contentView.addSubview(self.rankingUnderBar)
         
-        self.contentView.addSubview(self.underLine)
+        self.contentView.addSubview(self.bottomLine)
         
         
         self.stackView.addArrangedSubview(self.eventButton)
@@ -200,13 +194,15 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
     func layout() {
         layoutStackView()
         
-        layoutUnderBar1()
-        layoutUnderBar2()
-        layoutUnderBar3()
+        layoutEventUnderBar()
+        layoutNoticeUnderBar()
+        layoutRankingUnderBar()
         
-        layoutUnderLine()
+        layoutBottomLine()
     }
     
+    
+    // Button StackView
     func layoutStackView() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -218,85 +214,63 @@ class MoreCustomHeaderView: UITableViewHeaderFooterView {
             ])
     }
     
-    func layoutUnderBar1() {
-        self.underBar1.translatesAutoresizingMaskIntoConstraints = false
+    // Event Button UnderBar
+    func layoutEventUnderBar() {
+        self.eventUnderBar.translatesAutoresizingMaskIntoConstraints = false
         
+        self.eventUnderBar.backgroundColor = .black
         
         NSLayoutConstraint.activate([
-            
-            
-            //self.underBar1.leadingAnchor.constraint(equalTo: self.eventButton.leadingAnchor),
-            //self.underBar1.trailingAnchor.constraint(equalTo: self.eventButton.trailingAnchor),
-            
-            
-            self.underBar1.leadingAnchor.constraint(equalTo: self.eventButton.leadingAnchor, constant: 8),
-            
-            
-            self.underBar1.widthAnchor.constraint(equalToConstant: 50),
-            
-            self.underBar1.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -5),
-            
-            
-            self.underBar1.heightAnchor.constraint(equalToConstant: 5)
-            
-     
-            
+            self.eventUnderBar.leadingAnchor.constraint(equalTo: self.eventButton.leadingAnchor, constant: 8),
+            self.eventUnderBar.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -5),
+            self.eventUnderBar.widthAnchor.constraint(equalToConstant: 50),
+            self.eventUnderBar.heightAnchor.constraint(equalToConstant: 5)
         ])
         
     }
     
-    
-    func layoutUnderBar2() {
-        self.underBar2.translatesAutoresizingMaskIntoConstraints = false
+    // Notice Button UnderBar
+    func layoutNoticeUnderBar() {
+        self.noticeUnderBar.translatesAutoresizingMaskIntoConstraints = false
         
+        self.noticeUnderBar.backgroundColor = .black
         
         NSLayoutConstraint.activate([
-            
-            
-            self.underBar2.leadingAnchor.constraint(equalTo: self.noticeButton.leadingAnchor, constant: 10),
-            
-            self.underBar2.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -5),
-            
-            self.underBar2.widthAnchor.constraint(equalToConstant: 65),
-            
-            
-            self.underBar2.heightAnchor.constraint(equalToConstant: 5)
-     
-            
+            self.noticeUnderBar.leadingAnchor.constraint(equalTo: self.noticeButton.leadingAnchor, constant: 10),
+            self.noticeUnderBar.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -5),
+            self.noticeUnderBar.widthAnchor.constraint(equalToConstant: 65),
+            self.noticeUnderBar.heightAnchor.constraint(equalToConstant: 5)
         ])
         
     }
     
-    func layoutUnderBar3() {
-        self.underBar3.translatesAutoresizingMaskIntoConstraints = false
+    // Ranking Button UnderBar
+    func layoutRankingUnderBar() {
+        self.rankingUnderBar.translatesAutoresizingMaskIntoConstraints = false
         
+        self.rankingUnderBar.backgroundColor = .black
         
         NSLayoutConstraint.activate([
-            
-            self.underBar3.leadingAnchor.constraint(equalTo: self.rankingEventButton.leadingAnchor, constant: 10),
-            
-            self.underBar3.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -5),
-            
-            self.underBar3.widthAnchor.constraint(equalToConstant: 85),
-            
-            
-            self.underBar3.heightAnchor.constraint(equalToConstant: 5)
-     
-            
+            self.rankingUnderBar.leadingAnchor.constraint(equalTo: self.rankingEventButton.leadingAnchor, constant: 10),
+            self.rankingUnderBar.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -5),
+            self.rankingUnderBar.widthAnchor.constraint(equalToConstant: 85),
+            self.rankingUnderBar.heightAnchor.constraint(equalToConstant: 5)
         ])
-        
     }
     
-    func layoutUnderLine() {
-        self.underLine.translatesAutoresizingMaskIntoConstraints = false
+    
+    // Bottom Line
+    func layoutBottomLine() {
+        self.bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.bottomLine.backgroundColor = .systemGray
         
         NSLayoutConstraint.activate([
-            self.underLine.topAnchor.constraint(equalTo: self.stackView.bottomAnchor),
-            //
-            self.underLine.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.underLine.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.underLine.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            self.underLine.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.01)
+            self.bottomLine.topAnchor.constraint(equalTo: self.stackView.bottomAnchor),
+            self.bottomLine.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.bottomLine.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.bottomLine.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.bottomLine.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.01)
         ])
     }
 }

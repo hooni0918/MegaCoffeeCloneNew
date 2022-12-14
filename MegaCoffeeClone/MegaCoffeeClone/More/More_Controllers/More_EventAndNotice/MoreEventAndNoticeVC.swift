@@ -25,11 +25,13 @@ class MoreEventAndNoticeVC: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.register(MoreEventAndRankingEventTVC.self, forCellReuseIdentifier: MoreEventAndRankingEventTVC.identifier)
-            tableView.register(MoreNoticeTVC.self, forCellReuseIdentifier: MoreNoticeTVC.identifier)
-            tableView.register(MoreEventAndRankingEventTVC.self, forCellReuseIdentifier: MoreEventAndRankingEventTVC.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(MoreEventAndRankingEventTVC.self, forCellReuseIdentifier: MoreEventAndRankingEventTVC.identifier)
+        tableView.register(MoreNoticeTVC.self, forCellReuseIdentifier: MoreNoticeTVC.identifier)
+        tableView.register(MoreEventAndRankingEventTVC.self, forCellReuseIdentifier: MoreEventAndRankingEventTVC.identifier)
+        
+        tableView.sectionHeaderTopPadding = 0
         
         
         return tableView
@@ -306,8 +308,6 @@ extension MoreEventAndNoticeVC {
     // TableView
     private func layoutTableView() {
         self.view.addSubview(self.tableView)
-        
-        
         
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

@@ -764,7 +764,7 @@
         <!--쿠폰-->
         <scene sceneID="oN9-EE-faJ">
             <objects>
-                <viewController id="WPE-FG-fFO" customClass="HomeCouponViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeCouponViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WPE-FG-fFO" customClass="HomeCouponViewController" customModule="MegaCoffeeClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K0W-R7-Tpn">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1273,7 +1273,7 @@
                                 <rect key="frame" x="16" y="44" width="358" height="609"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Le9-j2-Alx">
-                                    <rect key="frame" x="0.0" y="111" width="358" height="168"/>
+                                    <rect key="frame" x="0.0" y="110.99999999999997" width="358" height="168.00000000000003"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="유의사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZb-Vk-44O">

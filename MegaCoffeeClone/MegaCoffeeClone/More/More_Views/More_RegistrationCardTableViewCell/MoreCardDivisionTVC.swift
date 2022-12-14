@@ -202,6 +202,7 @@ class MoreCardDivisionTVC: UITableViewCell {
         text.layer.cornerRadius = 6
         
         text.keyboardType = .numberPad
+        text.addDoneButtonOnKeyboard()
         
         return text
     }()
@@ -294,28 +295,17 @@ class MoreCardDivisionTVC: UITableViewCell {
     
     
     
-    
+    // MARK: [미완성]
     @objc func activeButtonTapped(_ sender: UIButton) {
         
         if (cardNameTVC.textField.text != "")
         {
-            // 디폴트 버튼을 숨기고, 활성화버튼을 보여준다.
             rejectRegistrationButton.backgroundColor = .blue
             print("1")
         } else {
             rejectRegistrationButton.backgroundColor = .orange
             print("2")
         }
-        
-        
-        /* (cardNameTVC.textField.text != "")
-         &&
-             (cardNumTVC.textField1.text?.count == 4 && cardNumTVC.textField2.text?.count == 4 && cardNumTVC.textField3.text?.count == 4 && cardNumTVC.textField4.text?.count == 4) &&
-             (cardEXPeriodTVC.textFieldFirst.text?.count == 2 && cardEXPeriodTVC.textFieldSecond.text?.count == 2) &&
-             (cardPWTVC.textFieldFirst.text?.count == 1 && cardPWTVC.textFieldSecond.text?.count == 1) &&
-             (textField.text?.count == 6 || textField.text?.count == 10)
-         
-         */
         
     }
     
@@ -475,18 +465,6 @@ extension MoreCardDivisionTVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        
-        /*
-        if (cardPWTVC.textFieldFirst.text?.count == 1 && cardPWTVC.textFieldSecond.text?.count == 1)
-        {
-            // 디폴트 버튼을 숨기고, 활성화버튼을 보여준다.
-            rejectRegistrationButton.backgroundColor = .blue
-            print("1")
-        } else {
-            rejectRegistrationButton.backgroundColor = .orange
-            print("2")
-        }
-        */
         
         
         

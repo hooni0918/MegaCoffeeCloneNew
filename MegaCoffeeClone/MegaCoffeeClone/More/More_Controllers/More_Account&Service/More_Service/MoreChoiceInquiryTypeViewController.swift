@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+
+
+// MARK: [ (D) Protocol]
 protocol choiceInquiryTypeData: AnyObject {
     func choiceStampData()
     func choiceCouponData()
@@ -18,7 +21,6 @@ protocol choiceInquiryTypeData: AnyObject {
 
 
 class MoreChoiceInquiryTypeViewController: UIViewController {
-   
     var delegate: choiceInquiryTypeData?
    
     
@@ -177,53 +179,32 @@ class MoreChoiceInquiryTypeViewController: UIViewController {
     }
     
     
-    
-    // vc.choiceInquiryTypeButton
-    // vc.titleTextField
-    // vc.textView
-    
     @objc private func stampButtonTapped(sender: UIButton) {
- 
-        /*
-        vc.choiceInquiryTypeButton.setTitle("스탬프", for: .normal)
-        vc.titleTextField.text = ""
-        vc.textView.text = ""
-        */
         self.dismiss(animated: false)
         delegate?.choiceStampData()
     }
    
     
     @objc private func couponButtonTapped(sender: UIButton) {
-        
-        //vc.choiceInquiryTypeButton.setTitle("쿠폰", for: .normal)
         self.dismiss(animated: false)
         delegate?.choiceCouponData()
         
     }
     
     @objc private func megaCardRefundButtonTapped(sender: UIButton) {
-        
-        //vc.choiceInquiryTypeButton.setTitle("메가선불카드 환불", for: .normal)
         self.dismiss(animated: false)
         delegate?.choiceMegaCardRefundData()
         
     }
     
     @objc private func errorButtonTapped(sender: UIButton) {
-        
-        //vc.choiceInquiryTypeButton.setTitle("오류", for: .normal)
         self.dismiss(animated: false)
         delegate?.choiceErrorData()
-        
     }
     
     @objc private func userInfoButtonTapped(sender: UIButton) {
-        
-        //vc.choiceInquiryTypeButton.setTitle("회원정보", for: .normal)
         self.dismiss(animated: false)
         delegate?.choiceUserInfoData()
-        
     }
     
     
@@ -253,7 +234,7 @@ extension MoreChoiceInquiryTypeViewController {
         
     }
     
-    
+    // Back View
     private func layoutBackView() {
         self.view.addSubview(self.backViewButton)
         
@@ -270,7 +251,7 @@ extension MoreChoiceInquiryTypeViewController {
     }
      
      
-    
+    // Main View
     private func layoutMainView() {
         self.view.addSubview(self.mainView)
         
@@ -288,6 +269,8 @@ extension MoreChoiceInquiryTypeViewController {
         ])
     }
     
+    
+    // Main View [Top]
     private func layoutMainTopView() {
         self.mainView.addSubview(self.mainTopView)
         
@@ -300,8 +283,6 @@ extension MoreChoiceInquiryTypeViewController {
             self.mainTopView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor),
             self.mainTopView.heightAnchor.constraint(equalToConstant: 60)
         ])
-        
-        
         
         
         
@@ -323,6 +304,7 @@ extension MoreChoiceInquiryTypeViewController {
     }
     
     
+    // StackView
     private func layoutStackView() {
         self.mainView.addSubview(self.stackView)
         

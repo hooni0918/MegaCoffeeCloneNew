@@ -22,14 +22,13 @@ class MorePermissionSettingViewController: UIViewController {
        
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemBackground
+        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         
         tableView.rowHeight = 60
 
         return tableView
     }()
     
-    
-    //private lazy var switchButton = CustomSwitch()
     
     
     // MARK: [Override]
@@ -76,8 +75,6 @@ extension MorePermissionSettingViewController: UITableViewDataSource {
         
         
         
-      
-        
         
         //switch
         let switchView = UISwitch()
@@ -85,12 +82,6 @@ extension MorePermissionSettingViewController: UITableViewDataSource {
         switchView.tag = indexPath.row
         switchView.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
         cell.accessoryView = switchView
-        /*
-        switchButton.delegate = self
-        switchButton.tag = indexPath.row
-        switchButton.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
-        cell.accessoryView = switchButton
-         */
         
         return cell
     }
@@ -127,20 +118,6 @@ extension MorePermissionSettingViewController: UITableViewDelegate {
 
 
 
-// MARK: [Protocol]
-/*
-extension PermissionSettingViewController: CustomSwitchProtocol {
-    
-    func isOnValueChange(isOn: Bool) {
-        print(isOn)
-    }
-}
-*/
-
-
-
-
-
 
 
 
@@ -154,6 +131,8 @@ extension MorePermissionSettingViewController {
         layoutTableView()
     }
     
+    
+    // Navi Custom
     func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -167,11 +146,9 @@ extension MorePermissionSettingViewController {
 
     
     
-    
+    // TableView
     @objc func layoutTableView() {
         self.view.addSubview(self.tableView)
-        
-        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

@@ -53,7 +53,7 @@ class MoreGoodByeViewController: UIViewController {
     
     
     
-    // MARK: [변수 선언] [2]: Receives Data
+    // MARK: [변수 선언] [2]: Receives Data (L)
     private lazy var backView: UIView = {
         let back = UIView()
         
@@ -63,16 +63,16 @@ class MoreGoodByeViewController: UIViewController {
     }()
     
     
-    private lazy var infolabel1: UILabel = {
+    private lazy var leftInfolabel1: UILabel = {
        let info1 = UILabel()
         
-        info1.text = "메가 카드 징수(금액)"
+        info1.text = "메가카드 징수(금액)"
         info1.font = .systemFont(ofSize: 15)
         
         return info1
     }()
     
-    private lazy var infolabel2: UILabel = {
+    private lazy var leftInfolabel2: UILabel = {
        let info2 = UILabel()
         
         info2.text = "받은 선물"
@@ -81,7 +81,7 @@ class MoreGoodByeViewController: UIViewController {
         return info2
     }()
     
-    private lazy var infolabel3: UILabel = {
+    private lazy var leftInfolabel3: UILabel = {
        let info3 = UILabel()
         
         info3.text = "보유 스탬프"
@@ -90,7 +90,7 @@ class MoreGoodByeViewController: UIViewController {
         return info3
     }()
     
-    private lazy var infolabel4: UILabel = {
+    private lazy var leftInfolabel4: UILabel = {
        let info4 = UILabel()
         
         info4.text = "보유 쿠폰"
@@ -99,7 +99,7 @@ class MoreGoodByeViewController: UIViewController {
         return info4
     }()
     
-    private lazy var infolabel5: UILabel = {
+    private lazy var leftInfolabel5: UILabel = {
        let info5 = UILabel()
         
         info5.text = "받은 선물(구)"
@@ -109,15 +109,15 @@ class MoreGoodByeViewController: UIViewController {
     }()
     
     
-    private lazy var stackView: UIStackView = {
+    private lazy var leftStackView: UIStackView = {
         let stackView = UIStackView()
         
         
-        stackView.addArrangedSubview(infolabel1)
-        stackView.addArrangedSubview(infolabel2)
-        stackView.addArrangedSubview(infolabel3)
-        stackView.addArrangedSubview(infolabel4)
-        stackView.addArrangedSubview(infolabel5)
+        stackView.addArrangedSubview(leftInfolabel1)
+        stackView.addArrangedSubview(leftInfolabel2)
+        stackView.addArrangedSubview(leftInfolabel3)
+        stackView.addArrangedSubview(leftInfolabel4)
+        stackView.addArrangedSubview(leftInfolabel5)
         
         
         
@@ -130,13 +130,87 @@ class MoreGoodByeViewController: UIViewController {
     }()
     
     
+    // MARK: [변수 선언] [3]: Receives Data (R)
+    private lazy var rightInfolabel1: UILabel = {
+       let info1 = UILabel()
+        
+        info1.text = "0장 (0원)"
+        info1.font = .boldSystemFont(ofSize: 15)
+        info1.textAlignment = .right
+        
+        return info1
+    }()
+    
+    private lazy var rightInfolabel2: UILabel = {
+       let info2 = UILabel()
+        
+        info2.text = "0장"
+        info2.font = .boldSystemFont(ofSize: 15)
+        info2.textAlignment = .right
+        
+        return info2
+    }()
+    
+    private lazy var rightInfolabel3: UILabel = {
+       let info3 = UILabel()
+        
+        info3.text = "0개"
+        info3.font = .boldSystemFont(ofSize: 15)
+        info3.textAlignment = .right
+        
+        return info3
+    }()
+    
+    private lazy var rightInfolabel4: UILabel = {
+       let info4 = UILabel()
+        
+        info4.text = "0개"
+        info4.font = .boldSystemFont(ofSize: 15)
+        info4.textAlignment = .right
+        
+        return info4
+    }()
+    
+    private lazy var rightInfolabel5: UILabel = {
+       let info5 = UILabel()
+        
+        info5.text = "0장"
+        info5.font = .boldSystemFont(ofSize: 15)
+        info5.textAlignment = .right
+        
+        return info5
+    }()
+    
+    
+    private lazy var rightStackView: UIStackView = {
+        let stackView = UIStackView()
+        
+        
+        stackView.addArrangedSubview(rightInfolabel1)
+        stackView.addArrangedSubview(rightInfolabel2)
+        stackView.addArrangedSubview(rightInfolabel3)
+        stackView.addArrangedSubview(rightInfolabel4)
+        stackView.addArrangedSubview(rightInfolabel5)
+        
+        
+        
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 5
+        
+        
+        return stackView
+    }()
+    
+    
+    
+    
     // MARK: [변수 선언] [3]: Bottom
     
     private lazy var noCheckMarkButton: UIButton = {
         let noCheck = UIButton(type: .system)
         
-        noCheck.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
-        //noCheck.titleLabel?.textAlignment = .left
+        noCheck.setImage(UIImage(systemName: "checkmark.circle")?.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
         noCheck.contentHorizontalAlignment = .left
         
         
@@ -148,8 +222,7 @@ class MoreGoodByeViewController: UIViewController {
     private lazy var checkMarkButton: UIButton = {
         let check = UIButton(type: .system)
         
-        check.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-        //check.titleLabel?.textAlignment = .left
+        check.setImage(UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.green, renderingMode: .alwaysOriginal), for: .normal)
         check.contentHorizontalAlignment = .left
         
         check.isHidden = true
@@ -253,7 +326,7 @@ class MoreGoodByeViewController: UIViewController {
     }
     
     @objc func goodByeButtonTapped(sender: UIButton) {
-        print("goodbye!")
+        alert(message: "회원탈퇴를 진행하시겠습니까?")
     }
     
     
@@ -289,7 +362,8 @@ extension MoreGoodByeViewController {
         layoutSubLabel()
         //
         layoutBackView()
-        layoutStackView()
+        layoutLeftStackView()
+        layoutRightStackView()
         //
         layoutNoCheckAndCheckMarkButton()
         layoutCheckMarkLabel()
@@ -299,20 +373,14 @@ extension MoreGoodByeViewController {
         layoutGoodByeButton()
     }
     
-    // Xmark 해결 못함.
+    
+    
+    // Navi Custom
     func naviCustom() {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .black
-        
-        
-        
-        /*
-        let img = UIImage(systemName: "xmark")
-        self.navigationController?.navigationBar.backIndicatorImage = img
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = img
-        */
     }
     
     
@@ -390,7 +458,7 @@ extension MoreGoodByeViewController {
         
         self.backView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.backView.topAnchor.constraint(equalTo: self.subLabel.bottomAnchor, constant: 60),
+            self.backView.topAnchor.constraint(equalTo: self.subLabel.bottomAnchor, constant: 50),
             self.backView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.backView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.backView.heightAnchor.constraint(equalToConstant: 330)
@@ -398,19 +466,36 @@ extension MoreGoodByeViewController {
         ])
     }
     
-    // StackView
-    private func layoutStackView() {
-        self.backView.addSubview(self.stackView)
+    // Left StackView
+    private func layoutLeftStackView() {
+        self.backView.addSubview(self.leftStackView)
         
-        self.stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.leftStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.stackView.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 20),
-            self.stackView.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 10),
-            self.stackView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -10),
-            self.stackView.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor, constant: -20)
+            self.leftStackView.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 40),
+            self.leftStackView.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 20),
+            self.leftStackView.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor, constant: -40),
+            self.leftStackView.widthAnchor.constraint(equalToConstant: 120)
             
         ])
     }
+    
+    
+    // Right StackView
+    private func layoutRightStackView() {
+        self.backView.addSubview(self.rightStackView)
+        
+        self.rightStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.rightStackView.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 40),
+            self.rightStackView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -20),
+            self.rightStackView.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor, constant: -40),
+            self.rightStackView.widthAnchor.constraint(equalToConstant: 80)
+            
+        ])
+    }
+    
+    
     
     
     

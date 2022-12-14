@@ -39,6 +39,7 @@ class MoreCardPWTVC: UITableViewCell {
         text1.textAlignment = .center
         
         text1.keyboardType = .numberPad
+        text1.addDoneButtonOnKeyboard()
         
         text1.tag = 1
         text1.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
@@ -55,6 +56,7 @@ class MoreCardPWTVC: UITableViewCell {
         text2.textAlignment = .center
         
         text2.keyboardType = .numberPad
+        text2.addDoneButtonOnKeyboard()
         
         text2.tag = 2
         text2.addTarget(self, action: #selector(textFieldNextFocus(_:)), for: .editingChanged)
@@ -149,7 +151,7 @@ class MoreCardPWTVC: UITableViewCell {
         layoutStackView()
     }
     
-    // Layout - TitleLabel
+    // TitleLabel
     func layoutTitleLabel() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -164,7 +166,7 @@ class MoreCardPWTVC: UITableViewCell {
     }
     
     
-    // Layout - StackView
+    // StackView
     func layoutStackView() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         

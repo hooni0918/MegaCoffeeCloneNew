@@ -10,87 +10,7 @@ import UIKit
 
 
 
-// MARK: [ Event And Notice ]
-struct EventModel {
-    let titleImgView: UIImageView
-    let titleLabel: String
-    let dateLabel: String
-}
-
-struct NoticeModel {
-    let titleLabel: String
-    let dateLabel: String
-}
-
-struct RankingEventModel {
-    let titleImgView: UIImageView
-    let titleLabel: String
-    let dateLabel: String
-}
-
-
-let eventModel = [
-    
-    EventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "MEGA MGC STICK 출시", dateLabel: "2022.11.17 - 2023.12.31"),
-    EventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "[이벤트] AR손흥민 프로모션", dateLabel: "2022.11.14 - 2022.12.18"),
-    EventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "[이벤트]메가MGC커피 X 원큐페이 적립 EVENT", dateLabel: "2022.11.07 - 2022.11.30")
-
-]
-
-let noticeModel = [
-    
-    NoticeModel(titleLabel: "[신메뉴 출시] 겨울이 오는 달콤한 상상", dateLabel: "2022.11.07"),
-    NoticeModel(titleLabel: "[공지] 홍시 마니아를 찾아라! 이벤트 당첨자 발표", dateLabel: "2022.11.04"),
-    NoticeModel(titleLabel: "[공지] 'MEGA 할로윈 몬스터왕' 이벤트 당첨자 발표", dateLabel: "2022.11.04"),
-    NoticeModel(titleLabel: "[공지] 'MEGA 할로윈 몬스터왕을 찾아라' 랭킹이벤트 조기 종료 안내", dateLabel: "2022.10.31"),
-    NoticeModel(titleLabel: "[신메뉴 출시] 에너지 가득한 NEW 취향 탄생", dateLabel: "2022.11.07"),
-    NoticeModel(titleLabel: "[공지] 썸머과일왕 최종당첨자 발표", dateLabel: "2022.09.08"),
-    NoticeModel(titleLabel: "[공지] 메가MGC커피 일부 디저트 상품 가격 조정 안내", dateLabel: "2022.08.30")
-
-]
-
-
-let rankingEventModel = [
-    
-    RankingEventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "메가 마니아를 찾아라", dateLabel: "2022.11.07 - 2022.12.31"),
-    RankingEventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "MEGA 할로윈 몬스터왕을 찾아라", dateLabel: "2022.10.06 - 2022.10.30"),
-    RankingEventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "홍시마니아를 찾아라!", dateLabel: "2022.09.01 - 2022.10.30")
-
-]
-
-
-
-// MARK: [ Order Histroy ]
-struct Week1Model {
-    let stateLabel: String
-    let storeLabel: String
-    let menuLabel: String
-    let menuCountLabel: String
-    let dateLabel: String
-    
-    let orderNumberLabel: String
-    let detailDateLabel: String
-    let priceLabel: String
-    
-}
-
-struct Month1Model {
-    
-}
-
-struct Month3Model {
-    
-}
-
-struct TotalModel {
-    
-}
-
-
-struct OrderDetailModel {
-    
-}
-
+// MARK: [1] [ 주문내역 ]
 let week1Data = [
     
     Week1Model(stateLabel: "픽업완료", storeLabel: "문정로데오점", menuLabel: "망고요거트스무디", menuCountLabel: "1개", dateLabel: "2022.10.26", orderNumberLabel: "주문번호: 0002", detailDateLabel: "2022.10.26. 08:53", priceLabel: "3,900원"),
@@ -112,15 +32,57 @@ let week1Data = [
 
 
 
+// MARK: [4] [ 이벤트 및 공지사항 ]
 
-// MARK: [ Terms Of Service Model ]
-struct MoreTermsOfServiceModel {
+// 이벤트
+let eventModel = [
+    
+    EventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "MEGA MGC STICK 출시", dateLabel: "2022.11.17 - 2023.12.31"),
+    EventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "[이벤트] AR손흥민 프로모션", dateLabel: "2022.11.14 - 2022.12.18"),
+    EventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "[이벤트]메가MGC커피 X 원큐페이 적립 EVENT", dateLabel: "2022.11.07 - 2022.11.30")
+
+]
+
+// 공지사항
+let noticeModel = [
+    
+    NoticeModel(titleLabel: "[신메뉴 출시] 겨울이 오는 달콤한 상상", dateLabel: "2022.11.07"),
+    NoticeModel(titleLabel: "[공지] 홍시 마니아를 찾아라! 이벤트 당첨자 발표", dateLabel: "2022.11.04"),
+    NoticeModel(titleLabel: "[공지] 'MEGA 할로윈 몬스터왕' 이벤트 당첨자 발표", dateLabel: "2022.11.04"),
+    NoticeModel(titleLabel: "[공지] 'MEGA 할로윈 몬스터왕을 찾아라' 랭킹이벤트 조기 종료 안내", dateLabel: "2022.10.31"),
+    NoticeModel(titleLabel: "[신메뉴 출시] 에너지 가득한 NEW 취향 탄생", dateLabel: "2022.11.07"),
+    NoticeModel(titleLabel: "[공지] 썸머과일왕 최종당첨자 발표", dateLabel: "2022.09.08"),
+    NoticeModel(titleLabel: "[공지] 메가MGC커피 일부 디저트 상품 가격 조정 안내", dateLabel: "2022.08.30")
+
+]
+
+
+// 랭킹이벤트
+let rankingEventModel = [
+    
+    RankingEventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "메가 마니아를 찾아라", dateLabel: "2022.11.07 - 2022.12.31"),
+    RankingEventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "MEGA 할로윈 몬스터왕을 찾아라", dateLabel: "2022.10.06 - 2022.10.30"),
+    RankingEventModel(titleImgView: UIImageView(image: UIImage(systemName: "") ?? UIImage()), titleLabel: "홍시마니아를 찾아라!", dateLabel: "2022.09.01 - 2022.10.30")
+
+]
+
+
+
+
+
+
+
+
+
+// MARK: [5] [ 이용약관 ]
+
+struct MoreTermsOfServiceDummyData {
     
     static var menu: [String] =
     ["서비스 이용약관","메가선불카드 이용약관","개인정보 처리방침","마케팅 활용 동의","위치 기반 서비스 이용 동의"]
     
     
-    static var menu1: String =
+    static var termsOfServiceData: String =
     """
     서비스 이용약관
     서비스 이용약관
@@ -148,7 +110,7 @@ struct MoreTermsOfServiceModel {
     """
     
     
-    static var menu2: String =
+    static var termsOfMegaCardData: String =
     """
     메가선불카드 이용약관
     메가선불카드 이용약관
@@ -167,7 +129,7 @@ struct MoreTermsOfServiceModel {
     """
     
     
-    static var menu3: String =
+    static var privacyPolicy: String =
     """
     개인정보 처리방침
     개인정보 처리방침
@@ -196,7 +158,7 @@ struct MoreTermsOfServiceModel {
     """
     
     
-    static var menu4: String =
+    static var consentToUseForMarketing: String =
     """
     마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의마케팅 활용 동의
     
@@ -216,7 +178,7 @@ struct MoreTermsOfServiceModel {
     """
     
     
-    static var menu5: String =
+    static var consentToUseOfLocationBasedServices: String =
     """
     위치 기반 서비스 이용 동의
 
@@ -230,3 +192,4 @@ struct MoreTermsOfServiceModel {
     
 
 }
+

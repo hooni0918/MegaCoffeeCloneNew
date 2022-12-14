@@ -9,7 +9,7 @@ import UIKit
 
 class MoreTermsOfServiceViewController: UIViewController {
     let vc = MoreDetailReadViewController()
-    var menu = MoreTermsOfServiceModel.menu
+    var menu = MoreTermsOfServiceDummyData.menu
     
     
     // MARK: [변수 선언]
@@ -19,6 +19,13 @@ class MoreTermsOfServiceViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: MoreTableViewCell.identifier)
+        
+        
+        tableView.rowHeight = 60
+        
+        tableView.bounces = false
+        tableView.separatorStyle = .none
+        tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         
         return tableView
     }()
@@ -32,11 +39,6 @@ class MoreTermsOfServiceViewController: UIViewController {
         layout()
     }
 
-    
-
-  
-    
-    
     
     
 // MARK: [Class End]
@@ -66,9 +68,13 @@ extension MoreTermsOfServiceViewController: UITableViewDataSource {
         }()
         
         cell.selectionStyle = .none
-        cell.textLabel?.text = MoreTermsOfServiceModel.menu[indexPath.row]
+        cell.textLabel?.text = MoreTermsOfServiceDummyData.menu[indexPath.row]
         cell.tintColor = UIColor.black
         cell.accessoryType = .disclosureIndicator
+        
+        let img = UIImageView(image: UIImage(systemName: "chevron.right"))
+        img.tintColor = .black
+        cell.accessoryView = img
         
         
     return cell
@@ -91,7 +97,7 @@ extension MoreTermsOfServiceViewController: UITableViewDelegate {
         
         
 
-        switch MoreTermsOfServiceModel.menu[indexPath.row] {
+        switch MoreTermsOfServiceDummyData.menu[indexPath.row] {
         case "서비스 이용약관":
             vc.navigationItem.title = "서비스 이용약관"
 
@@ -152,20 +158,16 @@ extension MoreTermsOfServiceViewController {
         self.navigationItem.title = "이용약관"
         
         self.navigationItem.largeTitleDisplayMode = .never
-        
     }
+    
+    
     
     // TableView
     private func layoutTableView() {
         self.view.addSubview(self.tableView)
         
-        self.tableView.rowHeight = 60
-        
-        self.tableView.bounces = false
-        self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = .systemBackground
-        self.tableView.tableHeaderView = .init(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
-
+       
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
