@@ -13,6 +13,11 @@ class OrderMenuDetailViewController: UIViewController {
     
     @IBOutlet var menuDetailTableView: UITableView!
     
+    var shoppingBasketButton: UIButton = {
+        let button = ShoppingBasketButton()
+        button.tintColor = .black
+        return button
+    }()
     
     var menuData: MenuModel2?
     var storeData: StoreModel?
@@ -34,48 +39,54 @@ class OrderMenuDetailViewController: UIViewController {
         selectedPriceList = Array(repeating: 0, count: menuData?.option.count ?? 0)
         recommendMenuPricesList = Array(repeating: 0, count: recommendMenus.count)
         
-//        let safeAreaTop = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
-//        let safeAreaBottom = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
-//
-//        menuDetailTableView.contentInset = UIEdgeInsets(top: -safeAreaTop, left: 0, bottom: -safeAreaBottom, right: 0)
-//        menuDetailTableView.sectionHeaderHeight = 0
+        let safeAreaTop = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+        let safeAreaBottom = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
+
+        menuDetailTableView.contentInset = UIEdgeInsets(top: -safeAreaTop, left: 0, bottom: -safeAreaBottom, right: 0)
+        menuDetailTableView.sectionHeaderHeight = 0
         
+        configShoppingBasketButton()
+    }
+    
+    func configShoppingBasketButton() {
+        shoppingBasketButton.addTarget(self, action: #selector(tapShoppingBasketButton), for: .touchUpInside)
         
-        menuDetailTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
-        menuDetailTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
-//        menuDetailTableView.tableHeaderView = UIView(frame: .zero)
-//        menuDetailTableView.sectionHeaderHeight = 0
-//        menuDetailTableView.tableFooterView?.backgroundColor = .black
-//
+        let barButtonItem = UIBarButtonItem(customView: shoppingBasketButton)
+        barButtonItem.customView?.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        barButtonItem.customView?.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
+        self.navigationItem.rightBarButtonItem = barButtonItem
         
-        let button = ShoppingBasketButton()
-        let rightBarButton = UIBarButtonItem(customView: button)
-        self.navigationController?.navigationItem.rightBarButtonItem = rightBarButton
-        
-        
+        if let countLabel = shoppingBasketButton.subviews.last as? ShoppingBasketLabel {
+            NSLayoutConstraint.activate([
+                countLabel.topAnchor.constraint(equalTo: shoppingBasketButton.topAnchor),
+                countLabel.trailingAnchor.constraint(equalTo: shoppingBasketButton.trailingAnchor)
+            ])
+        }
+    }
+    
+    @objc func tapShoppingBasketButton() {
+        let storyBoard = UIStoryboard(name: "OrderProductList", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "shoppingBasketVC") as? OrderShoppingBasketListViewController else { return }
+        vc.storeData = storeData
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    @IBAction func tapShoppingBasketButton(_ sender: Any) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "shoppingBasketVC") as? OrderShoppingBasketListViewController else { return }
-        vc.storeData = self.storeData
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
 }
 
 extension OrderMenuDetailViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == 1 {
-//            return CGFloat.leastNormalMagnitude
-//        } else {
-//            return 10
-//        }
-//    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return CGFloat.leastNormalMagnitude
+        } else {
+            return 10
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
