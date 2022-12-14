@@ -73,6 +73,7 @@ extension OrderPaymentViewController: UITableViewDataSource {
             return cell
         } else if indexPath.section == 5 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "payment") as? OrderPaymentListTableViewCell else { return UITableViewCell() }
+            cell.delegate = self
             return cell
         } else if indexPath.section == 6 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cashCell")!
@@ -121,3 +122,8 @@ extension OrderPaymentViewController: OrderPaymentTotalPriceTableViewCellDelegat
     }
 }
 
+extension OrderPaymentViewController: OrderPaymentListTableViewCellDelegate {
+    func reloadCell() {
+        paymentTableView.reloadSections(IndexSet(integer: 5), with: .none)
+    }
+}

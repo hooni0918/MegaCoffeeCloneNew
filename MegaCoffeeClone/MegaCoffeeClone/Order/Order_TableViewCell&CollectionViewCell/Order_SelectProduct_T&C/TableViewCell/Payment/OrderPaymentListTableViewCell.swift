@@ -42,6 +42,7 @@ class OrderPaymentListTableViewCell: UITableViewCell {
     @IBAction func tapPaymentButton(_ sender: Any) {
         
         guard let button = sender as? UIButton else { return }
+       
         
         for index in 0..<isSelecteds.count {
             isSelecteds[index] = index == button.tag ? true : false
@@ -49,7 +50,9 @@ class OrderPaymentListTableViewCell: UITableViewCell {
             if isSelecteds[index] == true {
                 if index == 0 {
                     megaCardView.isHidden = false
+                    easyCardView.isHidden = true
                 } else if index == 2 {
+                    megaCardView.isHidden = true
                     easyCardView.isHidden = false
                 } else {
                     megaCardView.isHidden = true
@@ -62,8 +65,8 @@ class OrderPaymentListTableViewCell: UITableViewCell {
                 optionButtons[index].tintColor = .systemGray2
                 optionButtons[index].setImage(UIImage(systemName: "circle"), for: .normal)
             }
+            
+            delegate?.reloadCell()
         }
-        delegate?.reloadCell()
-        
     }
 }

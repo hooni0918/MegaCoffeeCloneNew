@@ -1872,7 +1872,7 @@ asdasd</string>
                                                     <rect key="frame" x="20" y="11" width="374" height="71"/>
                                                     <color key="backgroundColor" name="done"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="NCO-8O-4TN"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="50" id="NCO-8O-4TN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
