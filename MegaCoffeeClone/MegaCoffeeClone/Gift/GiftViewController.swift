@@ -57,13 +57,18 @@ class GiftViewController: ViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         coreDataManager.loadItem()
         badgeManager.updateBadgeNumber()
         badgeManager.badgeLabel(withCount: badgeManager.badgeNumber)
         badgeManager.showBadge(withCount: badgeManager.badgeNumber, object: shoppingBasket)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
       
     }
     
